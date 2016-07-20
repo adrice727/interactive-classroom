@@ -13,6 +13,7 @@
     "comma-dangle": 0
   },
   "globals": {
-
+    "expect": true,
+    "shallow": true
   }
 }

@@ -1,7 +1,13 @@
 import React from 'react';
-import Router from 'react-router';
-import routes from '../shared/routes/routes';
+import {render} from 'react-dom';
 
-Router.run(routes, Router.HistoryLocation, (Handler, state) => {
-  React.render(<Handler />, document.getElementById('app'));
-});
+import Root from './components/Root';
+import configureStore from './configureStore';
+
+const initialState = window.__INITIAL_STATE__;
+const store = configureStore(initialState);
+
+render(
+  <Root store={store} />,
+  document.getElementById('root')
+);

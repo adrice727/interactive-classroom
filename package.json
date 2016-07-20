@@ -2,10 +2,6 @@
   "name": "interactive-classroom",
   "version": "0.0.1",
   "description": "An interactive classroom built on the OpenTok platform",
-  "scripts": {
-    "start": "node server.js",
-    "lint": "eslint src"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/adrice727/interactive-classroom"
@@ -21,30 +17,54 @@
     "url": "https://github.com/adrice727/interactive-classroom/issues"
   },
   "homepage": "https://github.com/adrice727/interactive-classroom",
-  "babel": {
-    "stage": "1"
+  "scripts": {
+    "build": "NODE_ENV=production webpack -c --progress",
+    "lint": "eslint --ignore-path .gitignore .",
+    "prebuild": "rm -rf build/*",
+    "prestart": "npm run build",
+    "start": "NODE_ENV=production node server",
+    "start-dev": "nodemon server -w server",
+    "test": "NODE_ENV=test mocha",
+    "test-watch": "NODE_ENV=test mocha -R min -w"
   },
   "devDependencies": {
-    "babel-core": "^6.0.20",
-    "babel-eslint": "^4.1.3",
-    "babel-loader": "^6.2.4",
-    "babel-preset-es2015": "^6.0.15",
-    "babel-preset-react": "^6.0.15",
-    "babel-preset-stage-0": "^6.0.15",
-    "babel-register": "^6.9.0",
-    "eslint-config-airbnb": "^9.0.1",
-    "react-hot-loader": "^1.3.0",
-    "webpack": "^1.12.2",
-    "webpack-dev-server": "^1.12.1"
+    "babel-plugin-react-transform": "2.0.2",
+    "eslint-config-richardkall": "3.1.0",
+    "eslint-plugin-react": "5.2.2",
+    "eslint": "3.1.0",
+    "expect-jsx": "2.6.0",
+    "expect": "1.20.2",
+    "mocha": "2.5.3",
+    "nodemon": "1.9.2",
+    "react-addons-test-utils": "15.2.1",
+    "react-transform-hmr": "1.0.4",
+    "webpack-dev-middleware": "1.6.1",
+    "webpack-hot-middleware": "2.12.1"
   },
   "dependencies": {
-    "css-loader": "^0.23.1",
-    "express": "^4.14.0",
-    "express-react-views": "^0.10.2",
-    "react": "^0.14.6",
-    "react-css-modules": "^3.7.7",
-    "react-dom": "^0.14.6",
-    "react-router": "^2.5.2",
-    "style-loader": "^0.13.1"
+    "assets-webpack-plugin": "3.4.0",
+    "autoprefixer": "6.3.7",
+    "babel-core": "6.10.4",
+    "babel-loader": "6.2.4",
+    "babel-preset-es2015": "6.9.0",
+    "babel-preset-react": "6.11.1",
+    "babel-preset-stage-1": "6.5.0",
+    "babel-register": "6.9.0",
+    "compression": "1.6.2",
+    "css-loader": "0.23.1",
+    "css-modules-require-hook": "4.0.1",
+    "express": "4.14.0",
+    "extract-text-webpack-plugin": "1.0.1",
+    "history": "3.0.0",
+    "morgan": "1.7.0",
+    "postcss-loader": "0.9.1",
+    "postcss-nested": "1.0.0",
+    "react": "15.2.1",
+    "react-dom": "15.2.1",
+    "react-redux": "4.4.5",
+    "react-router": "2.5.2",
+    "redux": "3.5.2",
+    "style-loader": "0.13.1",
+    "webpack": "1.13.1"
   }
 }

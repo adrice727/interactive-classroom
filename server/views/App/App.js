@@ -1,12 +1,11 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 
-const App = ({ assets, content, head, initialState }) => (
+const App = ({assets, content, initialState}) => (
   <html>
     <head>
       <meta charSet='utf-8' />
       <meta content='width=device-width, initial-scale=1' name='viewport' />
-      {head.meta.toComponent()}
-      {head.title.toComponent()}
+      <title>Hello World</title>
       <link href={assets.main.css} rel='stylesheet' />
     </head>
     <body>
@@ -20,7 +19,6 @@ const App = ({ assets, content, head, initialState }) => (
 App.propTypes = {
   assets: PropTypes.object.isRequired,
   content: PropTypes.string.isRequired,
-  head: PropTypes.object.isRequired,
   initialState: PropTypes.object.isRequired
 };
 

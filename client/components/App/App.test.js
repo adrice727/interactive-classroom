@@ -1,7 +1,10 @@
 import React from 'react';
 
-import {App} from '.';
+import {App} from './App';
 import style from './App.css';
+
+const HelmetWrapper = () => {};
+const Link = () => {};
 
 describe('App', () => {
   it('renders correctly', () => {
@@ -10,7 +13,8 @@ describe('App', () => {
 
     expect(output).toEqualJSX(
       <div className={style.root}>
-        <h1>Hello World</h1>
+        <HelmetWrapper titleTemplate='%s - React Starter' />
+        <Link style={{}} to='/'>Home</Link>
       </div>
     );
   });
@@ -21,7 +25,8 @@ describe('App', () => {
 
     expect(output).toEqualJSX(
       <div className={style.root}>
-        <h1>Hello World</h1>
+        <HelmetWrapper titleTemplate='%s - React Starter' />
+        <Link style={{}} to='/'>Home</Link>
         Loading...
       </div>
     );

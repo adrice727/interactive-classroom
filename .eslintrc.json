@@ -12,9 +12,9 @@
     "strict": 0,
     "func-names": 0,
     "comma-dangle": 0,
-    "jsx-quotes": 0
+    "jsx-quotes": 0,
+    "global-require": 0
   },
   "globals": {
-    "require": true
   }
 }

@@ -1,12 +1,13 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
-const App = ({assets, content, initialState}) => (
+const App = ({ assets, content, initialState }) => (
   <html>
     <head>
       <meta charSet='utf-8' />
       <meta content='width=device-width, initial-scale=1' name='viewport' />
-      <title>Hello World</title>
+      <title>Interactive Classroom</title>
       <link href={assets.main.css} rel='stylesheet' />
+      <link href='https://fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css' />
     </head>
     <body>
       <div dangerouslySetInnerHTML={{__html: content}} id='root' />

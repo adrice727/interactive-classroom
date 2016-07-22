@@ -9,8 +9,8 @@ import {
 } from 'react-router';
 
 import React from 'react';
-import {Provider} from 'react-redux';
-import {createLocation} from 'history/lib/LocationUtils';
+import { Provider } from 'react-redux';
+import { createLocation } from 'history/lib/LocationUtils';
 
 import App from '../views/App';
 import NotFound from '../../client/components/NotFound';
@@ -32,10 +32,10 @@ const renderApp = (renderProps) => {
   );
 };
 
-export default ({url}, res) => {
+export default ({ url }, res) => {
   const location = createLocation(url);
 
-  match({routes, location}, (error, redirectLocation, renderProps) => {
+  match({ routes, location }, (error, redirectLocation, renderProps) => {
     if (error) {
       return res.status(500).send(error.message);
     } else if (redirectLocation) {

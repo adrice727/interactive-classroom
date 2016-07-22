@@ -1,7 +1,5 @@
-html {
-  font-family: sans-serif;
-}
-
-.root {
-  color: #222;
+html, body {
+  font-family: 'Cutive Mono';
+  margin: 0;
+  padding: 0;
 }

@@ -7,7 +7,6 @@ const App = ({ assets, content, initialState }) => (
       <meta content='width=device-width, initial-scale=1' name='viewport' />
       <title>Interactive Classroom</title>
       <link href={assets.main.css} rel='stylesheet' />
-      <link href='https://fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css' />
     </head>
     <body>
       <div dangerouslySetInnerHTML={{__html: content}} id='root' />

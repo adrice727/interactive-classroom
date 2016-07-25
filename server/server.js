@@ -21,6 +21,8 @@ if (DEBUG) {
 
 server.use(compression());
 server.use(express.static(path.resolve(__dirname, '../build')));
+// Serve static images
+server.use(express.static(path.resolve(__dirname, 'images')));
 server.use(morgan(DEBUG ? 'dev' : 'combined'));
 server.use(reactMiddleware);
 

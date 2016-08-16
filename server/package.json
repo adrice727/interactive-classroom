@@ -1,0 +1,18 @@
+{
+  "name": "opentok-classroom-server",
+  "version": "1.0.0",
+  "description": "Backend for OpenTok Interactive Classroom",
+  "main": "server.js",
+  "dependencies": {
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
+    "opentok": "^2.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "adrice727@gmail.com",
+  "license": "MIT"
+}

@@ -1,10 +1,11 @@
 /* Config */
-const { apiKey, apiSecret } = require('../../config');
+const config = require('../../config/credentials');
+const apiKey = config.opentok.key;
+const apiSecret = config.opentok.secret;
 
 import OpenTok from 'opentok';
 import Promise from 'bluebird';
 import R from 'ramda';
-
 const OT = Promise.promisifyAll(new OpenTok(apiKey, apiSecret));
 
 /** Private */

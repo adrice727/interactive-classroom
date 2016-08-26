@@ -6,6 +6,9 @@ node_modules
 # production
 build
 
+# config
+src/config
+
 # misc
 .DS_Store
 npm-debug.log

@@ -1,0 +1,13 @@
+.FirebaseLogin {
+    width: 100%;
+    text-align: center;
+}
+
+.FirebaseLogin-btn {
+    height: 75px;
+    width: 75px;
+    background-image: url(../../../images/google.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}

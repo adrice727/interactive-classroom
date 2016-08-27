@@ -1,14 +1,31 @@
-const express  = require('express');
-const cors = require('./middleware/cors');
-const PORT = process.env.PORT || 3030;
+const express = require('express');
+const port = process.env.PORT || 3030;
 const server = express();
+const R = require('./services/ramda');
+/**
+ * Middleware
+ */
+const cors = require('./middleware/cors');
+const bodyParser = require('body-parser');
 
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.json());
 server.use(cors());
 
-server.get('/tim', (req, res) => {
-  res.send('pike');
+/**
+ * Services
+ */
+const User = require('./services/user');
+
+/**
+ * Routes
+ */
+server.post('/user', (req, res) => {
+  User.validate(R.get('body.user', req))
+  .then(user => res(user))
+  .catch(error => res.status(400).send(error));
 });
 
-server.listen(PORT, () =>
-  console.info(`Server running in ${server.get('env')} on port ${PORT}`)
+server.listen(port, () =>
+  console.info(`Server running in ${server.get('env')} on port ${port}`)
 );

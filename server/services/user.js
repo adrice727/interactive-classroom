@@ -1,7 +1,10 @@
+/** Dependencies */
 const Promise = require('bluebird');
 const db = require('./firebase');
-const R = require('./ramda');
+const R = require('ramda');
 
+/** Helper functions */
+const getId = user => R.path(['id'], user);
 
 const validUser = user => {
   const props = ['id', 'name', 'email'];
@@ -18,6 +21,10 @@ const validUser = user => {
  */
 const create = user =>
   new Promise((resolve, reject) => {
+    const id = getId(user);
+    if (!id) {
+      reject('An id is required to create a user');
+    }
     db.ref(`users/${user.id}`).set(user)
       .then(resolve())
       .catch(error => reject(error));
@@ -30,8 +37,7 @@ const create = user =>
  */
 const exists = user =>
   new Promise((resolve, reject) => {
-    console.log(22222, user);
-    db.ref(`users/${R.get('id', user)}`).once('value').then(snapshot => {
+    db.ref(`users/${getId(user)}`).once('value').then(snapshot => {
       const record = snapshot.val();
       if (record) {
         resolve(record);
@@ -57,40 +63,10 @@ const validate = user =>
     if (!validUser(user)) {
       reject({ error: 'An id, name, and email are required to log in a user.' });
     }
-    exists(user.id)
+    exists(user)
       .then(resolve)
       .catch(reject);
   });
-
-
-// /**
-//  * Checks for a user in the database.  If they don't exist, they are created.
-//  * @param {Object} user
-//  * @param {String} user.id
-//  * @param {String} user.name
-//  * @param {String} user.email
-//  * @return {Promise} <resolve: User object, reject: Error>
-//  */
-// const retrieve = user =>
-//   new Promise((resolve, reject) => {
-//     if (!user.id) {
-//       reject('A user id is required');
-//     }
-//     db.ref(`users/${user.id}`).once('value').then(snapshot => {
-//       const record = snapshot.val();
-//       if (!record) {
-//         if (isValid(user)) {
-//           create(user)
-//             .then(resolve(user))
-//             .catch(error => reject(error));
-//         } else {
-//           reject('An id, name, and email are required to create a new user');
-//         }
-//       } else {
-//         resolve(record);
-//       }
-//     });
-//   });
 
 module.exports = {
   validate

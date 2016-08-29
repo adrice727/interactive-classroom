@@ -10,7 +10,7 @@ render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
     <IndexRedirect to="/login" />
-      <Route path="/login/:role" component={Login} />
+      <Route path="/login(/:role)" component={Login} />
     </Route>
   </Router>
 ), document.getElementById('root'))

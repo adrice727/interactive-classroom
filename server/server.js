@@ -1,7 +1,7 @@
 const express = require('express');
 const port = process.env.PORT || 3030;
 const server = express();
-const R = require('./services/ramda');
+const R = require('ramda');
 /**
  * Middleware
  */
@@ -21,9 +21,9 @@ const User = require('./services/user');
  * Routes
  */
 server.post('/user', (req, res) => {
-  User.validate(R.get('body.user', req))
-  .then(user => res(user))
-  .catch(error => res.status(400).send(error));
+  User.validate(R.path(['body', 'user'], req))
+    .then(user => res.send(user))
+    .catch(error => res.status(400).send(error));
 });
 
 server.listen(port, () =>

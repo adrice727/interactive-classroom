@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import R from 'ramda';
-import { path } from '../../services/utility';
 import api from '../../services/api';
 import './Login.css'
 import FirebaseLogin from './components/FirebaseLogin';
@@ -29,23 +29,15 @@ class Login extends Component {
   onLogin(data) {
 
     const user = {
-      id: path('user.uid', data),
-      name: path('user.displayName', data),
-      email: path('user.email', data),
-      imageURL: path('user.photoURL', data)
+      id: R.path(['user', 'uid'], data),
+      name: R.path(['user', 'displayName'], data),
+      email: R.path(['user', 'email'], data),
+      imageURL: R.path(['user', 'photoURL'], data)
     }
 
-    const headers = new Headers({ 'Content-Type': 'application/json' });
-
-    const request = new Request(`${api}/user`, {
-      method: 'POST',
-      mode: 'cors',
-      headers,
-      body: JSON.stringify({user})
-    });
-
-    fetch(request)
-      .then(response => response.json().then(x => console.log('HERE AND THERE', x)));
+    api.post('user', { user })
+      .then(response => { console.log('PXPXPXP', response);
+      })
 
   }
 

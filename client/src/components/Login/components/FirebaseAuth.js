@@ -3,23 +3,22 @@ import firebase from 'firebase/app';
 import firebaseConfig from '../../../config/firebase';
 import 'firebase/auth';
 import 'firebase/database';
-import './FirebaseLogin.css';
+import './FirebaseAuth.css';
 
 firebase.initializeApp(firebaseConfig);
 
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.addScope('https://www.googleapis.com/auth/userinfo.email');
 
-class FirebaseLogin extends Component {
+class FirebaseAuth extends Component {
 
   constructor(props) {
     super(props);
-    this.loginWithFirebase = this.loginWithFirebase.bind(this);
+    this.authWithFirebase = this.authWithFirebase.bind(this);
   }
 
-  loginWithFirebase() {
+  authWithFirebase() {
     firebase.auth().signInWithPopup(provider).then(result => {
-      console.log('auth result', result);
       this.props.onLogin(result);
     }).catch(error => {
       this.props.onError(error);
@@ -28,11 +27,11 @@ class FirebaseLogin extends Component {
 
   render() {
     return (
-      <div className='FirebaseLogin'>
-        <button className='FirebaseLogin-btn' onClick={this.loginWithFirebase}></button>
+      <div className='FirebaseAuth'>
+        <button className='FirebaseAuth-btn' onClick={this.authWithFirebase}></button>
       </div>
     )
   }
 }
 
-export default FirebaseLogin;
+export default FirebaseAuth;

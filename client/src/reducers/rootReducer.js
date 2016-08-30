@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
-import user from './user';
 
+/** Reducers */
+import user from './userReducer';
+
+/** Combine Reducers */
 const classroomApp = combineReducers({user});
+
 
 export default classroomApp;

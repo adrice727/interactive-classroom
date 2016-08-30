@@ -25,7 +25,7 @@ const create = user =>
     if (!id) {
       reject('An id is required to create a user');
     }
-    db.ref(`users/${user.id}`).set(user)
+    db.ref(`users/${user.id}`).set(R.omit(['role'], user))
       .then(resolve())
       .catch(error => reject(error));
   });

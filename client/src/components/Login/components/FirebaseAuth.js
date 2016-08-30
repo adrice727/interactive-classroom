@@ -19,7 +19,7 @@ class FirebaseAuth extends Component {
 
   authWithFirebase() {
     firebase.auth().signInWithPopup(provider).then(result => {
-      this.props.onLogin(result);
+      this.props.onAuth(result);
     }).catch(error => {
       this.props.onError(error);
     });

@@ -3,46 +3,34 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import R from 'ramda';
 import api from '../../services/api';
-import { loginUser } from '../../actions/user';
+import { loginUser } from '../../actions/userActions';
 import './Login.css'
-import FirebaseLogin from './components/FirebaseLogin';
-
-// const updateUser = data => {
-//   const user = {
-//     id: R.path(['user', 'uid'], data),
-//     name: R.path(['user', 'displayName'], data),
-//     email: R.path(['user', 'email'], data),
-//     photoURL: R.path(['user', 'photoURL'], data),
-//     credential: R.path(['credential'], data)
-//   };
-// };
+import FirebaseAuth from './components/FirebaseAuth';
 
 class Login extends Component {
 
   constructor(props) {
     super(props);
     this.state = { error: null };
-    this.onLogin = this.onLogin.bind(this);
+    this.onAuth = this.onAuth.bind(this);
     this.onError = this.onError.bind(this);
-    this.onUserValidated = this.onUserValidated.bind(this);
   }
 
-  onUserValidated(user) {
-    console.log('989898', user);
-  }
+  onAuth(data) {
 
-  onLogin(data) {
+    const { dispatch, role } = this.props;
 
     const user = {
       id: R.path(['user', 'uid'], data),
       name: R.path(['user', 'displayName'], data),
       email: R.path(['user', 'email'], data),
-      imageURL: R.path(['user', 'photoURL'], data)
+      imageURL: R.path(['user', 'photoURL'], data),
+      role
     };
 
     api.post('user', { user })
-    .then(valid => this.onUserValidated(Object.assign(user, { role: this.props.role })))
-    .catch(error => console.log('podfpodpfo', error));
+    .then(response => dispatch(loginUser(user)))
+    .catch(error => console.log(error));
 
   }
 
@@ -61,7 +49,7 @@ class Login extends Component {
                 <div className='Login-error red'>
                   { this.state.error ? this.state.error : ''}
                 </div>
-                <FirebaseLogin onLogin={this.onLogin} onError={this.onError} />
+                <FirebaseAuth onAuth={this.onAuth} onError={this.onError} />
               </div>
             </div>
           </div>
@@ -76,18 +64,7 @@ const mapStateToProps = (state, { params }) => ({
   role: R.path(['role'], params) || 'student'
 });
 
-// const mapDispatchToProps = dispatch =>
-//   ({
-//      onUserValidated: user => {
-//        dispatch({
-//          type: 'LOGIN_USER',
-//          user
-//        })
-//      }
-//   })
-
 export default withRouter(connect(
-  mapStateToProps,
-  { onUserValidated: loginUser }
+  mapStateToProps
 )(Login));
 

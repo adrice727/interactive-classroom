@@ -27,8 +27,7 @@ const get = route =>
 
 const post = (route, body) =>
   new Promise((resolve, reject) => {
-    console.log(1111, route, body);
-    fetch(request('post', route, body))
+  fetch(request('post', route, body))
     .then(response => response.json())
     .then(resolve)
     .catch(reject)

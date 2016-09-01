@@ -23,3 +23,8 @@ button {
     color: #fff;
     background-color: #0097cc;
 }
+
+.btn.red {
+    color: #fff;
+    background-color: red;
+}

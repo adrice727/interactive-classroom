@@ -33,7 +33,17 @@ const post = (route, body) =>
     .catch(reject)
   });
 
+
+const del = (route, body) =>
+  new Promise((resolve, reject) => {
+  fetch(request('delete', route, body))
+    .then(response => response.json())
+    .then(resolve)
+    .catch(reject)
+  });
+
 module.exports = {
   get,
-  post
+  post,
+  del
 }

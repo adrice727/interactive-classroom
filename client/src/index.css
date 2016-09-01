@@ -1,13 +1,25 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
 }
 
 button {
   border: none;
-  border-radius: 3px;
-  font-family: 'Lato', sans-serif;
 }
 
+.btn {
+    border: none;
+    font-family: 'Lato', sans-serif;
+    font-weight: 200;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    min-width: 185px;
+    padding: 0 40px;
+}
 
+.btn.blue {
+    color: #fff;
+    background-color: #0097cc;
+}

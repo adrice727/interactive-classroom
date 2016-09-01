@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import classNames from 'classnames';
 import R from 'ramda';
-import api from '../../../services/api';
-import { addInstructorClassroom } from '../../../actions/instructorActions';
 import './CreateClassroom.css';
 
 class CreateClassroom extends Component {
@@ -12,35 +9,35 @@ class CreateClassroom extends Component {
     super(props);
     this.state = { nameError: false, descriptionError: false }
     this.createClassroom = this.createClassroom.bind(this);
+    this.clear = this.clear.bind(this);
+  }
+
+  clear () {
+    this.refs.name.value = '';
+    this.refs.description.value = '';
   }
 
   createClassroom() {
 
-    const { dispatch, instructor } = this.props;
+    const { onCreate } = this.props;
 
     const classroom = {
       name: this.refs.name.value,
       description: this.refs.description.value,
-      instructorId: instructor.id
     }
 
-    const create = () => {
+    const validateAndCreate = () => {
       if (R.or(this.state.nameError, this.state.descriptionError)) {
         return;
       }
-
-      api.post('classroom', { classroom })
-      .then(classroomData => {
-        dispatch(addInstructorClassroom(classroomData));
-        this.refs.name.value = '';
-        this.refs.description.value = '';
-      });
+      onCreate(classroom);
+      this.clear();
     }
 
     this.setState({
       nameError: R.isEmpty(classroom.name),
       descriptionError: R.isEmpty(classroom.description)
-    }, create)
+    }, validateAndCreate);
   }
 
   render() {
@@ -63,11 +60,6 @@ class CreateClassroom extends Component {
   }
 }
 
-const mapStateToProps = (state, { params }) => ({
-  instructor: state.instructor,
-});
+export default CreateClassroom;
 
-export default connect(
-  mapStateToProps
-)(CreateClassroom);
 

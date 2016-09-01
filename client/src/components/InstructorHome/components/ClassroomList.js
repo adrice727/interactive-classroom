@@ -1,4 +1,4 @@
-import React, { Component }from 'react';
+import React from 'react';
 import R from 'ramda';
 import './ClassroomList.css';
 
@@ -40,38 +40,5 @@ const ClassroomList = ({classrooms, removeClassroom}) => {
       </div>
   )
 };
-
-// class ClassroomList extends Component {
-
-//   constructor(props) {
-//     super(props)
-//   }
-
-//   render() {
-//     const { classrooms, removeClassroom } = this.props;
-//     const classroomList = createList(classrooms);
-//     (
-//       <div className="ClassroomList">
-//         { R.isEmpty(classroomList) ? <div className="emptyList">No existing classes</div> :
-//         <ul>
-//           { classroomList.map(classroom => <Classroom key={classroom.id} classroom={classroom} remove={removeClassroom} />) }
-//         </ul>
-//         }
-//       </div>
-//     )
-//   }
-
-
-
-// } = ({classrooms, removeClassroom})
-//     (
-//       <div className="ClassroomList">
-//       { R.isEmpty(classrooms) ? <div className="emptyList">No existing classes</div> :
-//       <ul>
-//         { classrooms.map(classroom => <Classroom key={classroom.id} classroom={classroom} remove={removeClassroom} />) }
-//       </ul>
-//       }
-//     </div>
-//   )
 
 export default ClassroomList;

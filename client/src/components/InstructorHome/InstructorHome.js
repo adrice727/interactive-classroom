@@ -18,11 +18,9 @@ class InstructorHome extends Component {
 
   componentDidMount() {
     const { dispatch, instructor } = this.props;
-    console.log('instructor', instructor);
     if (instructor) {
       api.get(`classrooms/${instructor.id}`)
       .then(response => {
-        console.log('POPOPO', response);
         const classrooms = R.path(['classrooms'], response);
         dispatch(setClassrooms(classrooms));
       });

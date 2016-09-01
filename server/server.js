@@ -40,6 +40,14 @@ server.post('/classroom', (req, res) => {
     .catch(error => res.status(400).send(error));
 });
 
+server.delete('/classroom/:classroomId', (req, res) => {
+  const classroomId = R.path(['params', 'classroomId'], req);
+  Classroom.remove(classroomId)
+    .then(classroomData => res.send(classroomData))
+    .catch(error => res.status(400).send(error));
+});
+
+
 server.listen(port, () =>
   console.info(`Server running in ${server.get('env')} on port ${port}`)
 );

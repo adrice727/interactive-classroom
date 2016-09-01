@@ -2,7 +2,6 @@
 const Promise = require('bluebird');
 const db = require('./firebase');
 const R = require('ramda');
-const User = require('./user');
 const Opentok = require('./opentok');
 
 // Ensures a classroom has a name, description, and instructorId
@@ -17,7 +16,7 @@ const validClassroom = classroom => { // eslint-disable-line arrow-body-style
  * @param {String} classroom.title
  * @param {String} classroom.description
  * @param {String} classroom.instructor
- * @return {Promise} <resolve: undefined, reject: Error> - firebase `set` returns an empty promise
+ * @returns {Promise} <resolve: {Object}, reject: {Error}>
  */
 const create = (classroom) =>
   new Promise((resolve, reject) => {
@@ -29,9 +28,24 @@ const create = (classroom) =>
       .then(session => {
         const classroomData = R.merge(classroom, { id: classroomId, sessionId: session.sessionId });
         db.ref(`classrooms/${classroomId}`).set(classroomData)
-          .then(() => resolve(classroomData))
+          .then(() => resolve({ classroomId: classroomData }))
           .catch(error => reject(error));
       }).catch(error => reject(error));
+  });
+
+/**
+ * Removes a classroom from the database
+ * @param {String} classroomId
+ * @returns {Promise} <resolve: {String}, reject: {Error}>
+ */
+const remove = (classroomId) =>
+  new Promise((resolve, reject) => {
+    if (!classroomId) {
+      reject('A classroomId is required to remove a classroom');
+    }
+    db.ref(`classrooms/${classroomId}`).remove()
+    .then(() => resolve(`Classroom ${classroomId} successfully removed`)
+    .catch(reject));
   });
 
 /**
@@ -40,7 +54,7 @@ const create = (classroom) =>
  * @param {Object} classroom
  * @param {String} classroom.title
  * @param {String} classroom.description
- * @return {Promise} <resolve: undefined, reject: Error> - firebase `set` returns an empty promise
+ * @returns {Promise} <resolve: {Object}, reject: {Error}>
  */
 const getInstructorClassrooms = instructorId =>
   new Promise((resolve, reject) => {
@@ -60,5 +74,6 @@ const getInstructorClassrooms = instructorId =>
 
 module.exports = {
   create,
+  remove,
   getInstructorClassrooms
 };

@@ -1,0 +1,31 @@
+.ClassroomList {
+    width: 100%;
+}
+
+.ClassroomList ul {
+    list-style: none;
+    font-size: 18px;
+}
+
+.ClassroomList ul li {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid lightgrey;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.ClassroomList ul li .info {
+  text-align: left;
+  width: 65%;
+}
+
+.ClassroomList ul li .info .label {
+    color: darkgrey;
+}
+
+.ClassroomList ul li .link {
+    text-decoration: none;
+    min-width: 65px;
+}

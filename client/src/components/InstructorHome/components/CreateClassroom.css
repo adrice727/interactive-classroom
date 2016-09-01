@@ -1,0 +1,41 @@
+.CreateClassroom {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.CreateClassroom label {
+    display: block;
+    margin: 5px 0;
+}
+
+.CreateClassroom input,
+.CreateClassroom textarea {
+    width: 100%;
+    font-size: 18px;
+    border: 1px solid grey;
+    padding: 5px;
+}
+
+.CreateClassroom .description {
+    height: 200px;
+}
+
+.CreateClassroom input.error,
+.CreateClassroom textarea.error {
+    border-color: red;
+}
+
+.CreateClassroom .errorsContainer {
+    width: 100%;
+    color: red;
+    height: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.CreateClassroom button {
+    cursor: pointer;
+}

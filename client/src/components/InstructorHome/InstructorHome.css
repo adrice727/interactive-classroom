@@ -1,0 +1,60 @@
+.InstructorHome {
+    display: flex;
+    justify-content: space-around;
+    padding: 35px;
+}
+
+.InstructorHome> div {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.InstructorHome .noClasses {
+    font-size: 20px;
+    color: red;
+    font-style: italic;
+}
+
+.CreateClassForm {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.CreateClassForm label {
+    display: block;
+    margin: 5px 0;
+}
+
+.CreateClassForm input,
+.CreateClassForm textarea {
+    width: 100%;
+    font-size: 18px;
+    border: 1px solid grey;
+    padding: 5px;
+}
+
+.CreateClassForm .description {
+    height: 200px;
+}
+
+.CreateClassForm input.error,
+.CreateClassForm textarea.error {
+    border-color: red;
+}
+
+.CreateClassForm .errorsContainer {
+    width: 100%;
+    color: red;
+    height: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.CreateClassForm button {
+    cursor: pointer;
+}

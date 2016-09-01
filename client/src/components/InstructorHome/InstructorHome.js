@@ -3,27 +3,38 @@ import { connect } from 'react-redux';
 import { withRouter, browserHistory } from 'react-router';
 import R from 'ramda';
 import api from '../../services/api';
-import { setInstructorClassrooms } from '../../actions/instructorActions';
+import { setInstructorClassrooms, removeInstructorClassroom } from '../../actions/instructorActions';
 import CreateClassroom from './components/CreateClassroom';
 import ClassroomList from './components/ClassroomList';
 import './InstructorHome.css';
 
-
 class InstructorHome extends Component {
+
+  constructor(props){
+    super(props);
+    this.removeClassroom = this.removeClassroom.bind(this);
+  }
 
   componentDidMount() {
     const { dispatch, instructor } = this.props;
-    if (this.props.instructor) {
+    console.log('instructor', instructor);
+    if (instructor) {
       api.get(`classrooms/${instructor.id}`)
       .then(response => {
+        console.log('POPOPO', response);
         const classrooms = R.path(['classrooms'], response);
-        const getClass = id => R.prop(id, classrooms);
-        const classList = R.map(getClass, R.keys(classrooms))
-        dispatch(setInstructorClassrooms(classList));
+        dispatch(setInstructorClassrooms(classrooms));
       });
     } else {
       browserHistory.push('login/instructor');
     }
+  }
+
+  removeClassroom(id) {
+    const { dispatch } = this.props;
+    api.del(`classroom/${id}`)
+    .then(response => dispatch(removeInstructorClassroom(id)))
+    .catch(error => console.log(error));
   }
 
   render() {
@@ -36,7 +47,7 @@ class InstructorHome extends Component {
         </div>
         <div className="InstructorHome-current">
           <h2 className="InstructorHome-header">Current Classes</h2>
-          <ClassroomList classrooms={currentClassrooms} />
+          <ClassroomList classrooms={currentClassrooms} removeClassroom={this.removeClassroom} />
         </div>
       </div>
     )

@@ -12,3 +12,8 @@ export const addInstructorClassroom = classroom => ({
   type: 'ADD_INSTRUCTOR_CLASSROOM',
   classroom
 });
+
+export const removeInstructorClassroom = classroomId => ({
+  type: 'REMOVE_INSTRUCTOR_CLASSROOM',
+  classroomId
+});

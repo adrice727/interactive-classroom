@@ -18,6 +18,10 @@
     padding: 5px;
 }
 
+.CreateClassroom textarea {
+    resize: none;
+}
+
 .CreateClassroom .description {
     height: 200px;
 }

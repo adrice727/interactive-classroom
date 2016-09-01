@@ -31,7 +31,7 @@ class CreateClassroom extends Component {
 
       api.post('classroom', { classroom })
       .then(classroomData => {
-        dispatch(addInstructorClassroom([classroomData]));
+        dispatch(addInstructorClassroom(classroomData));
         this.refs.name.value = '';
         this.refs.description.value = '';
       });

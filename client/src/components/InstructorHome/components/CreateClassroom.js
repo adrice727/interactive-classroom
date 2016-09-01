@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 import classNames from 'classnames';
 import R from 'ramda';
 import api from '../../../services/api';
@@ -68,7 +67,7 @@ const mapStateToProps = (state, { params }) => ({
   instructor: state.instructor,
 });
 
-export default withRouter(connect(
+export default connect(
   mapStateToProps
-)(CreateClassroom));
+)(CreateClassroom);
 

@@ -16,6 +16,7 @@ server.use(cors());
  * Services
  */
 const User = require('./services/user');
+const Classroom = require('./services/classroom');
 
 /**
  * Routes
@@ -23,6 +24,19 @@ const User = require('./services/user');
 server.post('/user', (req, res) => {
   User.validate(R.path(['body', 'user'], req))
     .then(user => res.send(user))
+    .catch(error => res.status(400).send(error));
+});
+
+server.get('/classrooms/:instructorId', (req, res) => {
+  Classroom.getInstructorClassrooms(R.path(['params', 'instructorId'], req))
+    .then(classroomData => res.send(classroomData))
+    .catch(error => res.status(400).send(error));
+});
+
+server.post('/classroom', (req, res) => {
+  const classroom = R.path(['body', 'classroom'], req);
+  Classroom.create(classroom)
+    .then(classroomData => res.send(classroomData))
     .catch(error => res.status(400).send(error));
 });
 

@@ -4,7 +4,7 @@ const db = require('./firebase');
 const R = require('ramda');
 
 /** Helper functions */
-const getId = user => R.path(['id'], user);
+const getId = R.path(['id']);
 
 const validUser = user => {
   const props = ['id', 'name', 'email'];
@@ -30,23 +30,39 @@ const create = user =>
       .catch(error => reject(error));
   });
 
+
+
 /**
- * Checks whether or not a user exists in the database
- * @param {Object} user
- * @returns {Promise} <Resolve: Boolean, Reject: Error>
+ * Finds a user in the db
+ * @param {String} userId
+ * @returns {Promise} <Resolve: User, Reject: Error>
  */
-const exists = user =>
+const find = userId =>
   new Promise((resolve, reject) => {
-    db.ref(`users/${getId(user)}`).once('value').then(snapshot => {
+    db.ref(`users/${userId}`).once('value').then(snapshot => {
       const record = snapshot.val();
       if (record) {
         resolve(record);
       } else {
+        reject('User does not exist');
+      }
+    });
+  });
+
+/**
+ * Checks whether or not a user exists in the database.  If not, they are created.
+ * @param {Object} user
+ * @returns {Promise} <Resolve: User, Reject: Error>
+ */
+const existsOrCreate = user =>
+  new Promise((resolve, reject) => {
+    find(getId(user))
+      .then(resolve)
+      .catch(() => {
         create(user)
           .then(resolve)
           .catch(reject);
-      }
-    });
+      });
   });
 
 /**
@@ -63,11 +79,12 @@ const validate = user =>
     if (!validUser(user)) {
       reject({ error: 'An id, name, and email are required to log in a user.' });
     }
-    exists(user)
+    existsOrCreate(user)
       .then(resolve)
       .catch(reject);
   });
 
 module.exports = {
-  validate
+  validate,
+  find
 };

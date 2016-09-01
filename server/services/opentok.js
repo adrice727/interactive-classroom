@@ -1,11 +1,11 @@
 /* Config */
-const config = require('../../config/credentials');
+const config = require('../config/credentials');
 const apiKey = config.opentok.key;
 const apiSecret = config.opentok.secret;
 
-import OpenTok from 'opentok';
-import Promise from 'bluebird';
-import R from 'ramda';
+const OpenTok = require('opentok');
+const Promise = require('bluebird');
+const R = require('ramda');
 const OT = Promise.promisifyAll(new OpenTok(apiKey, apiSecret));
 
 /** Private */
@@ -34,7 +34,7 @@ const tokenOptions = userType => {
  * @param {String} userType instructor, student, auditor
  * @returns {String}
  */
-export const createToken = (sessionId, userType) =>
+const createToken = (sessionId, userType) =>
   OT.generateToken(sessionId, tokenOptions(userType));
 
 /**
@@ -42,7 +42,7 @@ export const createToken = (sessionId, userType) =>
  * @param {Object} [options]
  * @returns {Promise} <Resolve => {Object}, Reject => {Error}>
  */
-export const createSession = options =>
+const createSession = options =>
   new Promise((resolve, reject) => {
     OT.createSession(R.defaultTo(defaultSessionOptions)(options), (err, session) => {
       if (err) { reject(err); }
@@ -50,5 +50,7 @@ export const createSession = options =>
     });
   });
 
-
-
+module.exports = {
+  createSession,
+  createToken
+};

@@ -3,6 +3,11 @@ export const loginUser = user => ({
   user
 });
 
+export const setInstructorClassrooms = classrooms => ({
+  type: 'SET_INSTRUCTOR_CLASSROOMS',
+  classrooms
+});
+
 export const logoutUser = () => ({
   type: 'LOGOUT_USER',
   user: null

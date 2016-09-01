@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router';
+import { withRouter, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import R from 'ramda';
 import api from '../../services/api';
-import { loginUser } from '../../actions/userActions';
+import { loginUser } from '../../actions/currentUserActions';
+import { setInstructor } from '../../actions/instructorActions';
 import './Login.css'
 import FirebaseAuth from './components/FirebaseAuth';
 
@@ -15,6 +16,7 @@ class Login extends Component {
     this.onAuth = this.onAuth.bind(this);
     this.onError = this.onError.bind(this);
   }
+
 
   onAuth(data) {
 
@@ -28,9 +30,17 @@ class Login extends Component {
       role
     };
 
+    const login = user => {
+      dispatch(loginUser(user));
+      if (role === 'instructor') {
+        dispatch(setInstructor(user));
+      }
+      browserHistory.push(`/${role}-home`);
+    };
+
     api.post('user', { user })
-    .then(response => dispatch(loginUser(user)))
-    .catch(error => console.log(error));
+      .then(response => login(user))
+      .catch(error => console.log(error));
 
   }
 
@@ -60,11 +70,10 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state, { params }) => ({
-  user: state.user,
+  user: state.currentUser,
   role: R.path(['role'], params) || 'student'
 });
 
 export default withRouter(connect(
   mapStateToProps
 )(Login));
-

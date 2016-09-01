@@ -28,7 +28,7 @@ const create = (classroom) =>
       .then(session => {
         const classroomData = R.merge(classroom, { id: classroomId, sessionId: session.sessionId });
         db.ref(`classrooms/${classroomId}`).set(classroomData)
-          .then(() => resolve({ classroomId: classroomData }))
+          .then(() => resolve({ [classroomId]: classroomData }))
           .catch(error => reject(error));
       }).catch(error => reject(error));
   });
@@ -44,8 +44,8 @@ const remove = (classroomId) =>
       reject('A classroomId is required to remove a classroom');
     }
     db.ref(`classrooms/${classroomId}`).remove()
-    .then(() => resolve(`Classroom ${classroomId} successfully removed`)
-    .catch(reject));
+    .then(() => resolve({ result: `Classroom ${classroomId} successfully removed` }))
+    .catch(reject);
   });
 
 /**

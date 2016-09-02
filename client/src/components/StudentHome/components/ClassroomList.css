@@ -1,0 +1,53 @@
+.ClassroomList {
+    width: 100%;
+}
+
+.ClassroomList .emptyList {
+    font-size: 22px;
+    font-style: italic;
+    color: darkgrey;
+}
+
+
+.ClassroomList ul {
+    list-style: none;
+    font-size: 18px;
+}
+
+.ClassroomList ul li {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100px;
+    border: 1px solid lightgrey;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.ClassroomList ul li .info-container {
+  text-align: left;
+  width: 65%;
+}
+
+.ClassroomList ul li .info-container .label {
+    color: darkgrey;
+}
+
+.ClassroomList ul li .action-container {
+    min-height: 100px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.ClassroomList ul li .action-container .btn {
+    min-width: 65px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+
+.ClassroomList ul li .action-container .link {
+    text-decoration: none;
+}

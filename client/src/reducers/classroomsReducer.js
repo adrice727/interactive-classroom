@@ -1,9 +1,7 @@
-const classrooms = (state = {}, action) => {
+const classrooms = (state = null, action) => {
   switch (action.type) {
-    case 'CREATE_CLASSROOM':
-      return action.user;
-    case 'REMOVE_CLASSROOM':
-      return null;
+    case 'SET_AVAILABLE_CLASSROOMS':
+      return action.classrooms;
     default: return state;
   }
 }

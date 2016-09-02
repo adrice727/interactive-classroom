@@ -51,9 +51,6 @@ const remove = (classroomId) =>
 /**
  * Fetch an instructors classrooms from the db
  * @param {String} instructorId
- * @param {Object} classroom
- * @param {String} classroom.title
- * @param {String} classroom.description
  * @returns {Promise} <resolve: {Object}, reject: {Error}>
  */
 const getInstructorClassrooms = instructorId =>
@@ -70,10 +67,26 @@ const getInstructorClassrooms = instructorId =>
       .catch(error => reject(error));
   });
 
-
+/**
+ * Fetch available classrooms from the db. If an instructor id is provided,
+ * only that instructors classes will be returned.
+ * @param {String} [instructorId]
+ * @returns {Promise} <resolve: {Object}, reject: {Error}>
+ */
+  const getClassrooms = instructorId => {
+    if (instructorId) { return getInstructorClassrooms(instructorId); }
+    return new Promise((resolve, reject) => {
+      db.ref('/classrooms').once('value')
+      .then(snapshot => {
+        const record = snapshot.val();
+        resolve({ classrooms: R.defaultTo({})(record) });
+      })
+      .catch(error => reject(error));
+    });
+  };
 
 module.exports = {
   create,
   remove,
-  getInstructorClassrooms
+  getClassrooms
 };

@@ -27,6 +27,12 @@ server.post('/user', (req, res) => {
     .catch(error => res.status(400).send(error));
 });
 
+server.get('/classroom/:classroomId', (req, res) => {
+  Classroom.getClassroom(R.path(['params', 'classroomId'], req))
+    .then(classroomData => res.send(classroomData))
+    .catch(error => res.status(400).send(error));
+});
+
 server.get('/classrooms/:instructorId', (req, res) => {
   Classroom.getClassrooms(R.path(['params', 'instructorId'], req))
     .then(classroomData => res.send(classroomData))

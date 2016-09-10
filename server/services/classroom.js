@@ -85,8 +85,27 @@ const getInstructorClassrooms = instructorId =>
     });
   };
 
+/**
+ * Fetch data for an individual classroom from the db.
+ * @param {String} classroomId
+ * @returns {Promise} <resolve: {Object}, reject: {Error}>
+ */
+  const getClassroom = classroomId =>
+    new Promise((resolve, reject) => {
+      db.ref(`/classrooms/${classroomId}`).once('value')
+      .then(snapshot => {
+        const record = snapshot.val();
+        if (record) {
+          resolve(record);
+        } else {
+          reject(`No data found for classroom ${classroomId}`);
+        }
+      })
+    })
+
 module.exports = {
   create,
   remove,
+  getClassroom,
   getClassrooms
 };

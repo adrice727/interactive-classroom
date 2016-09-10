@@ -31,7 +31,7 @@ const ClassroomItem = ({ classroom, remove }) => {
 const ClassroomList = ({classrooms, removeClassroom}) => {
   const list = createList(classrooms);
   return (
-      <div className="ClassroomList">
+      <div className="ClassroomList student">
         { R.isEmpty(list) ? <div className="emptyList">No existing classes</div> :
         <ul>
           { list.map(classroom => <ClassroomItem key={classroom.id} classroom={classroom} remove={removeClassroom} />) }

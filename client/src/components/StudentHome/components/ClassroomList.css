@@ -1,5 +1,6 @@
-.ClassroomList {
-    width: 100%;
+.ClassroomList.student {
+    width: 60%;
+    margin: 0 auto;
 }
 
 .ClassroomList .emptyList {

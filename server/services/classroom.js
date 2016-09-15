@@ -6,7 +6,7 @@ const Opentok = require('./opentok');
 
 // Ensures a classroom has a name, description, and instructorId
 const validClassroom = classroom => { // eslint-disable-line arrow-body-style
-  return R.length(R.keys(R.pick(['name', 'description', 'instructorId'], classroom))) === 3;
+  return R.length(R.keys(R.pick(['title', 'description', 'instructorId'], classroom))) === 3;
 };
 
 
@@ -21,9 +21,11 @@ const validClassroom = classroom => { // eslint-disable-line arrow-body-style
 const create = (classroom) =>
   new Promise((resolve, reject) => {
     if (!validClassroom(classroom)) {
-      reject('A name, description, and instructorId are required to create a classroom');
+      const error = 'A title, description, and instructorId are required to create a classroom';
+      reject({ error });
     }
     const classroomId = db.ref('classrooms').push().key;
+
     Opentok.createSession()
       .then(session => {
         const classroomData = R.merge(classroom, { id: classroomId, sessionId: session.sessionId });
@@ -44,8 +46,8 @@ const remove = (classroomId) =>
       reject('A classroomId is required to remove a classroom');
     }
     db.ref(`classrooms/${classroomId}`).remove()
-    .then(() => resolve({ result: `Classroom ${classroomId} successfully removed` }))
-    .catch(reject);
+      .then(() => resolve({ result: `Classroom ${classroomId} successfully removed` }))
+      .catch(reject);
   });
 
 /**
@@ -73,26 +75,28 @@ const getInstructorClassrooms = instructorId =>
  * @param {String} [instructorId]
  * @returns {Promise} <resolve: {Object}, reject: {Error}>
  */
-  const getClassrooms = instructorId => {
-    if (instructorId) { return getInstructorClassrooms(instructorId); }
-    return new Promise((resolve, reject) => {
-      db.ref('/classrooms').once('value')
+const getClassrooms = instructorId => {
+  if (instructorId) {
+    return getInstructorClassrooms(instructorId);
+  }
+  return new Promise((resolve, reject) => {
+    db.ref('/classrooms').once('value')
       .then(snapshot => {
         const record = snapshot.val();
         resolve({ classrooms: R.defaultTo({})(record) });
       })
       .catch(error => reject(error));
-    });
-  };
+  });
+};
 
 /**
  * Fetch data for an individual classroom from the db.
  * @param {String} classroomId
  * @returns {Promise} <resolve: {Object}, reject: {Error}>
  */
-  const getClassroom = classroomId =>
-    new Promise((resolve, reject) => {
-      db.ref(`/classrooms/${classroomId}`).once('value')
+const getClassroom = classroomId =>
+  new Promise((resolve, reject) => {
+    db.ref(`/classrooms/${classroomId}`).once('value')
       .then(snapshot => {
         const record = snapshot.val();
         if (record) {
@@ -100,8 +104,8 @@ const getInstructorClassrooms = instructorId =>
         } else {
           reject(`No data found for classroom ${classroomId}`);
         }
-      })
-    })
+      });
+  });
 
 module.exports = {
   create,

@@ -1,20 +1,21 @@
-.ClassroomList {
-    width: 100%;
+.StudentClassList {
+    width: 60%;
+    margin: 0 auto;
 }
 
-.ClassroomList .emptyList {
+.StudentClassList .emptyList {
     font-size: 22px;
     font-style: italic;
     color: darkgrey;
 }
 
 
-.ClassroomList ul {
+.StudentClassList ul {
     list-style: none;
     font-size: 18px;
 }
 
-.ClassroomList ul li {
+.StudentClassList ul li {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -24,23 +25,27 @@
     padding: 10px;
 }
 
-.ClassroomList ul li .info-container {
+.StudentClassList ul li .info-container {
   text-align: left;
   width: 65%;
 }
 
-.ClassroomList ul li .info-container .label {
+.StudentClassList ul li .info-container .label {
     color: darkgrey;
 }
 
-.ClassroomList ul li .action-container {
+.StudentClassList ul li .info-container .text {
+    font-style: italic;
+}
+
+.StudentClassList ul li .action-container {
     min-height: 100px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
 }
 
-.ClassroomList ul li .action-container .btn {
+.StudentClassList ul li .action-container .btn {
     min-width: 65px;
     height: 30px;
     line-height: 30px;
@@ -48,6 +53,6 @@
 }
 
 
-.ClassroomList ul li .action-container .link {
+.StudentClassList ul li .action-container .link {
     text-decoration: none;
 }

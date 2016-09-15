@@ -5,7 +5,7 @@ import R from 'ramda';
 import api from '../../services/api';
 import { addClassroom, setClassrooms, removeClassroom } from '../../actions/instructorActions';
 import CreateClassroom from './components/CreateClassroom';
-import ClassroomList from './components/ClassroomList';
+import InstructorClassList from './components/InstructorClassList';
 import './InstructorHome.css';
 
 class InstructorHome extends Component {
@@ -57,7 +57,7 @@ class InstructorHome extends Component {
         </div>
         <div className="InstructorHome-current">
           <h2 className="InstructorHome-header">Current Classes</h2>
-          <ClassroomList classrooms={currentClassrooms} removeClassroom={this.removeClassroom} />
+          <InstructorClassList classrooms={currentClassrooms} removeClassroom={this.removeClassroom} />
         </div>
       </div>
     )

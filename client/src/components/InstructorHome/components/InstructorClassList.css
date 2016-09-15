@@ -16,6 +16,7 @@
 
 .InstructorClassList ul li {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     min-height: 100px;
@@ -24,29 +25,46 @@
     padding: 10px;
 }
 
-.InstructorClassList ul li .info-container {
-  text-align: left;
-  width: 65%;
+.InstructorClassList ul li .primary-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /*To keep the title centered, we offset half the width of the image.*/
+  position: relative;
+  left: -20px;
 }
 
-.InstructorClassList ul li .info-container .label {
-    color: darkgrey;
+.InstructorClassList ul li .primary-container .image-container {
+    width: 40px;
+    height: 40px;
+}
+
+.InstructorClassList ul li .primary-container .title-container {
+    height: 40px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.InstructorClassList ul li .primary-container .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .InstructorClassList ul li .action-container {
-    min-height: 100px;
     display: flex;
-    justify-content: space-around;
-    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .InstructorClassList ul li .action-container .btn {
-    min-width: 65px;
+
     height: 30px;
+    margin: 0 10px;
     line-height: 30px;
     cursor: pointer;
 }
-
 
 .InstructorClassList ul li .action-container .link {
     text-decoration: none;

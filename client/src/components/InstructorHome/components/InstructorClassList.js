@@ -1,6 +1,7 @@
 import React from 'react';
 import R from 'ramda';
 import './InstructorClassList.css';
+import classroomIcon from '../../../images/classroom-icon.png';
 
 const createList = classrooms => {
   const getClass = id => R.prop(id, classrooms);
@@ -9,19 +10,20 @@ const createList = classrooms => {
 
 const ClassroomItem = ({ classroom, remove }) => {
   const boundRemove = remove.bind(this, classroom.id);
+  const { title, imageURL, id } = classroom;
+  const imageSrc = R.defaultTo(classroomIcon)(imageURL);
   return (
     <li>
-      <div className="info-container">
-        <div>
-          <span className="label name">NAME: </span><span className="text name">{classroom.name}</span>
+      <div className="primary-container">
+        <div className="image-container">
+          <img className="classroomImage" src={imageSrc} alt="classroom-icon" />
         </div>
-        <div>
-          <div className="label description">DESCRIPTION:</div>
-          <div className="text description">{classroom.description}</div>
+        <div className="title-container">
+            <span className="title">{title}</span>
         </div>
       </div>
       <div className="action-container">
-        <a className="link btn blue" href={`classroom/${classroom.id}`}>Go</a>
+        <a className="link btn blue" href={`classroom/${id}`}>Join</a>
         <button className="delete btn red" onClick={boundRemove}>Remove</button>
       </div>
     </li>

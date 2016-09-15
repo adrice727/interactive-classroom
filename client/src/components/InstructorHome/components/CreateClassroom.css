@@ -13,7 +13,9 @@
 .CreateClassroom input,
 .CreateClassroom textarea {
     width: 100%;
-    font-size: 18px;
+    font-size: 14px;
+    font-weight: 300;
+    font-style: italic;
     border: 1px solid grey;
     padding: 5px;
 }
@@ -23,7 +25,7 @@
 }
 
 .CreateClassroom .description {
-    height: 200px;
+    height: 150px;
 }
 
 .CreateClassroom input.error,

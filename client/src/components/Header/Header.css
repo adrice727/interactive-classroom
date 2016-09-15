@@ -13,6 +13,13 @@
     color: #fff;
 }
 
+.Header-logout.btn {
+    border: none;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+
 .Header-logo {
     height: 50%;
 }

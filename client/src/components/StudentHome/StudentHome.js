@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import R from 'ramda';
 import api from '../../services/api';
-import { setAvailableClassrooms } from '../../actions/classroomsActions';
+import { setAvailableClassrooms } from '../../actions/availableClassroomsActions';
 import StudentClassList from './components/StudentClassList';
 import './StudentHome.css';
 
@@ -41,7 +41,7 @@ class StudentHome extends Component {
 
 const mapStateToProps = (state, { params }) => ({
   student: state.currentUser,
-  classrooms: state.classrooms
+  classrooms: state.availableClassrooms
 });
 
 export default connect(

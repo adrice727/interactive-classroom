@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Podium.css';
 
-const Podium = ({classroom}) => <div className="Podium">Podium goes here</div>
+class Podium extends Component {
+
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <div className="Podium">
+        <div id="instructorVideo" className="videoContainer"></div>
+      </div>
+    )
+  }
+}
+
 
 export default Podium;

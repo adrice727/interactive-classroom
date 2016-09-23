@@ -1,26 +1,41 @@
-.Classroom  {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+.Classroom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .Classroom-info {
-  margin: 10px 0;
-  font-family: 'Shadows Into Light', cursive;
-  font-size: 20px;
+    margin: 10px 0;
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 20px;
 }
 
 .Podium {
-  margin: 20px 0;
-  height: 400px;
-  display: flex;
-  justify-content: center;
-  align-content: center;
+    margin: 20px 0;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 .Students {
-  margin: 20px 0;
-  height: 200px;
-  display: flex;
-  justify-content: center;
+    margin: 20px 0;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.Classroom-connecting-mask {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.Classroom-connecting-mask .message {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+    color: white;
 }

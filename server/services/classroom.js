@@ -3,6 +3,7 @@ const Promise = require('bluebird');
 const db = require('./firebase');
 const R = require('ramda');
 const Opentok = require('./opentok');
+const User = require('./user');
 
 // Ensures a classroom has a name, description, and instructorId
 const validClassroom = classroom => { // eslint-disable-line arrow-body-style
@@ -94,13 +95,20 @@ const getClassrooms = instructorId => {
  * @param {String} classroomId
  * @returns {Promise} <resolve: {Object}, reject: {Error}>
  */
-const getClassroom = classroomId =>
+const getClassroom = (classroomId, userId) =>
   new Promise((resolve, reject) => {
     db.ref(`/classrooms/${classroomId}`).once('value')
       .then(snapshot => {
-        const record = snapshot.val();
-        if (record) {
-          resolve(record);
+        const classroom = snapshot.val();
+        if (classroom) {
+          if (userId) {
+            User.find(userId)
+            .then(user => {
+              const role = userId === classroom.instructorId ? 'instructor' : 'student';
+              const credentials = Opentok.createToken(classroom.sessionId, R.merge(user, { role }));
+              resolve({ classroom, credentials });
+            }).catch(() => reject(`Unable to find user with id ${userId}`));
+          }
         } else {
           reject(`No data found for classroom ${classroomId}`);
         }

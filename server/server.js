@@ -28,7 +28,9 @@ server.post('/user', (req, res) => {
 });
 
 server.get('/classroom/:classroomId', (req, res) => {
-  Classroom.getClassroom(R.path(['params', 'classroomId'], req))
+  const userId = R.path(['query', 'id'], req);
+  const classroomId = R.path(['params', 'classroomId'], req);
+  Classroom.getClassroom(classroomId, userId)
     .then(classroomData => res.send(classroomData))
     .catch(error => res.status(400).send(error));
 });

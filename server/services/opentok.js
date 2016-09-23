@@ -16,14 +16,19 @@ const defaultSessionOptions = { mediaMode: 'routed' };
  * Returns options for token creation based on user type
  * @param {String} userType Host, guest, or viewer
  */
-const tokenOptions = userType => {
+const tokenOptions = user => {
   const role = {
     instructor: 'moderator',
     student: 'publisher',
     auditor: 'subscriber',
-  }[userType];
+  }[user.role];
 
-  return { role };
+  const data = JSON.stringify({
+    role: user.role,
+    name: user.name
+  });
+
+  return { role, data };
 };
 
 /** Exports */
@@ -32,10 +37,13 @@ const tokenOptions = userType => {
  * Create an OpenTok token
  * @param {String} sessionId
  * @param {String} userType instructor, student, auditor
- * @returns {String}
+ * @returns {Object} Credentials, including apiKey, sessionId, and token
  */
-const createToken = (sessionId, userType) =>
-  OT.generateToken(sessionId, tokenOptions(userType));
+const createToken = (sessionId, user) => {
+  const token = OT.generateToken(sessionId, tokenOptions(user));
+  return { apiKey, sessionId, token };
+};
+
 
 /**
  * Create an OpenTok session

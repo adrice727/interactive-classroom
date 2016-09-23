@@ -1,50 +1,79 @@
+/* global OT */
 import React, { Component } from 'react';
+import Spinner from 'react-spinner';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import api from '../../services/api';
 import R from 'ramda';
+import Podium from './components/Podium';
+import Students from './components/Students';
 import './Classroom.css';
 
-const Podium = ({}) => <div className="Podium">Podium goes here</div>
+const connectingMask = () =>
+  <div className="Classroom-connecting-mask">
+    <Spinner spinnerName="three-bounce" />
+  </div>
+
+const classroomView = classroom =>
+  <div>
+    <Podium classroom={classroom} />
+    <Students classrooms={classroom} />
+  </div>
 
 
-const Students = ({}) => <div className="Students">Students go here</div>
 
 class Classroom extends Component {
   constructor(props) {
     super(props);
-    this.state = { classroom: null }
+    this.state = {
+      classroom: null,
+      session: null,
+      instructor: null,
+      students: [],
+      connected: false,
+    }
+  }
+
+  connectToSession(credentials) {
+    const { apiKey, sessionId, token } = credentials;
+    const session = OT.initSession(apiKey, sessionId);
+    this.setState({ session });
+    session.on('streamCreated', e => this.onStreamCreated(e.stream));
+  }
+
+  onStreamCreated(stream) {
+
   }
 
   componentDidMount() {
-    api.get(`classroom/${this.props.params.id}`)
-    .then(classroom => this.setState({ classroom }));
+    const { user } = this.props;
+    api.get(`classroom/${this.props.params.id}?id=${user.id}`)
+      .then(response => {
+        const { credentials, classroom } = response;
+        this.setState({ credentials, classroom });
+        this.connectToSession(credentials);
+      });
   }
 
   render() {
-    const classroom  = R.defaultTo({})(this.state.classroom);
-    const ifExists = R.defaultTo('');
+    const classroom = R.defaultTo({})(this.state.classroom);
+    const { connected } = this.state;
+
     return (
       <div className="Classroom">
         <div className="Classroom-info">
           <div>
-            <span className="label">Class:</span>
-            <span className="data">{ ifExists(classroom.name) }</span>
-          </div>
-          <div>
-            <span className="label">Instructor:</span>
-            <span className="data">{ ifExists(classroom.instructorName) }</span>
+            <span>{ `${classroom.title} with ${classroom.instructorName}` }</span>
           </div>
         </div>
-        <Podium />
-        <Students />
+        { connected ? connectingMask : classroomView(classroom) }
       </div>
     )
   }
 }
 
 const mapStateToProps = (state, { params }) => ({
-  currentUser: state.currentUser
+  user: state.currentUser
 });
 
 export default withRouter(connect(

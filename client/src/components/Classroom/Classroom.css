@@ -5,16 +5,7 @@
 }
 
 .Classroom-info {
-
-}
-
-.Classroom-info .label {
-  color: grey;
-  font-size: 16px;
-  margin-right: 10px;
-}
-
-.Classroom-info .data {
+  margin: 10px 0;
   font-family: 'Shadows Into Light', cursive;
   font-size: 20px;
 }

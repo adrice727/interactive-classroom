@@ -20,6 +20,7 @@ h1, h2, h3, h4 {
     font-size: 18px;
     padding: 0 30px;
     cursor: pointer;
+    transition: background-color 0.5s ease;
 }
 
 .btn.blue {
@@ -27,13 +28,25 @@ h1, h2, h3, h4 {
     background-color: #0097cc;
 }
 
+.btn.blue:hover {
+    background-color: #0177a1;
+}
+
 .btn.red {
     color: #fff;
     background-color: red;
 }
 
+.btn.red:hover {
+    background-color: #bc0606;
+}
+
 .btn.transparent {
-    /*color: rgba(255, 255, 255, .8);*/
     color: #fff;
     background: none;
+    transition: color 0.5s ease;
+}
+
+.btn.transparent:hover {
+    color: #6bcdf9;
 }

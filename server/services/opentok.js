@@ -24,6 +24,7 @@ const tokenOptions = user => {
   }[user.role];
 
   const data = JSON.stringify({
+    id: user.id,
     role: user.role,
     name: user.name
   });

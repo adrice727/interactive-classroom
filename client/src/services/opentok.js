@@ -30,8 +30,10 @@ const cameraProperties = {
   width: '100%',
   height: '100%',
   showControls: true,
+  fitMode: 'contain',
   style: {
     buttonDisplayMode: 'on',
+    nameDisplayMode: 'on',
   },
 };
 

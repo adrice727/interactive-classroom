@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Podium.css';
 
+
 class Podium extends Component {
 
   constructor(props) {
@@ -11,7 +12,7 @@ class Podium extends Component {
     const { instructor } = this.props;
     return (
       <div className="Podium">
-        { instructor ? <div id={`video-${instructor.id}`} className="videoContainer"></div> : '' }
+        { instructor ? <div id={`video-${instructor.id}`} className="Podium-video"></div> : '' }
       </div>
     )
   }

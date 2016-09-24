@@ -24,12 +24,6 @@ const errorMask = () =>
     <div className="message">Something has gone horribly wrong. Please refresh the page.</div>
   </div>
 
-const classroomView = classroom =>
-  <div>
-    <Podium classroom={classroom} />
-    <Students classrooms={classroom} />
-  </div>
-
 const classroomInfo = classroom =>
   <div className="Classroom-info">
     <div>
@@ -52,14 +46,6 @@ class Classroom extends Component {
     this.publish = this.publish.bind(this);
   }
 
-  createPublisher() {
-    const { session } = this.state;
-    const { user } = this.props;
-    const container = user.role === 'instructor' ? 'instructVideo' : `student-${user.id}`;
-    const publisher = OT.initPublisher(container, cameraProperties);
-    this.setState({ readyToPublish: true });
-  }
-
   onError(error) {
     this.setState({ error })
   }
@@ -69,9 +55,15 @@ class Classroom extends Component {
     const { session } = this.state;
     const { user } = this.props;
     const handleError = error => error && this.onError(error);
-    const publisher = OT.initPublisher(`video-${user.id}`, cameraProperties);
+    const name = { name: user.name };
+    const publisher = OT.initPublisher(`video-${user.id}`, R.merge(cameraProperties, name));
     session.publish(publisher, handleError);
-    console.log('pub object', publisher);
+  }
+
+  subscribe(user) {
+    const { session } = this.state;
+    const name = { name: user.name };
+    session.subscribe(user.stream,`video-${user.id}`, R.merge(cameraProperties, name));
   }
 
   onConnect() {
@@ -89,8 +81,12 @@ class Classroom extends Component {
   }
 
   onStreamCreated(stream) {
-    const joined = JSON.parse(R.path(['connection', 'data'], stream));
+    const { students } = this.state
+    const joined = R.merge(JSON.parse(R.path(['connection', 'data'], stream)), { stream });
     const role = joined.role;
+    const userUpdate = role === 'instructor' ? { instructor: joined } : { students: R.append(joined, students) };
+    this.setState(userUpdate, () => this.subscribe(joined))
+
   }
 
   onStreamDestroyed(stream) {
@@ -116,7 +112,7 @@ class Classroom extends Component {
         { classroom && classroomInfo(classroom) }
         { !connected && connectingMask() }
         <div>
-          <Podium classroom={instructor} />
+          <Podium instructor={instructor} />
           <Students students={students} />
         </div>
         { error && errorMask() }

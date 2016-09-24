@@ -1,7 +1,12 @@
-body {
+html,body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+body * {
+    box-sizing: border-box;
 }
 
 h1, h2, h3, h4 {
@@ -51,6 +56,8 @@ h1, h2, h3, h4 {
     color: #6bcdf9;
 }
 
+
+/** React spinner */
 .react-spinner {
     position: relative;
     width: 32px;

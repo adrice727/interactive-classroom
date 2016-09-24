@@ -1,7 +1,7 @@
 import React from 'react';
 import './Students.css';
 
-const Student = student =>
+const Student = ({student}) =>
   <div className="Student" id={`video-${student.id}`}></div>
 
 const Students = ({students}) =>

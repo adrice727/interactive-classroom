@@ -1,0 +1,15 @@
+
+.Podium {
+    width: 90vw;
+    max-width: 1000px;
+    height: calc(90vw*.60);
+    max-height: 600px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.Podium-video {
+  width: 100%;
+}

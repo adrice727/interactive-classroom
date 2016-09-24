@@ -1,0 +1,12 @@
+.Students {
+    margin: 20px 0;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.Student {
+    height: 120px;
+    width: 200px;
+    margin: 0px 10px;
+}

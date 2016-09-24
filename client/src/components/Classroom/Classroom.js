@@ -4,17 +4,24 @@ import Spinner from 'react-spinner';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import api from '../../services/api';
-import { setActiveClassroom } from '../../actions/activeClassroomActions';
-import { addCredentials } from '../../actions/currentUserActions';
+import { cameraProperties } from '../../services/opentok';
+// import { setclassroom, setClassroomSession } from '../../actions/classroomActions';
+// import { addCredentials } from '../../actions/userActions';
 import R from 'ramda';
 import Podium from './components/Podium';
 import Students from './components/Students';
 import './Classroom.css';
 
 const connectingMask = () =>
-  <div className="Classroom-connecting-mask">
+  <div className="Classroom-mask">
     <Spinner />
     <div className="message">Connecting to Classroom</div>
+  </div>
+
+const errorMask = () =>
+  <div className="Classroom-mask error">
+    <Spinner />
+    <div className="message">Something has gone horribly wrong. Please refresh the page.</div>
   </div>
 
 const classroomView = classroom =>
@@ -23,27 +30,48 @@ const classroomView = classroom =>
     <Students classrooms={classroom} />
   </div>
 
-
+const classroomInfo = classroom =>
+  <div className="Classroom-info">
+    <div>
+      <span>{ `${classroom.title} with ${classroom.instructorName}` }</span>
+    </div>
+  </div>
 
 class Classroom extends Component {
   constructor(props) {
     super(props);
     this.state = {
       classroom: null,
-      session: null,
-      instructor: null,
+      instruct: null,
       students: [],
       connected: false,
+      error: null
     }
     this.connectToSession = this.connectToSession.bind(this);
     this.onConnect = this.onConnect.bind(this);
     this.publish = this.publish.bind(this);
   }
 
+  createPublisher() {
+    const { session } = this.state;
+    const { user } = this.props;
+    const container = user.role === 'instructor' ? 'instructVideo' : `student-${user.id}`;
+    const publisher = OT.initPublisher(container, cameraProperties);
+    this.setState({ readyToPublish: true });
+  }
+
+  onError(error) {
+    this.setState({ error })
+  }
+
+
   publish() {
     const { session } = this.state;
     const { user } = this.props;
-    OT.initPublisher('instructorVideo', {}, e => console.log(e));
+    const handleError = error => error && this.onError(error);
+    const publisher = OT.initPublisher(`video-${user.id}`, cameraProperties);
+    session.publish(publisher, handleError);
+    console.log('pub object', publisher);
   }
 
   onConnect() {
@@ -61,7 +89,8 @@ class Classroom extends Component {
   }
 
   onStreamCreated(stream) {
-    console.log('stream created', stream);
+    const joined = JSON.parse(R.path(['connection', 'data'], stream));
+    const role = joined.role;
   }
 
   onStreamDestroyed(stream) {
@@ -69,40 +98,34 @@ class Classroom extends Component {
   }
 
   componentDidMount() {
-    const { dispatch, user } = this.props;
+    const { user } = this.props;
+    const { students } = this.state;
     api.get(`classroom/${this.props.params.id}?id=${user.id}`)
       .then(response => {
         const { classroom, credentials } = response;
-        dispatch(setActiveClassroom(classroom));
-        dispatch(addCredentials(credentials));
-        // const { credentials, classroom } = response;
-        // this.setState({ credentials, classroom });
-        // this.connectToSession(credentials);
+        const role = user.role;
+        const userUpdate = role === 'instructor' ? { instructor: user } : { students: R.append(user, students) };
+        this.setState(R.merge({ classroom }, userUpdate), () => this.connectToSession(credentials));
       });
   }
 
   render() {
-    // const classroom = R.defaultTo({})(this.state.classroom);
-    // const { classroom } = this.props;
-    // const { connected } = this.state;
-    return null;
+    const { classroom, instructor, students, connected, error } = this.state;
     return (
       <div className="Classroom">
-        <div className="Classroom-info">
-          <div>
-            <span>{ `${classroom.title} with ${classroom.instructorName}` }</span>
-          </div>
+        { classroom && classroomInfo(classroom) }
+        { !connected && connectingMask() }
+        <div>
+          <Podium classroom={instructor} />
+          <Students students={students} />
         </div>
-        { !connected ? connectingMask() : classroomView(classroom) }
+        { error && errorMask() }
       </div>
     )
   }
 }
 
-const mapStateToProps = (state, { params }) => ({
-  user: state.currentUser,
-  classroom: state.classrooms.current
-});
+const mapStateToProps = state => R.pick(['user']);
 
 export default withRouter(connect(
   mapStateToProps

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import R from 'ramda';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-import { logoutUser } from '../../actions/currentUserActions';
+import { logoutUser } from '../../actions/userActions';
 import { setInstructor } from '../../actions/instructorActions';
 import './Header.css';
 import logo from './logo.svg';
@@ -38,9 +39,7 @@ class Header extends Component {
 
 }
 
-const mapStateToProps = (state, { params }) => ({
-  user: state.currentUser
-});
+const mapStateToProps = (state) => R.pick(['user'], state);
 
 export default connect(
   mapStateToProps

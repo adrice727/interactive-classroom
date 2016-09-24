@@ -25,14 +25,14 @@
     justify-content: center;
 }
 
-.Classroom-connecting-mask {
+.Classroom-mask {
     height: 100%;
     width: 100%;
     position: absolute;
     background: rgba(0, 0, 0, 0.5);
 }
 
-.Classroom-connecting-mask .message {
+.Classroom-mask .message {
     position: absolute;
     top: 40%;
     left: 0;

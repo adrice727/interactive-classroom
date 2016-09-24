@@ -8,9 +8,10 @@ class Podium extends Component {
   }
 
   render() {
+    const { instructor } = this.props;
     return (
       <div className="Podium">
-        <div id="instructorVideo" className="videoContainer"></div>
+        { instructor ? <div id={`video-${instructor.id}`} className="videoContainer"></div> : '' }
       </div>
     )
   }

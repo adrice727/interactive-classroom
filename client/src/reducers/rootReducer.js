@@ -1,13 +1,12 @@
 import { combineReducers } from 'redux';
 
 /** Reducers */
-import currentUser from './currentUserReducer'
+import user from './userReducer'
 import instructor from './instructorReducer'
-import availableClassrooms from './availableClassroomsReducer'
-import activeClassroom from './activeClassroomReducer'
+import availableClasses from './availableClassesReducer'
+import classroom from './classroomReducer'
 
 /** Combine Reducers */
-const classroomApp = combineReducers({currentUser, instructor, availableClassrooms, activeClassroom});
-
+const classroomApp = combineReducers({user, instructor, availableClasses, classroom});
 
 export default classroomApp;

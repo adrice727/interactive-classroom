@@ -1,11 +1,11 @@
 import R from 'ramda';
 
-const currentUser = (state = null, action) => {
+const user = (state = null, action) => {
   switch (action.type) {
     case 'LOGIN_USER':
       return action.user;
     case 'ADD_CREDENTIALS':
-      return R.merge(state, {credentials: action.credentials})
+      return R.assoc('credentials', action.credentials, state);
     case 'LOGOUT_USER':
       return null;
     default:
@@ -13,4 +13,4 @@ const currentUser = (state = null, action) => {
   }
 }
 
-export default currentUser;
+export default user;

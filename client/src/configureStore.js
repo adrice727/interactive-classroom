@@ -9,7 +9,7 @@ const configureStore = () => {
 
   store.subscribe(throttle(() => {
     saveState({
-      currentUser: store.getState().currentUser,
+      user: store.getState().user,
       instructor: store.getState().instructor
     })
   }, 1000));

@@ -3,7 +3,7 @@ import { withRouter, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import R from 'ramda';
 import api from '../../services/api';
-import { loginUser } from '../../actions/currentUserActions';
+import { loginUser } from '../../actions/userActions';
 import { setInstructor } from '../../actions/instructorActions';
 import './Login.css'
 import FirebaseAuth from './components/FirebaseAuth';
@@ -70,7 +70,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state, { params }) => ({
-  user: state.currentUser,
+  user: state.user,
   role: R.path(['role'], params) || 'student'
 });
 

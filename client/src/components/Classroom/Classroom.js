@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import api from '../../services/api';
 import { cameraProperties } from '../../services/opentok';
-// import { setclassroom, setClassroomSession } from '../../actions/classroomActions';
+import { setClassroom } from '../../actions/classroomActions';
 // import { addCredentials } from '../../actions/userActions';
 import R from 'ramda';
 import Podium from './components/Podium';
@@ -94,13 +94,14 @@ class Classroom extends Component {
   }
 
   componentDidMount() {
-    const { user } = this.props;
+    const { user, dispatch } = this.props;
     const { students } = this.state;
     api.get(`classroom/${this.props.params.id}?id=${user.id}`)
       .then(response => {
         const { classroom, credentials } = response;
         const role = user.role;
         const userUpdate = role === 'instructor' ? { instructor: user } : { students: R.append(user, students) };
+        dispatch(setClassroom(classroom));
         this.setState(R.merge({ classroom }, userUpdate), () => this.connectToSession(credentials));
       });
   }

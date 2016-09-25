@@ -9,19 +9,14 @@ import './StudentHome.css';
 
 class StudentHome extends Component {
 
-  constructor(props){
-    super(props);
-  }
-
   componentDidMount() {
     const { user, dispatch } = this.props;
     if (user) {
       api.get('classrooms')
       .then(response => {
         const classrooms = R.path(['classrooms'], response);
-        console.log(classrooms);
         dispatch(setAvailableClasses(classrooms));
-      }).catch(console.log)
+      }).catch(error => console.log(error));
     } else {
       browserHistory.push('/login');
     }

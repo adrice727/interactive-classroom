@@ -1,9 +1,9 @@
 
 .Podium {
     width: 90vw;
-    max-width: 1000px;
+    max-width: calc(400px*1.6);
     height: calc(90vw*.60);
-    max-height: 600px;
+    max-height: 400px;
     margin: 20px 0;
     display: flex;
     justify-content: center;

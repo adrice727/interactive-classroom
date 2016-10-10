@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import api from '../../services/api';
 import { cameraProperties } from '../../services/opentok';
-import { setClassroom } from '../../actions/classroomActions';
+import { setClassroom, resetClassroom  } from '../../actions/classroomActions';
 // import { addCredentials } from '../../actions/userActions';
 import R from 'ramda';
 import Podium from './components/Podium';
@@ -106,11 +106,15 @@ class Classroom extends Component {
       });
   }
 
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch(resetClassroom());
+  }
+
   render() {
-    const { classroom, instructor, students, connected, error } = this.state;
+    const { instructor, students, connected, error } = this.state;
     return (
       <div className="Classroom">
-        { classroom && classroomInfo(classroom) }
         { !connected && connectingMask() }
         <div>
           <Podium instructor={instructor} />

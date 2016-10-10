@@ -29,7 +29,7 @@ const cameraProperties = {
   insertMode: 'append',
   width: '100%',
   height: '100%',
-  showControls: true,
+  showControls: false,
   fitMode: 'contain',
   style: {
     buttonDisplayMode: 'on',

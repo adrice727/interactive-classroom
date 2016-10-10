@@ -3,6 +3,10 @@ export const setClassroom = classroom => ({
   classroom
 });
 
+export const resetClassroom = () => ({
+  type: 'RESET_CLASSROOM'
+});
+
 export const setClassroomSession = session => ({
   type: 'SET_CLASSROOM_SESSION',
   session

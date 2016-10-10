@@ -12,7 +12,6 @@
     right: 0;
     margin: 0px auto;
     width: 50%;
-    font-family: 'Shadows Into Light', cursive;
     font-size: 20px;
     line-height: 40px;
     color: white;
@@ -21,7 +20,7 @@
 .Classroom-mask {
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .Classroom-mask .message {

@@ -11,6 +11,14 @@
 
 .Header-text {
     color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.Header-text img {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
 }
 
 .Header-logout.btn {

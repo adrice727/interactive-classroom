@@ -5,7 +5,8 @@ import { browserHistory } from 'react-router';
 import { logoutUser } from '../../actions/userActions';
 import { setInstructor } from '../../actions/instructorActions';
 import './Header.css';
-import logo from './logo.svg';
+import mainLogo from './logo.svg';
+import smallLogo from './opentok.png';
 
 const path = () => window.location.pathname.split('/')[1];
 
@@ -18,6 +19,12 @@ const HeaderNav = ({ user, logout, goHome }) => {
     </span>
   )
 };
+
+const ClassroomInfo = ({classroom}) =>
+  <span className="Header-classroom-info">
+    <img src={smallLogo} alt="TokBox Logo Small" />
+    { `${classroom.title} with ${classroom.instructorName}`}
+  </span>;
 
 class Header extends Component {
 
@@ -42,13 +49,17 @@ class Header extends Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, classroom } = this.props;
+    console.log('what is the classroom???', classroom);
     return (
       <div className="Header">
-        <span className="Header-text opentok">OpenTok Classroom</span>
+        <span className="Header-text opentok">
+            <img src={smallLogo} alt="TokBox Logo Small" />
+            {classroom ? `${classroom.title} with ${classroom.instructorName}` : 'OpenTok Classroom' }
+        </span>
         { user ?
           <HeaderNav user={user} logout={this.onLogout} goHome={this.goHome} /> :
-          <img className="Header-logo" src={logo} alt="TokBox Logo" />
+          <img className="Header-logo" src={mainLogo} alt="TokBox Logo" />
         }
       </div>
     )

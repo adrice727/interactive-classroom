@@ -6,6 +6,10 @@ const classroom = (state = null, action) => {
       return R.merge(state, action.classroom);
     case 'SET_CLASSROOM_SESSION':
       return R.assoc('session', action.session, state);
+    case 'INSTRUCTOR_JOINED_CLASSROOM':
+      return R.assoc('instructor', action.instructor, state);
+    case 'STUDENT_JOINED_CLASSROOM':
+      return R.assocPath(['students', action.student.id], action.student, state);
     case 'RESET_CLASSROOM':
       return null;
     default:

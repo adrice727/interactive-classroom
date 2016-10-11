@@ -20,12 +20,6 @@ const HeaderNav = ({ user, logout, goHome }) => {
   )
 };
 
-const ClassroomInfo = ({classroom}) =>
-  <span className="Header-classroom-info">
-    <img src={smallLogo} alt="TokBox Logo Small" />
-    { `${classroom.title} with ${classroom.instructorName}`}
-  </span>;
-
 class Header extends Component {
 
   constructor(props) {
@@ -50,11 +44,11 @@ class Header extends Component {
 
   render() {
     const { user, classroom } = this.props;
-    console.log('what is the classroom???', classroom);
+    const classroomLogo =  R.pathOr(smallLogo, ['imageURL'], classroom);
     return (
       <div className="Header">
         <span className="Header-text opentok">
-            <img src={smallLogo} alt="TokBox Logo Small" />
+            <img src={classroomLogo} alt="Classroom Logo" />
             {classroom ? `${classroom.title} with ${classroom.instructorName}` : 'OpenTok Classroom' }
         </span>
         { user ?

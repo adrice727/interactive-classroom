@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import R from 'ramda';
 import './Podium.css';
 
 
@@ -9,7 +11,7 @@ class Podium extends Component {
   }
 
   render() {
-    const { instructor } = this.props;
+    const { instructor } = this.props
     return (
       <div className="Podium">
         { instructor ? <div id={`video-${instructor.id}`} className="Podium-video"></div> : '' }
@@ -17,6 +19,5 @@ class Podium extends Component {
     )
   }
 }
-
 
 export default Podium;

@@ -3,11 +3,21 @@ export const setClassroom = classroom => ({
   classroom
 });
 
+export const instructorJoined = instructor => ({
+  type: 'INSTRUCTOR_JOINED_CLASSROOM',
+  instructor
+});
+
+export const studentJoined = student => ({
+  type: 'STUDENT_JOINED_CLASSROOM',
+  student
+});
+
 export const resetClassroom = () => ({
   type: 'RESET_CLASSROOM'
 });
 
-export const setClassroomSession = session => ({
+export const setSession = session => ({
   type: 'SET_CLASSROOM_SESSION',
   session
 });

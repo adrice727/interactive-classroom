@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import api from '../../services/api';
 import { cameraProperties } from '../../services/opentok';
-import { setClassroom, resetClassroom  } from '../../actions/classroomActions';
-// import { addCredentials } from '../../actions/userActions';
+import { setClassroom, setSession, instructorJoined, studentJoined, resetClassroom } from '../../actions/classroomActions';
 import R from 'ramda';
 import Podium from './components/Podium';
 import Students from './components/Students';
@@ -24,20 +23,14 @@ const errorMask = () =>
     <div className="message">Something has gone horribly wrong. Please refresh the page.</div>
   </div>
 
-const classroomInfo = classroom =>
-  <div className="Classroom-info">
-    <div>
-      <span>{ `${classroom.title} with ${classroom.instructorName}` }</span>
-    </div>
-  </div>
-
 class Classroom extends Component {
   constructor(props) {
     super(props);
     this.state = {
       classroom: null,
-      instruct: null,
-      students: [],
+      students: {},
+      instructor: null,
+      session: null,
       connected: false,
       error: null
     }
@@ -49,7 +42,6 @@ class Classroom extends Component {
   onError(error) {
     this.setState({ error })
   }
-
 
   publish() {
     const { session } = this.state;
@@ -63,11 +55,12 @@ class Classroom extends Component {
   subscribe(user) {
     const { session } = this.state;
     const name = { name: user.name };
-    session.subscribe(user.stream,`video-${user.id}`, R.merge(cameraProperties, name));
+    console.log('sub to:', user)
+    session.subscribe(user.stream, `video-${user.id}`, R.merge(cameraProperties, name));
   }
 
   onConnect() {
-    this.setState({ connected: true })
+    this.setState({ connected: true });
     const { session } = this.state;
     session.on('streamCreated', e => this.onStreamCreated(e.stream));
     session.on('streamDestroyed', e => this.onStreamDestroyed(e.stream));
@@ -75,18 +68,21 @@ class Classroom extends Component {
   }
 
   connectToSession(credentials) {
+    const { dispatch } = this.props;
     const { apiKey, sessionId, token } = credentials;
     const session = OT.initSession(apiKey, sessionId);
+    dispatch(setSession(session));
     this.setState({ session }, () => session.connect(token, this.onConnect));
   }
 
   onStreamCreated(stream) {
-    const { students } = this.state
+    const { dispatch } = this.props;
+    const { students, instructor } = this.state;
     const joined = R.merge(JSON.parse(R.path(['connection', 'data'], stream)), { stream });
     const role = joined.role;
-    const userUpdate = role === 'instructor' ? { instructor: joined } : { students: R.append(joined, students) };
+    const userUpdate = role === 'instructor' ? { instructor: R.merge(instructor, joined) } : { students: R.assoc(joined.id, joined, students) };
+    role === 'instructor' ? dispatch(instructorJoined(joined)) : dispatch(studentJoined(joined));
     this.setState(userUpdate, () => this.subscribe(joined))
-
   }
 
   onStreamDestroyed(stream) {
@@ -99,8 +95,7 @@ class Classroom extends Component {
     api.get(`classroom/${this.props.params.id}?id=${user.id}`)
       .then(response => {
         const { classroom, credentials } = response;
-        const role = user.role;
-        const userUpdate = role === 'instructor' ? { instructor: user } : { students: R.append(user, students) };
+        const userUpdate = user.role === 'instructor' ? { instructor: user } : { students: R.assoc(user.id, user, students) };
         dispatch(setClassroom(classroom));
         this.setState(R.merge({ classroom }, userUpdate), () => this.connectToSession(credentials));
       });
@@ -112,13 +107,14 @@ class Classroom extends Component {
   }
 
   render() {
-    const { instructor, students, connected, error } = this.state;
+    const { connected, instructor, students, error } = this.state;
+    const { user } = this.props;
     return (
       <div className="Classroom">
         { !connected && connectingMask() }
         <div>
-          <Podium instructor={instructor} />
-          <Students students={students} />
+          <Podium user={user} instructor={instructor}/>
+          <Students user={user} students={students} />
         </div>
         { error && errorMask() }
       </div>
@@ -126,7 +122,7 @@ class Classroom extends Component {
   }
 }
 
-const mapStateToProps = state => R.pick(['user']);
+const mapStateToProps = state => R.pick(['user', 'classroom']);
 
 export default withRouter(connect(
   mapStateToProps

@@ -3,6 +3,11 @@ export const setClassroom = classroom => ({
   classroom
 });
 
+export const isConnected = connected => ({
+  type: 'SET_CLASSROOM_CONNECTED',
+  connected
+});
+
 export const instructorJoined = instructor => ({
   type: 'INSTRUCTOR_JOINED_CLASSROOM',
   instructor

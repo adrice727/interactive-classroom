@@ -49,7 +49,7 @@ class Header extends Component {
       <div className="Header">
         <span className="Header-text opentok">
             <img src={classroomLogo} alt="Classroom Logo" />
-            {classroom ? `${classroom.title} with ${classroom.instructorName}` : 'OpenTok Classroom' }
+            {!R.isEmpty(classroom) ? `${classroom.title} with ${classroom.instructorName}` : 'OpenTok Classroom' }
         </span>
         { user ?
           <HeaderNav user={user} logout={this.onLogout} goHome={this.goHome} /> :

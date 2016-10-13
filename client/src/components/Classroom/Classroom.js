@@ -55,7 +55,6 @@ class Classroom extends Component {
   subscribe(user) {
     const { session } = this.props.classroom;
     const name = { name: user.name };
-    console.log('ODODODODOD', document.getElementById(`video-${user.id}`));
     session.subscribe(user.stream, `video-${user.id}`, R.merge(cameraProperties, name));
   }
 
@@ -69,7 +68,7 @@ class Classroom extends Component {
   }
 
   connectToSession(credentials) {
-    const { dispatch, classroom } = this.props;
+    const { dispatch } = this.props;
     const { apiKey, sessionId, token } = credentials;
     const session = OT.initSession(apiKey, sessionId);
     dispatch(setSession(session));

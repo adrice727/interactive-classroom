@@ -6,7 +6,58 @@
 }
 
 .Student {
+    position: relative;
+    display: flex;
+    justify-content: center;
     height: 120px;
     width: 200px;
     margin: 0px 10px;
+}
+
+.Student-video {
+    height: 120px;
+    width: 200px;
+    margin: 0px 10px;
+}
+
+.Student-indicators {
+    position: absolute;
+    top: -35px;
+    width: 115%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.Student-indicators .indicator {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 50%;
+    background-size: 55%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: 2;
+    /*display: none;*/
+}
+
+.Student-indicators .indicator.active {
+    display: block;
+    cursor: pointer;
+}
+
+.Student-indicators .indicator.question {
+    background-image: url("../../../images/question.png")
+}
+
+.Student-indicators .indicator.question.active {
+    background-color: rgba(255, 0, 0, .6);
+}
+
+.Student-indicators .indicator.answer {
+    background-image: url("../../../images/answer.png")
+}
+
+.Student-indicators .indicator.answer.active {
+    background-color: rgba(0, 151, 204, .6);
 }

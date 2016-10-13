@@ -53,7 +53,7 @@ class Classroom extends Component {
   }
 
   subscribe(user) {
-    const { session } = this.state;
+    const { session } = this.props.classroom;
     const name = { name: user.name };
     console.log('ODODODODOD', document.getElementById(`video-${user.id}`));
     session.subscribe(user.stream, `video-${user.id}`, R.merge(cameraProperties, name));

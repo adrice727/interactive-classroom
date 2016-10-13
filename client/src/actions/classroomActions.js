@@ -18,6 +18,16 @@ export const studentJoined = student => ({
   student
 });
 
+export const studentHasQuestion = student => ({
+  type: 'STUDENT_HAS_QUESTION',
+  student
+});
+
+export const studentHasAnswer = student => ({
+  type: 'STUDENT_HAS_ANSWER',
+  student
+});
+
 export const resetClassroom = () => ({
   type: 'RESET_CLASSROOM'
 });

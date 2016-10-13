@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import R from 'ramda';
+import classNames from 'classnames';
+import { studentHasQuestion, studentHasAnswer } from '../../../actions/classroomActions.js'
 import './Students.css';
 
 const getStudentList = (classroom) => {
   if (!classroom) {
-    return []; }
+    return [];
+  }
   const students = R.propOr({}, 'students')(classroom);
   const addToList = (acc, key) => acc.concat(students[key]);
   return R.reduce(addToList, [], Object.keys(students));
 };
 
-const Student = ({ student, hasQuestion, hasAnswer }) =>
-  <div className="Student" id={student.id} >
-    <div className="Student-indicators" >
-      <div className="indicator question" onClick={hasQuestion}></div>
-      <div className="indicator answer" onClick={hasAnswer}></div>
+const Student = ({ student, hasQuestion, hasAnswer, isUser }) => {
+  const indicatorsClass = classNames('Student-indicators', { show: isUser });
+  const questionClass = classNames('indicator question', { active: student.hasQuestion });
+  const answerClass = classNames('indicator answer', { active: student.hasAnswer });
+  return (
+    <div className='Student'>
+      <div className={indicatorsClass} >
+        <div className={questionClass} onClick={hasQuestion.bind(this, student)}></div>
+        <div className={answerClass} onClick={hasAnswer.bind(this, student)}></div>
+      </div>
+      <div className="Student-video" id={`video-${student.id}`}></div>
     </div>
-    <div className="Student-video" id={`video-${student.id}`}></div>
-  </div>
+  )
+}
+
 
 class Students extends Component {
 
@@ -28,23 +38,28 @@ class Students extends Component {
     this.hasAnswer = this.hasAnswer.bind(this);
   }
 
-  hasQuestion(id) {
-    const {dispatch} = this.props;
-    // dispatch(studentHasAnswer(id))
+  hasQuestion(student) {
+    const { dispatch } = this.props;
+    dispatch(studentHasQuestion(student))
   }
 
-  hasAnswer(id) {
-    const {dispatch} = this.props;
-    // dispatch(studentHasAnswer(id))
+  hasAnswer(student) {
+    const { dispatch } = this.props;
+    dispatch(studentHasAnswer(student))
   }
 
-  render(){
+  render() {
     const { user, classroom } = this.props;
     const studentList = getStudentList(classroom);
     return (
       <div className="Students">
         { studentList.map(student =>
-          <Student student={student} hasQuestion={this.hasQuestion} hasAnswer={this.hasAnswer} key={student.id} />
+          <Student
+            student={student}
+            hasQuestion={this.hasQuestion}
+            hasAnswer={this.hasAnswer}
+            isUser={user.id === student.id}
+            key={student.id} />
         )}
       </div>
     )

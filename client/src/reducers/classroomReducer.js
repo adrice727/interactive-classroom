@@ -12,6 +12,12 @@ const classroom = (state = {}, action) => {
       return R.assoc('instructor', action.instructor, state);
     case 'STUDENT_JOINED_CLASSROOM':
       return R.assocPath(['students', action.student.id], action.student, state);
+    case 'STUDENT_HAS_QUESTION':
+      const hasQuestion = state.students[action.student.id].hasQuestion;
+      return R.assocPath(['students', action.student.id, 'hasQuestion'], !hasQuestion, state);
+    case 'STUDENT_HAS_ANSWER':
+      const hasAnswer = state.students[action.student.id].hasAnswer;
+      return R.assocPath(['students', action.student.id, 'hasAnswer'], !hasAnswer, state);
     case 'RESET_CLASSROOM':
       return null;
     default:

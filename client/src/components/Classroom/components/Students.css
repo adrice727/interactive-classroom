@@ -38,7 +38,12 @@
     background-repeat: no-repeat;
     background-position: center center;
     z-index: 2;
-    /*display: none;*/
+    display: none;
+}
+
+.Student-indicators.show .indicator {
+    display: block;
+    cursor: pointer;
 }
 
 .Student-indicators .indicator.active {

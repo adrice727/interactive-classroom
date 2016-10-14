@@ -17,6 +17,12 @@ class Login extends Component {
     this.onError = this.onError.bind(this);
   }
 
+  componentDidMount() {
+    const { user, role } = this.props;
+    if (user) {
+      browserHistory.push(`${role}-home`);
+    }
+  }
 
   onAuth(data) {
 

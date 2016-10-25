@@ -18,14 +18,16 @@ export const studentJoined = student => ({
   student
 });
 
-export const studentHasQuestion = student => ({
+export const studentHasQuestion = (studentId, sendSignal) => ({
   type: 'STUDENT_HAS_QUESTION',
-  student
+  studentId,
+  sendSignal
 });
 
-export const studentHasAnswer = student => ({
+export const studentHasAnswer = (studentId, sendSignal) => ({
   type: 'STUDENT_HAS_ANSWER',
-  student
+  studentId,
+  sendSignal
 });
 
 export const resetClassroom = () => ({

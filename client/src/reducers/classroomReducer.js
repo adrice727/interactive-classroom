@@ -1,4 +1,4 @@
-import R from 'ramda'
+import R from 'ramda';
 
 const classroom = (state = {}, action) => {
   switch (action.type) {
@@ -11,13 +11,22 @@ const classroom = (state = {}, action) => {
     case 'INSTRUCTOR_JOINED_CLASSROOM':
       return R.assoc('instructor', action.instructor, state);
     case 'STUDENT_JOINED_CLASSROOM':
-      return R.assocPath(['students', action.student.id], action.student, state);
+      const initialStudentState = { hasQuestion: false, hasAnswer: false };
+      return R.assocPath(['students', action.student.id], R.merge(action.student, initialStudentState), state);
     case 'STUDENT_HAS_QUESTION':
-      const hasQuestion = state.students[action.student.id].hasQuestion;
-      return R.assocPath(['students', action.student.id, 'hasQuestion'], !hasQuestion, state);
+      const hasQuestion = !R.path(['students', action.studentId, 'hasQuestion'], state);
+      const qSignalData = JSON.stringify({ studentId: action.studentId, hasQuestion });
+      if (action.sendSignal) {
+        state.session.signal({ data: qSignalData, type: 'studentHasQuestion' });
+      }
+      return R.assocPath(['students', action.studentId, 'hasQuestion'], hasQuestion, state);
     case 'STUDENT_HAS_ANSWER':
-      const hasAnswer = state.students[action.student.id].hasAnswer;
-      return R.assocPath(['students', action.student.id, 'hasAnswer'], !hasAnswer, state);
+      const hasAnswer = !R.path(['students', action.studentId, 'hasAnswer'], state);
+      const aSignalData = JSON.stringify({ studentId: action.studentId, hasAnswer });
+      if (action.sendSignal) {
+        state.session.signal({ data: aSignalData, type: 'studentHasAnswer' });
+      }
+      return R.assocPath(['students', action.studentId, 'hasAnswer'], hasAnswer, state);
     case 'RESET_CLASSROOM':
       return null;
     default:

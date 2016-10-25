@@ -81,11 +81,9 @@ class Classroom extends Component {
     const joined = R.merge(JSON.parse(R.path(['connection', 'data'], stream)), { stream });
     const role = joined.role;
     const userUpdate = role === 'instructor' ? { instructor: R.merge(instructor, joined) } : { students: R.assoc(joined.id, joined, students) };
-    console.log('user update', userUpdate, role);
     if (role === 'instructor') {
       dispatch(instructorJoined(joined));
     } else {
-      console.log('11111');
       dispatch(studentJoined(joined));
     }
     this.setState(userUpdate, () => this.subscribe(joined))
@@ -93,10 +91,11 @@ class Classroom extends Component {
 
   onStreamDestroyed(stream) {
     console.log('stream destroyed', stream);
+    // Need to update state here
   }
 
   componentDidMount() {
-    const { user, dispatch, classroom } = this.props;
+    const { user, dispatch } = this.props;
     api.get(`classroom/${this.props.params.id}?id=${user.id}`)
       .then(response => {
         const { classroom, credentials } = response;

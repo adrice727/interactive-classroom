@@ -21,8 +21,8 @@ const Student = ({ student, hasQuestion, hasAnswer, isUser }) => {
   return (
     <div className='Student'>
       <div className={indicatorsClass} >
-        <div className={questionClass} onClick={hasQuestion.bind(this, student)}></div>
-        <div className={answerClass} onClick={hasAnswer.bind(this, student)}></div>
+        <div className={questionClass} onClick={hasQuestion.bind(this, student.id)}></div>
+        <div className={answerClass} onClick={hasAnswer.bind(this, student.id)}></div>
       </div>
       <div className="Student-video" id={`video-${student.id}`}></div>
     </div>
@@ -33,19 +33,48 @@ const Student = ({ student, hasQuestion, hasAnswer, isUser }) => {
 class Students extends Component {
 
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = { signalListenersSet: false };
     this.hasQuestion = this.hasQuestion.bind(this);
     this.hasAnswer = this.hasAnswer.bind(this);
+    this.isMe = this.isMe.bind(this);
   }
 
-  hasQuestion(student) {
+  componentWillReceiveProps({ classroom }) {
+    const { session } = classroom;
     const { dispatch } = this.props;
-    dispatch(studentHasQuestion(student))
+
+    if (this.state.signalListenersSet || !session) {
+      return;
+    }
+
+    const isMe = ({connectionId}) => session.connectionId === connectionId;
+
+    session.on('signal:studentHasQuestion', ({ from, data }) => {
+      if(isMe(from)) { return; }
+      const { studentId } = JSON.parse(data);
+      dispatch(studentHasQuestion(studentId));
+    });
+
+    session.on({
+      'signal:studentHasAnswer': ({ from, data }) => {
+        if(isMe(from)) { return; }
+        const { studentId } = JSON.parse(data);
+        dispatch(studentHasAnswer(studentId));
+      }
+    });
+
+    this.setState({ signalListenersSet: true });
   }
 
-  hasAnswer(student) {
+  hasQuestion(studentId) {
     const { dispatch } = this.props;
-    dispatch(studentHasAnswer(student))
+    dispatch(studentHasQuestion(studentId, true))
+  }
+
+  hasAnswer(studentId) {
+    const { dispatch } = this.props;
+    dispatch(studentHasAnswer(studentId, true))
   }
 
   render() {
@@ -65,18 +94,6 @@ class Students extends Component {
     )
   }
 }
-
-
-// const Students = ({ user, classroom }) => {
-//   const studentList = getStudentList(classroom);
-//   console.log('TIMTIMTIM', studentList)
-
-//   return (
-//     <div className="Students">
-//       { studentList.map(student => <Student student={student} key={student.id} />)}
-//     </div>
-//   )
-// };
 
 const mapStateToProps = state => R.pick(['user', 'classroom']);
 

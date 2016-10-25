@@ -26,14 +26,6 @@ const errorMask = () =>
 class Classroom extends Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   classroom: null,
-    //   students: {},
-    //   instructor: null,
-    //   session: null,
-    //   connected: false,
-    //   error: null
-    // }
     this.connectToSession = this.connectToSession.bind(this);
     this.onConnect = this.onConnect.bind(this);
     this.publish = this.publish.bind(this);
@@ -117,7 +109,7 @@ class Classroom extends Component {
       <div className="Classroom">
         { !connected && connectingMask() }
         <div>
-          <Podium user={user} instructor={instructor}/>
+          <Podium />
           <Students/>
         </div>
         { error && errorMask() }

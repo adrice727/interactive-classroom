@@ -6,12 +6,9 @@ import './Podium.css';
 
 class Podium extends Component {
 
-  constructor(props) {
-    super(props)
-  }
-
   render() {
-    const { instructor } = this.props
+    const { classroom } = this.props
+    const { user, instructor } = classroom;
     return (
       <div className="Podium">
         { instructor ? <div id={`video-${instructor.id}`} className="Podium-video"></div> : '' }
@@ -20,4 +17,8 @@ class Podium extends Component {
   }
 }
 
-export default Podium;
+const mapStateToProps = state => R.pick(['user', 'classroom']);
+
+export default connect(
+  mapStateToProps
+)(Podium);

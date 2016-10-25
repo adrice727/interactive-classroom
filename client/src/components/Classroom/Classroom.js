@@ -78,15 +78,11 @@ class Classroom extends Component {
     }
     if (user.role === 'student') {
       const { students } = this.props.classroom;
-      const { hasQuestion, hasAnswer } = students[user.id];
+      const { question, answer } = students[user.id].status;
       const { connection } = stream;
-      if (hasQuestion) {
-        signal('studentHasQuestion', { studentId: user.id, hasQuestion }, connection)
+      if ( question || answer ) {
+        signal('studentStatus', { studentId: user.id, status: { question, answer } }, connection)
       }
-      if (hasAnswer) {
-        signal('studentHasAnswer', { studentId: user.id, hasAnswer }, connection)
-      }
-
     }
     this.subscribe(joined);
   }

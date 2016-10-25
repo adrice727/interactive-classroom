@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import R from 'ramda';
 import classNames from 'classnames';
-import { studentHasQuestion, studentHasAnswer } from '../../../actions/classroomActions.js'
+import { updateStudentStatus } from '../../../actions/classroomActions.js'
 import './Students.css';
 
 const getStudentList = (classroom) => {
@@ -16,19 +16,20 @@ const getStudentList = (classroom) => {
 
 const Student = ({ student, hasQuestion, hasAnswer, isUser }) => {
   const indicatorsClass = classNames('Student-indicators', { show: isUser });
-  const questionClass = classNames('indicator question', { active: student.hasQuestion });
-  const answerClass = classNames('indicator answer', { active: student.hasAnswer });
+  const questionClass = classNames('indicator question', { active: student.status.question });
+  const answerClass = classNames('indicator answer', { active: student.status.answer });
+  const questionHandler = hasQuestion.bind(this, student.id, !student.status.question);
+  const answerHandler = hasAnswer.bind(this, student.id, !student.status.answer);
   return (
     <div className='Student'>
       <div className={indicatorsClass} >
-        <div className={questionClass} onClick={hasQuestion.bind(this, student.id)}></div>
-        <div className={answerClass} onClick={hasAnswer.bind(this, student.id)}></div>
+        <div className={questionClass} onClick={questionHandler}></div>
+        <div className={answerClass} onClick={answerHandler}></div>
       </div>
       <div className="Student-video" id={`video-${student.id}`}></div>
     </div>
   )
 }
-
 
 class Students extends Component {
 
@@ -49,31 +50,23 @@ class Students extends Component {
 
     const isMe = ({connectionId}) => session.connection.connectionId === connectionId;
 
-    session.on('signal:studentHasQuestion', ({ from, data }) => {
+    session.on('signal:studentStatus', ({ from, data }) => {
       if(isMe(from)) { return; }
-      const { studentId } = JSON.parse(data);
-      dispatch(studentHasQuestion(studentId));
-    });
-
-    session.on({
-      'signal:studentHasAnswer': ({ from, data }) => {
-        if(isMe(from)) { return; }
-        const { studentId } = JSON.parse(data);
-        dispatch(studentHasAnswer(studentId));
-      }
+      const { studentId, status } = JSON.parse(data);
+      dispatch(updateStudentStatus(studentId, status));
     });
 
     this.setState({ signalListenersSet: true });
   }
 
-  hasQuestion(studentId) {
+  hasQuestion(studentId, question) {
     const { dispatch } = this.props;
-    dispatch(studentHasQuestion(studentId, true))
+    dispatch(updateStudentStatus(studentId, { question }, true))
   }
 
-  hasAnswer(studentId) {
+  hasAnswer(studentId, answer) {
     const { dispatch } = this.props;
-    dispatch(studentHasAnswer(studentId, true))
+    dispatch(updateStudentStatus(studentId, { answer }, true))
   }
 
   render() {

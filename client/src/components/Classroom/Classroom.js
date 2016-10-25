@@ -5,7 +5,15 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import api from '../../services/api';
 import { cameraProperties, signal } from '../../services/opentok';
-import { setClassroom, isConnected, setSession, instructorJoined, studentJoined, resetClassroom } from '../../actions/classroomActions';
+import {
+  setClassroom,
+  isConnected,
+  setSession,
+  instructorJoined,
+  instructorLeft,
+  studentJoined,
+  studentLeft,
+  resetClassroom } from '../../actions/classroomActions';
 import R from 'ramda';
 import Podium from './components/Podium';
 import Students from './components/Students';
@@ -68,19 +76,21 @@ class Classroom extends Component {
   }
 
   onStreamCreated(stream) {
+
     const { user, dispatch } = this.props;
     const joined = R.merge(JSON.parse(R.path(['connection', 'data'], stream)), { stream });
     const role = joined.role;
-    if (role === 'instructor') {
-      dispatch(instructorJoined(joined));
-    } else {
-      dispatch(studentJoined(joined));
-    }
+    const action = role === 'instructor' ? instructorJoined : studentJoined;
+    dispatch(action(joined));
+
+    /**
+     * If the current user is a student, we need to send the status to new connections
+     */
     if (user.role === 'student') {
       const { students } = this.props.classroom;
       const { question, answer } = students[user.id].status;
       const { connection } = stream;
-      if ( question || answer ) {
+      if (question || answer) {
         signal('studentStatus', { studentId: user.id, status: { question, answer } }, connection)
       }
     }
@@ -88,8 +98,11 @@ class Classroom extends Component {
   }
 
   onStreamDestroyed(stream) {
-    console.log('stream destroyed', stream);
-    // Need to update state here
+    const { dispatch } = this.props;
+    const { id, role } = JSON.parse(stream.connection.data);
+    const action = role === 'instructor' ? instructorLeft : studentLeft;
+    console.log(stream, action, id, role);
+    dispatch(action(id));
   }
 
   componentDidMount() {
@@ -105,12 +118,13 @@ class Classroom extends Component {
   }
 
   componentWillUnmount() {
-    const { dispatch } = this.props;
+    const { dispatch, classroom } = this.props;
+    classroom.session.disconnect();
     dispatch(resetClassroom());
   }
 
   render() {
-    const { user, connected, instructor, error } = this.props.classroom;
+    const { connected, error } = this.props.classroom;
     return (
       <div className="Classroom">
         { !connected && connectingMask() }

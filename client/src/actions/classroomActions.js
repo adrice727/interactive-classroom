@@ -13,9 +13,19 @@ export const instructorJoined = instructor => ({
   instructor
 });
 
+export const instructorLeft= instructorId => ({
+  type: 'INSTRUCTOR_LEFT_CLASSROOM',
+  instructorId
+});
+
 export const studentJoined = student => ({
   type: 'STUDENT_JOINED_CLASSROOM',
   student
+});
+
+export const studentLeft = studentId => ({
+  type: 'STUDENT_LEFT_CLASSROOM',
+  studentId
 });
 
 export const updateStudentStatus = (studentId, status, sendSignal) => ({
@@ -24,18 +34,6 @@ export const updateStudentStatus = (studentId, status, sendSignal) => ({
   status,
   sendSignal
 });
-
-// export const studentHasQuestion = (studentId, sendSignal) => ({
-//   type: 'STUDENT_HAS_QUESTION',
-//   studentId,
-//   sendSignal
-// });
-
-// export const studentHasAnswer = (studentId, sendSignal) => ({
-//   type: 'STUDENT_HAS_ANSWER',
-//   studentId,
-//   sendSignal
-// });
 
 export const resetClassroom = () => ({
   type: 'RESET_CLASSROOM'

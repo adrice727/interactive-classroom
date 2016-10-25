@@ -12,9 +12,15 @@ const classroom = (state = {}, action) => {
       return R.assoc('connected', action.connected, state);
     case 'INSTRUCTOR_JOINED_CLASSROOM':
       return R.assoc('instructor', action.instructor, state);
+    case 'INSTRUCTOR_LEFT_CLASSROOM':
+      return R.assoc('instructor', null, state);
     case 'STUDENT_JOINED_CLASSROOM':
       const initialStudentState = { status: { question: false, answer: false } };
       return R.assocPath(['students', action.student.id], R.merge(action.student, initialStudentState), state);
+    case 'STUDENT_LEFT_CLASSROOM':
+      const currentStudents = state.students;
+      console.log('action on student left', action);
+      return R.assoc('students', R.omit([action.studentId], currentStudents), state);
     case 'UPDATE_STUDENT_STATUS':
       const currentStatus = R.path(['students', action.studentId, 'status'], state);
       const status = R.pick(['question', 'answer'])(action.status);
@@ -22,22 +28,6 @@ const classroom = (state = {}, action) => {
         signal('studentStatus', { studentId: action.studentId, status });
       }
       return R.assocPath(['students', action.studentId, 'status'], R.merge(currentStatus, status), state);
-    case 'STUDENT_HAS_QUESTION':
-      const question = !R.path(['students', action.studentId, 'question'], state);
-      if (action.sendSignal) {
-        signal('studentStatus', { studentId: action.studentId, question })
-          .then(() => console.log('signal sent'))
-          .catch(e => console.log(e));
-      }
-      return R.assocPath(['students', action.studentId, 'question'], question, state);
-    case 'STUDENT_HAS_ANSWER':
-      const answer = !R.path(['students', action.studentId, 'answer'], state);
-      if (action.sendSignal) {
-        signal('studentStatus', { studentId: action.studentId, answer })
-          .then(() => console.log('signal sent'))
-          .catch(e => console.log(e));
-      }
-      return R.assocPath(['students', action.studentId, 'answer'], answer, state);
     case 'RESET_CLASSROOM':
       setSession(null);
       return null;

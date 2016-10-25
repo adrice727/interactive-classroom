@@ -47,7 +47,7 @@ class Students extends Component {
       return;
     }
 
-    const isMe = ({connectionId}) => session.connectionId === connectionId;
+    const isMe = ({connectionId}) => session.connection.connectionId === connectionId;
 
     session.on('signal:studentHasQuestion', ({ from, data }) => {
       if(isMe(from)) { return; }

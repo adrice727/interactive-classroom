@@ -4,7 +4,7 @@ import Spinner from 'react-spinner';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import api from '../../services/api';
-import { cameraProperties } from '../../services/opentok';
+import { cameraProperties, signal } from '../../services/opentok';
 import { setClassroom, isConnected, setSession, instructorJoined, studentJoined, resetClassroom } from '../../actions/classroomActions';
 import R from 'ramda';
 import Podium from './components/Podium';
@@ -77,22 +77,14 @@ class Classroom extends Component {
       dispatch(studentJoined(joined));
     }
     if (user.role === 'student') {
-      const { students, session } = this.props.classroom;
+      const { students } = this.props.classroom;
       const { hasQuestion, hasAnswer } = students[user.id];
       const { connection } = stream;
       if (hasQuestion) {
-        session.signal({
-          to: connection,
-          type: 'studentHasQuestion',
-          data: JSON.stringify({ studentId: user.id, hasQuestion })
-        });
+        signal('studentHasQuestion', { studentId: user.id, hasQuestion }, connection)
       }
       if (hasAnswer) {
-        session.signal({
-          to: connection,
-          type: 'studentHasAnswer',
-          data: JSON.stringify({ studentId: user.id, hasAnswer })
-        });
+        signal('studentHasAnswer', { studentId: user.id, hasAnswer }, connection)
       }
 
     }

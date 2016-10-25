@@ -15,16 +15,15 @@ const getStudentList = (classroom) => {
 };
 
 const Student = ({ student, hasQuestion, hasAnswer, isUser }) => {
+  const { question, answer } = student.status;
   const indicatorsClass = classNames('Student-indicators', { show: isUser });
-  const questionClass = classNames('indicator question', { active: student.status.question });
-  const answerClass = classNames('indicator answer', { active: student.status.answer });
-  const questionHandler = hasQuestion.bind(this, student.id, !student.status.question);
-  const answerHandler = hasAnswer.bind(this, student.id, !student.status.answer);
+  const questionClass = classNames('indicator question', { active: question });
+  const answerClass = classNames('indicator answer', { active: answer });
   return (
     <div className='Student'>
       <div className={indicatorsClass} >
-        <div className={questionClass} onClick={questionHandler}></div>
-        <div className={answerClass} onClick={answerHandler}></div>
+        <div className={questionClass} onClick={hasQuestion.bind(this, student.id, !question)}></div>
+        <div className={answerClass} onClick={hasAnswer.bind(this, student.id, !answer)}></div>
       </div>
       <div className="Student-video" id={`video-${student.id}`}></div>
     </div>

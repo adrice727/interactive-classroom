@@ -68,17 +68,35 @@ class Classroom extends Component {
   }
 
   onStreamCreated(stream) {
-    const { dispatch } = this.props;
-    const { students, instructor } = this.props;
+    const { user, dispatch } = this.props;
     const joined = R.merge(JSON.parse(R.path(['connection', 'data'], stream)), { stream });
     const role = joined.role;
-    const userUpdate = role === 'instructor' ? { instructor: R.merge(instructor, joined) } : { students: R.assoc(joined.id, joined, students) };
     if (role === 'instructor') {
       dispatch(instructorJoined(joined));
     } else {
       dispatch(studentJoined(joined));
     }
-    this.setState(userUpdate, () => this.subscribe(joined))
+    if (user.role === 'student') {
+      const { students, session } = this.props.classroom;
+      const { hasQuestion, hasAnswer } = students[user.id];
+      const { connection } = stream;
+      if (hasQuestion) {
+        session.signal({
+          to: connection,
+          type: 'studentHasQuestion',
+          data: JSON.stringify({ studentId: user.id, hasQuestion })
+        });
+      }
+      if (hasAnswer) {
+        session.signal({
+          to: connection,
+          type: 'studentHasAnswer',
+          data: JSON.stringify({ studentId: user.id, hasAnswer })
+        });
+      }
+
+    }
+    this.subscribe(joined);
   }
 
   onStreamDestroyed(stream) {

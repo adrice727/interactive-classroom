@@ -37,7 +37,6 @@ class Students extends Component {
     this.state = { signalListenersSet: false };
     this.hasQuestion = this.hasQuestion.bind(this);
     this.hasAnswer = this.hasAnswer.bind(this);
-    this.isMe = this.isMe.bind(this);
   }
 
   componentWillReceiveProps({ classroom }) {

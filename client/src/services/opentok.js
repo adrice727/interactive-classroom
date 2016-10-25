@@ -1,29 +1,25 @@
-// const createPublisher = () =>
-//   new Promise((resolve, reject) => {
-//     // TODO: Handle adding 'name' option to props
-//     const props = callProperties;
-//     // TODO: Figure out how to handle common vs package-specific options
-//     const container = containers.publisher.camera || 'publisherContainer';
-//     const publisher = OT.initPublisher(container, props, error => {
-//       if (error) {
-//         reject(error);
-//       }
-//       resolve(publisher);
-//     });
-//   });
+import R from 'ramda';
 
+// The current session
+let _session = null;
 
-// const publish = () => {
-//   createPublisher()
-//     .then((publisher) => {
-//       publishers.camera = publisher;
-//       session.publish(publisher);
-//     })
-//     .catch((error) => {
-//       const errorMessage = error.code === 1010 ? 'Check your network connection' : error.message;
-//       triggerEvent('error', errorMessage);
-//     });
-// };
+// Set the current session
+const setSession = session => {
+  _session = session;
+};
+
+/**
+ * Send a signal using the OpenTok signaling API
+ */
+const signal = (type, signalData, to) =>
+  new Promise((resolve, reject) => {
+    if (!_session) {
+      reject('No current OpenTok session');
+    }
+    const data = JSON.stringify(signalData);
+    const props = to ? { to, type, data } : { type, data };
+    _session.signal(props, e => e ? reject(e) : resolve());
+  });
 
 const cameraProperties = {
   insertMode: 'append',
@@ -39,4 +35,6 @@ const cameraProperties = {
 
 module.exports = {
   cameraProperties,
+  setSession,
+  signal,
 }

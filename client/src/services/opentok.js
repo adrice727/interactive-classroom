@@ -26,7 +26,7 @@ const cameraProperties = {
   width: '100%',
   height: '100%',
   showControls: false,
-  fitMode: 'contain',
+  fitMode: 'cover',
   style: {
     buttonDisplayMode: 'on',
     nameDisplayMode: 'on',

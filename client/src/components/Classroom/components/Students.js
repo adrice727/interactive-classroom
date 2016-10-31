@@ -14,7 +14,8 @@ const getStudentList = (classroom) => {
   return R.reduce(addToList, [], Object.keys(students));
 };
 
-const Student = ({ student, hasQuestion, hasAnswer, isUser }) => {
+
+const Student = ({ student, hasQuestion, hasAnswer, isUser, isInstructor }) => {
   const { question, answer } = student.status;
   const indicatorsClass = classNames('Student-indicators', { show: isUser });
   const questionClass = classNames('indicator question', { active: question });
@@ -26,6 +27,7 @@ const Student = ({ student, hasQuestion, hasAnswer, isUser }) => {
         <div className={answerClass} onClick={hasAnswer.bind(this, student.id, !answer)}></div>
       </div>
       <div className="Student-video" id={`video-${student.id}`}></div>
+      <div className="Student-name">{student.name}</div>
     </div>
   )
 }
@@ -70,6 +72,7 @@ class Students extends Component {
 
   render() {
     const { user, classroom } = this.props;
+    const isInstructor = R.path(['instructor', 'id'], classroom) === user.id;
     const studentList = getStudentList(classroom);
     return (
       <div className="Students">
@@ -79,6 +82,7 @@ class Students extends Component {
             hasQuestion={this.hasQuestion}
             hasAnswer={this.hasAnswer}
             isUser={user.id === student.id}
+            isInstructor={isInstructor}
             key={student.id} />
         )}
       </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import R from 'ramda';
 import classNames from 'classnames';
-import { updateStudentStatus } from '../../../actions/classroomActions.js'
+import { updateStudentStatus, takeQuestion, takeAnswer } from '../../../actions/classroomActions.js'
 import './Students.css';
 
 const getStudentList = (classroom) => {
@@ -15,16 +15,17 @@ const getStudentList = (classroom) => {
 };
 
 
-const Student = ({ student, hasQuestion, hasAnswer, isUser, isInstructor }) => {
+const Student = ({ student, handleQuestion, handleAnswer, isUser, isInstructor }) => {
   const { question, answer } = student.status;
+  const clickable = isUser || isInstructor;
   const indicatorsClass = classNames('Student-indicators', { show: isUser });
-  const questionClass = classNames('indicator question', { active: question });
-  const answerClass = classNames('indicator answer', { active: answer });
+  const questionClass = classNames('indicator question', { active: question, clickable });
+  const answerClass = classNames('indicator answer', { active: answer, clickable });
   return (
     <div className='Student'>
       <div className={indicatorsClass} >
-        <div className={questionClass} onClick={hasQuestion.bind(this, student.id, !question)}></div>
-        <div className={answerClass} onClick={hasAnswer.bind(this, student.id, !answer)}></div>
+        <div className={questionClass} onClick={handleQuestion.bind(this, student.id, !question)}></div>
+        <div className={answerClass} onClick={handleAnswer.bind(this, student.id, !answer)}></div>
       </div>
       <div className="Student-video" id={`video-${student.id}`}></div>
       <div className="Student-name">{student.name}</div>
@@ -37,37 +38,65 @@ class Students extends Component {
   constructor(props) {
     super(props);
     this.state = { signalListenersSet: false };
-    this.hasQuestion = this.hasQuestion.bind(this);
-    this.hasAnswer = this.hasAnswer.bind(this);
+    this.handleQuestion = this.handleQuestion.bind(this);
+    this.handleAnswer = this.handleAnswer.bind(this);
   }
 
   componentWillReceiveProps({ classroom }) {
-    const { session } = classroom;
     const { dispatch } = this.props;
+    const { session, publisher } = classroom;
 
-    if (this.state.signalListenersSet || !session) {
+    /**
+     * We need a session and local publisher object before we can
+     * set our event listeners.
+     */
+    if (this.state.signalListenersSet || !session || !publisher) {
       return;
     }
 
-    const isMe = ({connectionId}) => session.connection.connectionId === connectionId;
+    const isMe = ({ connectionId }) => session.connection.connectionId === connectionId;
 
-    session.on('signal:studentStatus', ({ from, data }) => {
-      if(isMe(from)) { return; }
-      const { studentId, status } = JSON.parse(data);
-      dispatch(updateStudentStatus(studentId, status));
+    session.on('signal', ({ type, data, from }) => {
+      if (isMe(from)) { return; }
+      const signalType = R.last(R.split(':', type));
+
+      if (signalType === 'studentStatus') {
+        const { studentId, status } = JSON.parse(data);
+        dispatch(updateStudentStatus(studentId, status));
+      } else if (signalType === 'takeQuestion') {
+        publisher.publishAudio(true);
+      } else if (signalType === 'takeAnswer') {
+
+        publisher.publishAudio(true);
+      }
     });
 
     this.setState({ signalListenersSet: true });
   }
 
-  hasQuestion(studentId, question) {
-    const { dispatch } = this.props;
-    dispatch(updateStudentStatus(studentId, { question }, true))
+  handleQuestion(studentId, question) {
+    const { dispatch, user, classroom } = this.props;
+    const { publisher } = classroom;
+    const isInstructor = R.path(['instructor', 'id'], classroom) === user.id;
+    if (user.id === studentId) {
+      dispatch(updateStudentStatus(studentId, { question }, true));
+      if (!question) { publisher.publishAudio(false); }
+    } else if (isInstructor) {
+      dispatch(takeQuestion(studentId));
+    }
   }
 
-  hasAnswer(studentId, answer) {
-    const { dispatch } = this.props;
-    dispatch(updateStudentStatus(studentId, { answer }, true))
+  handleAnswer(studentId, answer) {
+    const { dispatch, user, classroom } = this.props;
+    const { publisher } = classroom;
+    const isInstructor = R.path(['instructor', 'id'], classroom) === user.id;
+
+    if (user.id === studentId) {
+      dispatch(updateStudentStatus(studentId, { answer }, true));
+      if (!answer) { publisher.publishAudio(false); }
+    } else if (isInstructor) {
+      dispatch(takeAnswer(studentId));
+    }
   }
 
   render() {
@@ -79,8 +108,8 @@ class Students extends Component {
         { studentList.map(student =>
           <Student
             student={student}
-            hasQuestion={this.hasQuestion}
-            hasAnswer={this.hasAnswer}
+            handleQuestion={this.handleQuestion}
+            handleAnswer={this.handleAnswer}
             isUser={user.id === student.id}
             isInstructor={isInstructor}
             key={student.id} />

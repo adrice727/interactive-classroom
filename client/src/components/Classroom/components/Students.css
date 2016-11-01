@@ -39,6 +39,12 @@
     background-position: center center;
     z-index: 2;
     visibility: hidden;
+    pointer-events: none;
+}
+
+.Student-indicators .indicator.clickable {
+    cursor: pointer;
+    pointer-events: auto;
 }
 
 .Student-indicators.show .indicator {

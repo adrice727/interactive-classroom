@@ -9,6 +9,7 @@ import {
   setClassroom,
   isConnected,
   setSession,
+  setLocalPublisher,
   instructorJoined,
   instructorLeft,
   studentJoined,
@@ -44,12 +45,15 @@ class Classroom extends Component {
   }
 
   publish() {
-    const { user, classroom } = this.props;
+    const { dispatch, user, classroom } = this.props;
     const session = R.prop('session', classroom);
-    const handleError = error => error && this.onError(error);
     const name = { name: user.name };
-    const publisher = OT.initPublisher(`video-${user.id}`, R.merge(cameraProperties, name));
-    session.publish(publisher, handleError);
+    // Students won't publish audio until called upon
+    const publishAudio = user.role === 'instructor';
+    const publisher = OT.initPublisher(`video-${user.id}`, R.merge(cameraProperties, {name, publishAudio}));
+    session.publish(publisher, error => {
+      error ? this.onError(error) : dispatch(setLocalPublisher(publisher));
+    });
   }
 
   subscribe(user) {
@@ -101,7 +105,6 @@ class Classroom extends Component {
     const { dispatch } = this.props;
     const { id, role } = JSON.parse(stream.connection.data);
     const action = role === 'instructor' ? instructorLeft : studentLeft;
-    console.log(stream, action, id, role);
     dispatch(action(id));
   }
 

@@ -1,4 +1,5 @@
 
+import opentok._
 import io.finch._
 import com.twitter.finagle.{Http, Service}
 import com.twitter.finagle.http.{Request, Response}
@@ -8,6 +9,7 @@ object Main extends App {
   val getHello: Endpoint[String] = get("hello") { Ok("Hello, World!") }
   val getIndex: Endpoint[String] = get(/) { Ok("Hello, Index!") }
 
+  val validateUser: Endpoint[String] = post("user") { Ok("Hello, Index!") }
   val validateUser: Endpoint[String] = post("user") { Ok("Hello, Index!") }
   val getClassroom: Endpoint[String] = get("classroom") { Ok("Hello, Index!") }
   val getAllClassrooms: Endpoint[String] = get("classrooms") { Ok("Hello, Index!") }

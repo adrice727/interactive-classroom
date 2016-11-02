@@ -28,14 +28,14 @@ const classroom = (state = {}, action) => {
       signal('takeAnswer', { studentId: action.studentId }, getConnection('student', action.studentId)(state));
       return state;
     case 'STUDENT_JOINED_CLASSROOM':
-      const initialStudentState = { status: { question: false, answer: false } };
+      const initialStudentState = { status: { hasQuestion: false, hasAnswer: false, asking: false, answering: false } };
       return R.assocPath(['students', action.student.id], R.merge(action.student, initialStudentState), state);
     case 'STUDENT_LEFT_CLASSROOM':
       const currentStudents = state.students;
       return R.assoc('students', R.omit([action.studentId], currentStudents), state);
     case 'UPDATE_STUDENT_STATUS':
       const currentStatus = R.path(['students', action.studentId, 'status'], state);
-      const status = R.pick(['question', 'answer'])(action.status);
+      const status = R.pick(['hasQuestion', 'hasAnswer', 'asking', 'answering'])(action.status);
       if (action.sendSignal) {
         signal('studentStatus', { studentId: action.studentId, status });
       }

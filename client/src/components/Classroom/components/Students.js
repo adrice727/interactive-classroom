@@ -16,16 +16,17 @@ const getStudentList = (classroom) => {
 
 
 const Student = ({ student, handleQuestion, handleAnswer, isUser, isInstructor }) => {
-  const { question, answer } = student.status;
+  const { hasQuestion, hasAnswer } = student.status;
   const clickable = isUser || isInstructor;
+  const studentClass = classNames('Student', student.status);
   const indicatorsClass = classNames('Student-indicators', { show: isUser });
-  const questionClass = classNames('indicator question', { active: question, clickable });
-  const answerClass = classNames('indicator answer', { active: answer, clickable });
+  const questionClass = classNames('indicator question', { active: hasQuestion, clickable });
+  const answerClass = classNames('indicator answer', { active: hasAnswer, clickable });
   return (
-    <div className='Student'>
+    <div className={studentClass}>
       <div className={indicatorsClass} >
-        <div className={questionClass} onClick={handleQuestion.bind(this, student.id, !question)}></div>
-        <div className={answerClass} onClick={handleAnswer.bind(this, student.id, !answer)}></div>
+        <div className={questionClass} onClick={handleQuestion.bind(this, student.id, !hasQuestion)}></div>
+        <div className={answerClass} onClick={handleAnswer.bind(this, student.id, !hasAnswer)}></div>
       </div>
       <div className="Student-video" id={`video-${student.id}`}></div>
       <div className="Student-name">{student.name}</div>
@@ -59,14 +60,16 @@ class Students extends Component {
     session.on('signal', ({ type, data, from }) => {
       if (isMe(from)) { return; }
       const signalType = R.last(R.split(':', type));
+      const { studentId, status } = JSON.parse(data);
 
+      console.log(data);
       if (signalType === 'studentStatus') {
-        const { studentId, status } = JSON.parse(data);
         dispatch(updateStudentStatus(studentId, status));
       } else if (signalType === 'takeQuestion') {
+        dispatch(updateStudentStatus(studentId, { asking: true }, true));
         publisher.publishAudio(true);
       } else if (signalType === 'takeAnswer') {
-
+        dispatch(updateStudentStatus(studentId, { answering: true }, true));
         publisher.publishAudio(true);
       }
     });
@@ -74,26 +77,28 @@ class Students extends Component {
     this.setState({ signalListenersSet: true });
   }
 
-  handleQuestion(studentId, question) {
+  handleQuestion(studentId, hasQuestion) {
     const { dispatch, user, classroom } = this.props;
     const { publisher } = classroom;
     const isInstructor = R.path(['instructor', 'id'], classroom) === user.id;
     if (user.id === studentId) {
-      dispatch(updateStudentStatus(studentId, { question }, true));
-      if (!question) { publisher.publishAudio(false); }
+      const status = hasQuestion ? { hasQuestion } : { hasQuestion, asking: false };
+      dispatch(updateStudentStatus(studentId, status, true));
+      !hasQuestion && publisher.publishAudio(false);
     } else if (isInstructor) {
       dispatch(takeQuestion(studentId));
     }
   }
 
-  handleAnswer(studentId, answer) {
+  handleAnswer(studentId, hasAnswer) {
     const { dispatch, user, classroom } = this.props;
     const { publisher } = classroom;
     const isInstructor = R.path(['instructor', 'id'], classroom) === user.id;
 
     if (user.id === studentId) {
-      dispatch(updateStudentStatus(studentId, { answer }, true));
-      if (!answer) { publisher.publishAudio(false); }
+      const status = hasAnswer ? { hasAnswer } : { hasAnswer, answering: false };
+      dispatch(updateStudentStatus(studentId, status, true));
+      !hasAnswer && publisher.publishAudio(false);
     } else if (isInstructor) {
       dispatch(takeAnswer(studentId));
     }

@@ -14,6 +14,14 @@
     margin: 0px 10px;
 }
 
+.Student.asking .Student-video {
+    box-shadow: 0 0 1em rgba(255, 0, 0, .6);
+}
+
+.Student.answering .Student-video {
+    box-shadow: 0 0 1em rgba(0, 151, 204, .6);
+}
+
 .Student-video {
     height: 108px;
     width: 180px;

@@ -1,5 +1,5 @@
 target/
-/src/main/config
+/src/main/resources
 *.class
 *.iml
 *.ipr

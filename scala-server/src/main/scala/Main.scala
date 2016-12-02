@@ -27,14 +27,8 @@ object Main extends App {
       })
       p
     }
-
-    def convertUser(user: User): UserCase = {
-      val hasImage = !user.getImageURL().isEmpty
-      val imageURL: Option[String] = if (hasImage) Some(user.getImageURL()) else None
-      UserCase(user.getId(), user.getName(), user.getEmail(), imageURL)
-    }
-
-    retrieveUser().map(user => Ok(convertUser(user)))
+    
+    retrieveUser().map(user => Ok(user.toCase))
   }
 
   val getIndex: Endpoint[String] = get(/) {

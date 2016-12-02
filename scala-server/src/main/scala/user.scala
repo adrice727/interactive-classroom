@@ -6,6 +6,11 @@ class User() {
   @BeanProperty var name: String = ""
   @BeanProperty var email: String = ""
   @BeanProperty var imageURL: String = ""
+  def toCase: UserCase = {
+    val hasImage = !imageURL.isEmpty
+    val maybeImageURL: Option[String] = if (hasImage) Some(imageURL) else None
+    UserCase(id, name, email, maybeImageURL)
+  }
   override def toString = s"${id}: ${name}, ${email}, ${imageURL}"
 }
 

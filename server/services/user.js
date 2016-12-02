@@ -30,10 +30,8 @@ const create = user =>
       .catch(error => reject(error));
   });
 
-
-
 /**
- * Finds a user in the db
+ * Find a user in the db
  * @param {String} userId
  * @returns {Promise} <Resolve: User, Reject: Error>
  */

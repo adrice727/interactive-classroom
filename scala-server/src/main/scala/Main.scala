@@ -1,36 +1,40 @@
 import io.finch._
+import scala.collection.JavaConverters._
 import com.twitter.finagle.http.filter.Cors
 import com.twitter.finagle.{Http, Service}
 import com.twitter.finagle.http.{Request, Response}
 import com.twitter.util.{Await, Future, Promise}
 import io.finch.circe._
 import io.circe.generic.auto._
+import io.circe.syntax._
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
 import com.google.firebase.database._
-
 object Main extends App {
 
-  case class User(id: String, name: String, email: String, photoUrl: Option[String] = None)
-
-  val getUser: Endpoint[User] = post("user" :: body.as[User]) { user: User =>
+  val getUser: Endpoint[UserCase] = post("user" :: body.as[UserCase]) { user: UserCase =>
     val ref = Firebase.ref(s"users/${user.id}")
-    def retrieveUser(): Promise[User]  = {
+    def retrieveUser(): Promise[User] = {
       val p = new Promise[User]
       ref.addListenerForSingleValueEvent(new ValueEventListener() {
         override def onDataChange(snapshot: DataSnapshot) = {
-          val userSnapshot = snapshot.getValue()
-          println(userSnapshot)
-          p.setValue(User("90238r9hj", "tim", "tim@tim.com", Some("https://someurl.com/90a8udsf.jpeg")))
+          val userSnapshot = snapshot.getValue(classOf[User])
+          p.setValue(userSnapshot)
         }
         override def onCancelled(databaseError: DatabaseError) = {
-          println("The read failed: " + databaseError.getCode())
+          p.setException(new Exception(databaseError.getMessage()))
         }
       })
       p
     }
 
-    retrieveUser().map( user => Ok(user))
+    def convertUser(user: User): UserCase = {
+      val hasImage = !user.getImageURL().isEmpty
+      val imageURL: Option[String] = if (hasImage) Some(user.getImageURL()) else None
+      UserCase(user.getId(), user.getName(), user.getEmail(), imageURL)
+    }
+
+    retrieveUser().map(user => Ok(convertUser(user)))
   }
 
   val getIndex: Endpoint[String] = get(/) {
@@ -59,12 +63,12 @@ object Main extends App {
 
 
   // Set up CORS
-//  val policy: Cors.Policy = Cors.Policy(
-//    allowsOrigin = _ => Some("*"),
-//    allowsMethods = _ => Some(Seq("GET", "POST")),
-//    allowsHeaders = _ => Some(Seq("Accept"))
-//  )
-//  val corsService: Service[Request, Response] = new Cors.HttpFilter(policy).andThen(api)
+  //  val policy: Cors.Policy = Cors.Policy(
+  //    allowsOrigin = _ => Some("*"),
+  //    allowsMethods = _ => Some(Seq("GET", "POST")),
+  //    allowsHeaders = _ => Some(Seq("Accept"))
+  //  )
+  //  val corsService: Service[Request, Response] = new Cors.HttpFilter(policy).andThen(api)
 
   // Listen
   Await.ready(Http.server.serve(":8080", api))

@@ -13,22 +13,22 @@ import com.google.firebase.database._
 object Main extends App {
 
   val getUser: Endpoint[UserCase] = post("user" :: body.as[UserCase]) { user: UserCase =>
-    val ref = Firebase.ref(s"users/${user.id}")
-    def retrieveUser(): Promise[User] = {
-      val p = new Promise[User]
-      ref.addListenerForSingleValueEvent(new ValueEventListener() {
-        override def onDataChange(snapshot: DataSnapshot) = {
-          val userSnapshot = snapshot.getValue(classOf[User])
-          p.setValue(userSnapshot)
-        }
-        override def onCancelled(databaseError: DatabaseError) = {
-          p.setException(new Exception(databaseError.getMessage()))
-        }
-      })
-      p
-    }
-    
-    retrieveUser().map(user => Ok(user.toCase))
+//    val ref = Firebase.ref(s"users/${user.id}")
+//    def retrieveUser(): Promise[User] = {
+//      val p = new Promise[User]
+//      ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//        override def onDataChange(snapshot: DataSnapshot) = {
+//          val userSnapshot = snapshot.getValue(classOf[User])
+//          p.setValue(userSnapshot)
+//        }
+//        override def onCancelled(databaseError: DatabaseError) = {
+//          p.setException(new Exception(databaseError.getMessage()))
+//        }
+//      })
+//      p
+//    }
+
+    User.get(user.id).map(Ok)
   }
 
   val getIndex: Endpoint[String] = get(/) {

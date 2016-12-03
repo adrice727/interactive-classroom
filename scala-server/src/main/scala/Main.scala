@@ -22,22 +22,18 @@ object Main extends App {
     Classroom.get(classroomId).map(Ok)
   }
 
-  val getIndex: Endpoint[String] = get(/) {
-    Ok("Hello, Index!")
-  }
-
   val getAllClassrooms: Endpoint[String] = get("classrooms") {
-    Ok("Hello, Index!")
+    ???
   }
-  val createClassroom: Endpoint[String] = post("classroom") {
-    Ok("Hello, Index!")
+  val createClassroom: Endpoint[String] = post("classroom" :: body.as[ClassroomCase]) { classroom: ClassroomCase =>
+    ???
   }
   val removeClassroom: Endpoint[String] = delete("classroom") {
-    Ok("Hello, Index!")
+    ???
   }
 
   val api: Service[Request, Response] = (
-    validateUser :+: getIndex :+: validateUser :+: getClassroom :+: getAllClassrooms :+: createClassroom :+: removeClassroom
+    validateUser :+: getClassroom :+: getAllClassrooms :+: createClassroom :+: removeClassroom
     ).toServiceAs[Application.Json]
 
 

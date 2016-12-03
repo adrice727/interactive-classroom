@@ -8,8 +8,7 @@ object User {
     val p = new Promise[UserCase]
     ref.addListenerForSingleValueEvent(new ValueEventListener() {
       override def onDataChange(snapshot: DataSnapshot) = {
-        val userSnapshot = snapshot.getValue(classOf[User])
-        p.setValue(userSnapshot.toCase)
+        p.setValue(snapshot.getValue(classOf[User]).toCase)
       }
       override def onCancelled(databaseError: DatabaseError) = {
         p.setException(new Exception(databaseError.getMessage()))

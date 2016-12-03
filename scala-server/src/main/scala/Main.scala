@@ -10,22 +10,22 @@ import io.circe.syntax._
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
 import com.google.firebase.database._
+
+
 object Main extends App {
 
-  val getUser: Endpoint[UserCase] = post("user" :: body.as[UserCase]) { user: UserCase =>
+  val validateUser: Endpoint[UserCase] = post("user" :: body.as[UserCase]) { user: UserCase =>
     User.get(user.id).map(Ok)
+  }
+
+  val getClassroom: Endpoint[ClassroomCase] = get("classroom" / string) { (classroomId: String) =>
+    Classroom.get(classroomId).map(Ok)
   }
 
   val getIndex: Endpoint[String] = get(/) {
     Ok("Hello, Index!")
   }
 
-  val validateUser: Endpoint[String] = post("user") {
-    Ok("Hello, Index!")
-  }
-  val getClassroom: Endpoint[String] = get("classroom") {
-    Ok("Hello, Index!")
-  }
   val getAllClassrooms: Endpoint[String] = get("classrooms") {
     Ok("Hello, Index!")
   }
@@ -37,7 +37,7 @@ object Main extends App {
   }
 
   val api: Service[Request, Response] = (
-    getUser :+: getIndex :+: validateUser :+: getClassroom :+: getAllClassrooms :+: createClassroom :+: removeClassroom
+    validateUser :+: getIndex :+: validateUser :+: getClassroom :+: getAllClassrooms :+: createClassroom :+: removeClassroom
     ).toServiceAs[Application.Json]
 
 

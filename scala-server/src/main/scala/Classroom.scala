@@ -1,6 +1,9 @@
 import scala.beans.BeanProperty
 import com.twitter.util.Promise
 import com.google.firebase.database._
+import scala.collection.JavaConverters._
+import scala.collection.breakOut
+
 
 object Classroom {
   def get(id: String): Promise[ClassroomCase] = {
@@ -9,6 +12,31 @@ object Classroom {
     ref.addListenerForSingleValueEvent(new ValueEventListener() {
       override def onDataChange(snapshot: DataSnapshot) = {
         p.setValue(snapshot.getValue(classOf[Classroom]).toCase)
+      }
+      override def onCancelled(databaseError: DatabaseError) = {
+        p.setException(new Exception(databaseError.getMessage()))
+      }
+    })
+    p
+  }
+  def getAll(): Promise[Map[String, ClassroomCase]] = {
+    val ref = Firebase.ref("classrooms")
+    val p = new Promise[Map[String, ClassroomCase]]
+    ref.addListenerForSingleValueEvent(new ValueEventListener() {
+      override def onDataChange(snapshot: DataSnapshot) = {
+        // This will be an empty list if there are no children
+        val classroomList = snapshot.getChildren().asScala.toList map { c => c.getValue(classOf[Classroom]) }
+
+        if (classroomList.length == 0) {
+          p.setValue(Map[String, ClassroomCase]())
+        } else {
+          val classrooms: Map[String, ClassroomCase] = (for {
+            c <- classroomList
+            cid = c.getId
+            cc = c.toCase
+          } yield (cid -> cc)) (breakOut)
+          p.setValue(classrooms)
+        }
       }
       override def onCancelled(databaseError: DatabaseError) = {
         p.setException(new Exception(databaseError.getMessage()))

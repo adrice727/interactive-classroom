@@ -20,8 +20,8 @@ object Classroom {
     p
   }
   def getAll(): Promise[Map[String, ClassroomCase]] = {
-    val ref = Firebase.ref("classrooms")
     val p = new Promise[Map[String, ClassroomCase]]
+    val ref = Firebase.ref("classrooms")
     ref.addListenerForSingleValueEvent(new ValueEventListener() {
       override def onDataChange(snapshot: DataSnapshot) = {
         // This will be an empty list if there are no children
@@ -32,9 +32,9 @@ object Classroom {
         } else {
           val classrooms: Map[String, ClassroomCase] = (for {
             c <- classroomList
-            cid = c.getId
+            id = c.getId
             cc = c.toCase
-          } yield (cid -> cc)) (breakOut)
+          } yield (id -> cc)) (breakOut)
           p.setValue(classrooms)
         }
       }

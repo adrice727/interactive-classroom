@@ -1,14 +1,19 @@
 import scala.beans.BeanProperty
-import com.twitter.util.Promise
+import com.twitter.util.{Await, Future, Promise}
 import com.google.firebase.database._
 
 object User {
-  def get(id: String): Promise[UserCase] = {
+  def get(id: String): Future[UserCase] = {
     val ref = Firebase.ref(s"users/${id}")
     val p = new Promise[UserCase]
     ref.addListenerForSingleValueEvent(new ValueEventListener() {
       override def onDataChange(snapshot: DataSnapshot) = {
-        p.setValue(snapshot.getValue(classOf[User]).toCase)
+        val userRecord: User = snapshot.getValue(classOf[User])
+        if (userRecord != null) {
+          p.setValue(userRecord.toCase)
+        } else {
+          p.setException(new Exception(s"User ${id} not found."))
+        }
       }
       override def onCancelled(databaseError: DatabaseError) = {
         p.setException(new Exception(databaseError.getMessage()))

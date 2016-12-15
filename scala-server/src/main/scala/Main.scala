@@ -7,15 +7,15 @@ import com.twitter.util.{Await, Future, Promise}
 import io.finch.circe._
 import io.circe.generic.auto._
 import io.circe.syntax._
-import com.google.firebase.FirebaseApp
-import com.google.firebase.FirebaseOptions
-import com.google.firebase.database._
+
 
 
 object Main extends App {
 
   val validateUser: Endpoint[UserCase] = post("user" :: body.as[UserCase]) { user: UserCase =>
     User.get(user.id).map(Ok)
+  } handle {
+    case e: Exception => NotFound(e)
   }
 
   val getClassroom: Endpoint[ClassroomCase] = get("classroom" / string) { (classroomId: String) =>

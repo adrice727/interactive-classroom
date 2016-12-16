@@ -13,7 +13,7 @@ import io.circe.syntax._
 object Main extends App {
 
   val validateUser: Endpoint[UserCase] = post("user" :: body.as[UserCase]) { user: UserCase =>
-    User.get(user.id).map(Ok)
+    User.existsOrCreate(user).map(Ok)
   } handle {
     case e: Exception => NotFound(e)
   }

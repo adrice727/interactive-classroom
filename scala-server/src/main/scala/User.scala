@@ -23,7 +23,16 @@ object User {
   }
 }
 
-case class UserCase(id: String, name: String, email: String, imageURL: Option[String] = None)
+case class UserCase(id: String, name: String, email: String, imageURL: Option[String] = None) {
+  def toClass = {
+    val user = new User()
+    user.id = id
+    user.name = name
+    user.email = email
+    user.imageURL = imageURL getOrElse ""
+    user
+  }
+}
 
 /** Plain class required for parsing Firebase DataSnapshot */
 class User() {

@@ -30,13 +30,23 @@ object User {
         if (userRecord != null) {
           p.setValue(userRecord.toCase)
         } else {
-          p.setException(new Exception(s"User ${id} not found."))
+          p.setException(new UserNotFoundException(s"User ${id} not found."))
         }
       }
       override def onCancelled(databaseError: DatabaseError) = {
-        p.setException(new Exception(databaseError.getMessage()))
+        p.setException(new FirebaseException(databaseError.getMessage()))
       }
     })
+    p
+  }
+
+  def existsOrCreate(user: UserCase): Future[UserCase] = {
+    val p = new Promise[UserCase]
+    get(user.id).map(userRecord => p.setValue(userRecord)).rescue {
+      case e: UserNotFoundException => {
+        create(user).map(userRecord => p.setValue(userRecord))
+      }
+    }
     p
   }
 }

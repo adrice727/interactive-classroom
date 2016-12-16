@@ -5,6 +5,22 @@ import com.google.firebase.database._
 case class UserNotFoundException(s: String) extends Exception(s)
 
 object User {
+  def create(user: UserCase) : Future[UserCase] = {
+    val ref = Firebase.ref(s"users/${user.id}")
+    val userRecord = user.toClass
+    val p = new Promise[UserCase]
+    ref.setValue(userRecord, new DatabaseReference.CompletionListener() {
+      override def onComplete(databaseError: DatabaseError, databaseReference: DatabaseReference) {
+        if (databaseError != null) {
+          p.setException(new FirebaseException(databaseError.getMessage()))
+        } else {
+          p.setValue(user)
+        }
+      }
+    })
+    p
+  }
+
   def get(id: String): Future[UserCase] = {
     val ref = Firebase.ref(s"users/${id}")
     val p = new Promise[UserCase]

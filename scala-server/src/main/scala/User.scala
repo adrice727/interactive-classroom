@@ -2,6 +2,8 @@ import scala.beans.BeanProperty
 import com.twitter.util.{Await, Future, Promise}
 import com.google.firebase.database._
 
+case class UserNotFoundException(s: String) extends Exception(s)
+
 object User {
   def get(id: String): Future[UserCase] = {
     val ref = Firebase.ref(s"users/${id}")

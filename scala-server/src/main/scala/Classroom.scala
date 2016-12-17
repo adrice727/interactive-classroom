@@ -55,7 +55,19 @@ case class ClassroomCase(
                           instructorName: String,
                           sessionId: String,
                           imageURL: Option[String] = None
-                        )
+                        ) {
+  def toClass = {
+    val classroom = new Classroom()
+    classroom.id = id
+    classroom.title = title
+    classroom.description = description
+    classroom.instructorId = instructorId
+    classroom.instructorName = instructorName
+    classroom.sessionId = sessionId
+    classroom.imageURL = imageURL getOrElse ""
+    classroom
+  }
+}
 
 /** Plain class required for parsing Firebase DataSnapshot */
 class Classroom() {

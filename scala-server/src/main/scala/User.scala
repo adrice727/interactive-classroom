@@ -5,10 +5,10 @@ import com.google.firebase.database._
 case class UserNotFoundException(s: String) extends Exception(s)
 
 object User {
-  def create(user: UserCase) : Future[UserCase] = {
+  def create(user: User) : Future[User] = {
     val ref = Firebase.ref(s"users/${user.id}")
-    val userRecord = user.toClass
-    val p = new Promise[UserCase]
+    val userRecord = user.toBean
+    val p = new Promise[User]
     ref.setValue(userRecord, new DatabaseReference.CompletionListener() {
       override def onComplete(databaseError: DatabaseError, databaseReference: DatabaseReference) {
         if (databaseError != null) {
@@ -21,12 +21,12 @@ object User {
     p
   }
 
-  def get(id: String): Future[UserCase] = {
+  def get(id: String): Future[User] = {
     val ref = Firebase.ref(s"users/${id}")
-    val p = new Promise[UserCase]
+    val p = new Promise[User]
     ref.addListenerForSingleValueEvent(new ValueEventListener() {
       override def onDataChange(snapshot: DataSnapshot) = {
-        val userRecord: User = snapshot.getValue(classOf[User])
+        val userRecord: UserBean = snapshot.getValue(classOf[UserBean])
         if (userRecord != null) {
           p.setValue(userRecord.toCase)
         } else {
@@ -40,38 +40,42 @@ object User {
     p
   }
 
-  def existsOrCreate(user: UserCase): Future[UserCase] = {
-    val p = new Promise[UserCase]
+  def existsOrCreate(user: User): Future[User] = {
+    val p = new Promise[User]
     get(user.id).map(userRecord => p.setValue(userRecord)).rescue {
       case e: UserNotFoundException => {
         create(user).map(userRecord => p.setValue(userRecord))
+        // TODO handle user creation failure
       }
     }
     p
   }
 }
 
-case class UserCase(id: String, name: String, email: String, imageURL: Option[String] = None) {
-  def toClass = {
-    val user = new User()
+case class User(id: String, name: String, email: String, role: Option[String] = None, imageURL: Option[String] = None) {
+  def toBean = {
+    val user = new UserBean()
     user.id = id
     user.name = name
     user.email = email
+    user.role = role getOrElse null
     user.imageURL = imageURL getOrElse ""
     user
   }
 }
 
 /** Plain class required for parsing Firebase DataSnapshot */
-class User() {
-  @BeanProperty var id: String = ""
-  @BeanProperty var name: String = ""
-  @BeanProperty var email: String = ""
-  @BeanProperty var imageURL: String = ""
-  def toCase: UserCase = {
+class UserBean() {
+  @BeanProperty var id: String = null
+  @BeanProperty var name: String = null
+  @BeanProperty var email: String = null
+  @BeanProperty var role: String = null
+  @BeanProperty var imageURL: String = null
+  def toCase: User = {
     val hasImage = !imageURL.isEmpty
-    val maybeImageURL: Option[String] = if (hasImage) Some(imageURL) else None
-    UserCase(id, name, email, maybeImageURL)
+    val maybeRole: Option[String] = if (role != null) Some(role) else None
+    val maybeImageURL: Option[String] = if (imageURL != null) Some(imageURL) else None
+        User(id, name, email, maybeRole, maybeImageURL)
   }
   override def toString = s"${id}: ${name}, ${email}, ${imageURL}"
 }

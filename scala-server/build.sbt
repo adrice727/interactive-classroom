@@ -9,7 +9,7 @@ lazy val root = (project in file(".")).
       "io.circe" %% "circe-generic" % "0.5.1",
       "io.circe" %% "circe-parser" % "0.5.1",
       "io.circe" %% "circe-optics" % "0.5.1",
-      "com.tokbox" % "opentok-server-sdk" % "2.3.2",
+      "com.tokbox" % "opentok-server-sdk" % "3.0.0-beta.2",
       "com.google.firebase" % "firebase-server-sdk" % "3.0.1"
     )
   )

@@ -7,7 +7,8 @@ import com.opentok.MediaMode
 import com.opentok.TokenOptions;
 import com.opentok.Role;
 import io.circe._, io.circe.parser._, io.circe.generic.semiauto._, io.circe.parser.decode, io.circe.syntax._
-import cats.syntax.either._
+import cats._
+import cats.implicits._
 
 
 case class OpentokCredentials(apiKey: Int, apiSecret: String)
@@ -21,32 +22,35 @@ object Opentok {
   implicit val credentialsDecoder: Decoder[OpentokCredentials] = deriveDecoder[OpentokCredentials]
   val credentials = decode[OpentokCredentials](credentialsJSON).getOrElse(null);
 
- val opentok: OpenTok = new OpenTok(credentials.apiKey, credentials.apiSecret)
+  val opentok: OpenTok = new OpenTok(credentials.apiKey, credentials.apiSecret)
 
-  def createSession = {
+  def createSession: String = {
     val session: Session = opentok.createSession(new SessionProperties.Builder()
       .mediaMode(MediaMode.ROUTED)
       .build());
-    session
+    session.getSessionId
   }
 
-  def createToken(sessionId: String, user: User) = {
+  def createToken(sessionId: String, user: User): String = {
 
-    val tokenRoles: Map[String, Role] = Map(
-      "instructor" -> Role.MODERATOR,
-      "student" -> Role.PUBLISHER,
-      "auditor" -> Role.SUBSCRIBER
-    )
-    val tokenData: Json = Map(
+    val role = user.role.get match {
+      case "instructor" => Role.MODERATOR
+      case "student" => Role.PUBLISHER
+      case "auditor" => Role.SUBSCRIBER
+    }
+    
+    val tokenData: String = Map(
       "id" -> user.id,
       "role" -> user.role.get,
       "name" -> user.name
-    ).asJson
+    ).asJson.noSpaces
 
     val token = opentok.generateToken(sessionId, new TokenOptions.Builder()
-      .role(tokenRoles(user.role.get))
-      .data("name=Johnny")
+      .role(role)
+      .data(tokenData)
       .build());
+
+    token
   }
 }
 

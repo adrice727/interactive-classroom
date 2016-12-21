@@ -4,12 +4,13 @@ import com.opentok.OpenTok
 import com.opentok.Session
 import com.opentok.SessionProperties
 import com.opentok.MediaMode
-import io.circe._, io.circe.parser._, io.circe.generic.semiauto._, io.circe.parser.decode
+import com.opentok.TokenOptions;
+import com.opentok.Role;
+import io.circe._, io.circe.parser._, io.circe.generic.semiauto._, io.circe.parser.decode, io.circe.syntax._
 import cats.syntax.either._
 
 
 case class OpentokCredentials(apiKey: Int, apiSecret: String)
-
 
 object Opentok {
   /** Initialize */
@@ -27,6 +28,25 @@ object Opentok {
       .mediaMode(MediaMode.ROUTED)
       .build());
     session
+  }
+
+  def createToken(sessionId: String, user: User) = {
+
+    val tokenRoles: Map[String, Role] = Map(
+      "instructor" -> Role.MODERATOR,
+      "student" -> Role.PUBLISHER,
+      "auditor" -> Role.SUBSCRIBER
+    )
+    val tokenData: Json = Map(
+      "id" -> user.id,
+      "role" -> user.role.get,
+      "name" -> user.name
+    ).asJson
+
+    val token = opentok.generateToken(sessionId, new TokenOptions.Builder()
+      .role(tokenRoles(user.role.get))
+      .data("name=Johnny")
+      .build());
   }
 }
 

@@ -8,21 +8,19 @@ import io.finch.circe._
 import io.circe.generic.auto._
 import io.circe.syntax._
 
-
-
 object Main extends App {
 
-  val validateUser: Endpoint[UserCase] = post("user" :: body.as[UserCase]) { user: UserCase =>
+  val validateUser: Endpoint[User] = post("user" :: body.as[User]) { user: User =>
     User.existsOrCreate(user).map(Ok)
   } handle {
     case e: Exception => NotFound(e)
   }
 
-  val getClassroom: Endpoint[ClassroomCase] = get("classroom" / string) { (classroomId: String) =>
+  val getClassroom: Endpoint[Classroom] = get("classroom" / string) { (classroomId: String) =>
     Classroom.get(classroomId).map(Ok)
   }
 
-  val getAllClassrooms: Endpoint[Map[String, ClassroomCase]] = get("classrooms") {
+  val getAllClassrooms: Endpoint[Map[String, Classroom]] = get("classrooms") {
     Classroom.getAll().map(Ok)
   }
 //  val createClassroom: Endpoint[String] = post("classroom" :: body.as[ClassroomCase]) { classroom: ClassroomCase =>

@@ -15,14 +15,14 @@ case class OpentokCredentials(apiKey: Int, apiSecret: String)
 
 object Opentok {
   /** Initialize */
-  val credentialsJSON: String = {
+  private val credentialsJSON: String = {
     val stream: InputStream = getClass.getResourceAsStream("/opentokCredentials.json")
     scala.io.Source.fromInputStream(stream).mkString
   }
   implicit val credentialsDecoder: Decoder[OpentokCredentials] = deriveDecoder[OpentokCredentials]
-  val credentials = decode[OpentokCredentials](credentialsJSON).getOrElse(null);
+  private val credentials = decode[OpentokCredentials](credentialsJSON).getOrElse(null);
 
-  val opentok: OpenTok = new OpenTok(credentials.apiKey, credentials.apiSecret)
+  private val opentok: OpenTok = new OpenTok(credentials.apiKey, credentials.apiSecret)
 
   def createSession: String = {
     val session: Session = opentok.createSession(new SessionProperties.Builder()
@@ -38,7 +38,7 @@ object Opentok {
       case "student" => Role.PUBLISHER
       case "auditor" => Role.SUBSCRIBER
     }
-    
+
     val tokenData: String = Map(
       "id" -> user.id,
       "role" -> user.role.get,

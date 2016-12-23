@@ -8,7 +8,7 @@ import io.finch.circe._
 import io.circe.generic.auto._
 import io.circe.syntax._
 
-object Main extends App {
+object Api extends App {
 
   val validateUser: Endpoint[User] = post("user" :: body.as[User]) { user: User =>
     User.existsOrCreate(user).map(Ok)

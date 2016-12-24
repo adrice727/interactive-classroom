@@ -6,7 +6,7 @@ import com.opentok.SessionProperties
 import com.opentok.MediaMode
 import com.opentok.TokenOptions;
 import com.opentok.Role;
-import io.circe._, io.circe.parser._, io.circe.generic.semiauto._, io.circe.parser.decode, io.circe.syntax._
+import io.circe._, io.circe.parser._, io.circe.generic.semiauto._, io.circe.syntax._
 import cats._
 import cats.implicits._
 

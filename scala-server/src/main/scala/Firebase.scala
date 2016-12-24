@@ -13,6 +13,7 @@ object Firebase {
     .build();
   FirebaseApp.initializeApp(options)
   def ref(path: String): DatabaseReference = {
-    FirebaseDatabase.getInstance().getReference(path)
+    val database = FirebaseDatabase.getInstance()
+    database.getReference(path)
   }
 }

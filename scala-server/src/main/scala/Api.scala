@@ -23,15 +23,17 @@ object Api extends App {
   val getAllClassrooms: Endpoint[Map[String, Classroom]] = get("classrooms") {
     Classroom.getAll().map(Ok)
   }
-//  val createClassroom: Endpoint[String] = post("classroom" :: body.as[ClassroomCase]) { classroom: ClassroomCase =>
-//    ???
-//  }
+  val createClassroom: Endpoint[Classroom] = post("classroom" :: body.as[Classroom]) { classroom: Classroom =>
+    Classroom.create(classroom).map(Ok)
+  } handle {
+    case e: FirebaseException => InternalServerError(e)
+  }
 //  val removeClassroom: Endpoint[String] = delete("classroom") {
 //    ???
 //  }
 
   val api: Service[Request, Response] = (
-    validateUser :+: getClassroom :+: getAllClassrooms
+    validateUser :+: getClassroom :+: getAllClassrooms :+: createClassroom
     ).toServiceAs[Application.Json]
 
 

@@ -1,29 +1,29 @@
 import scala.beans.BeanProperty
-import com.twitter.util.Promise
+import com.twitter.util.{Future, Promise}
 import com.google.firebase.database._
 import scala.collection.JavaConverters._
 import scala.collection.breakOut
 
-
-
-
 object Classroom {
 
-//  def create(title: String, description: String, instructorId: String) : Future[ClassroomCase] = {
-//    val ref = Firebase.ref(s"users/${user.id}")
-//    val fake = ClassroomCase("akdjf", "asldjf", "aldjf", "adlf", "adfh", "adfk")
-//    val p = new Promise[ClassroomCase]
-//    ref.setValue(userRecord, new DatabaseReference.CompletionListener() {
-//      override def onComplete(databaseError: DatabaseError, databaseReference: DatabaseReference) {
-//        if (databaseError != null) {
-//          p.setException(new FirebaseException(databaseError.getMessage()))
-//        } else {
-//          p.setValue(fake)
-//        }
-//      }
-//    })
-//    p
-//  }
+  def create(classroomData: Classroom): Future[Classroom] = {
+    val p = new Promise[Classroom]
+    val ref: DatabaseReference = Firebase.ref("classrooms")
+    val childRef: DatabaseReference = ref.push
+    val classroomId: Some[String] = Some(childRef.getKey)
+    val sessionId: Some[String] = Some(Opentok.createSession)
+    val classroom = classroomData copy (id = classroomId, sessionId = sessionId)
+    childRef.setValue(classroom.toBean, new DatabaseReference.CompletionListener() {
+      override def onComplete(databaseError: DatabaseError, databaseReference: DatabaseReference) {
+        if (databaseError != null) {
+          p.setException(new FirebaseException(databaseError.getMessage()))
+        } else {
+          p.setValue(classroom)
+        }
+      }
+    })
+    p
+  }
 
   def get(id: String): Promise[Classroom] = {
     val ref = Firebase.ref(s"classrooms/${id}")
@@ -38,15 +38,16 @@ object Classroom {
     })
     p
   }
+
   def getAll(): Promise[Map[String, Classroom]] = {
     val p = new Promise[Map[String, Classroom]]
     val ref = Firebase.ref("classrooms")
     ref.addListenerForSingleValueEvent(new ValueEventListener() {
       override def onDataChange(snapshot: DataSnapshot) = {
         // This will be an empty list if there are no children
-        val classroomList = snapshot.getChildren().asScala.toList map { c => c.getValue(classOf[ClassroomBean]) }
+        val classroomList: List[ClassroomBean] = snapshot.getChildren().asScala.toList map { c => c.getValue(classOf[ClassroomBean]) }
 
-        if (classroomList.length == 0) {
+        if (classroomList isEmpty) {
           p.setValue(Map[String, Classroom]())
         } else {
           val classrooms: Map[String, Classroom] = (for {
@@ -67,23 +68,23 @@ object Classroom {
 
 
 case class Classroom(
-                          id: String,
-                          title: String,
-                          description: String,
-                          instructorId: String,
-                          instructorName: String,
-                          sessionId: String,
-                          imageURL: Option[String] = None
-                        ) {
+                      id: Option[String] = None,
+                      title: String,
+                      description: String,
+                      instructorId: String,
+                      instructorName: String,
+                      sessionId: Option[String] = None,
+                      imageURL: Option[String] = None
+                    ) {
   def toBean = {
     val classroom = new ClassroomBean()
-    classroom.id = id
+    classroom.id = id getOrElse null
     classroom.title = title
     classroom.description = description
     classroom.instructorId = instructorId
     classroom.instructorName = instructorName
-    classroom.sessionId = sessionId
-    classroom.imageURL = imageURL getOrElse ""
+    classroom.sessionId = sessionId getOrElse null
+    classroom.imageURL = imageURL getOrElse null
     classroom
   }
 }
@@ -100,7 +101,7 @@ class ClassroomBean() {
   def toCase: Classroom = {
     val hasImage = !imageURL.isEmpty
     val maybeImageURL: Option[String] = if (hasImage) Some(imageURL) else None
-    Classroom(id, title, description, instructorId, instructorName, sessionId, maybeImageURL)
+    Classroom(Some(id), title, description, instructorId, instructorName, Some(sessionId), maybeImageURL)
   }
   override def toString = s"${title} with ${instructorName}"
 }

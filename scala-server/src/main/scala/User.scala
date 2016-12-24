@@ -1,11 +1,11 @@
 import scala.beans.BeanProperty
-import com.twitter.util.{Await, Future, Promise}
+import com.twitter.util.{Future, Promise}
 import com.google.firebase.database._
 
 case class UserNotFoundException(s: String) extends Exception(s)
 
 object User {
-  def create(user: User) : Future[User] = {
+  def create(user: User): Future[User] = {
     val ref = Firebase.ref(s"users/${user.id}")
     val userRecord = user.toBean
     val p = new Promise[User]
@@ -75,7 +75,7 @@ class UserBean() {
     val hasImage = !imageURL.isEmpty
     val maybeRole: Option[String] = if (role != null) Some(role) else None
     val maybeImageURL: Option[String] = if (imageURL != null) Some(imageURL) else None
-        User(id, name, email, maybeRole, maybeImageURL)
+    User(id, name, email, maybeRole, maybeImageURL)
   }
   override def toString = s"${id}: ${name}, ${email}, ${imageURL}"
 }

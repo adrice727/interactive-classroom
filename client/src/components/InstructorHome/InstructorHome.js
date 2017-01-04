@@ -10,7 +10,7 @@ import './InstructorHome.css';
 
 class InstructorHome extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.removeClassroom = this.removeClassroom.bind(this);
     this.createClassroom = this.createClassroom.bind(this);
@@ -20,10 +20,8 @@ class InstructorHome extends Component {
     const { dispatch, instructor } = this.props;
     if (instructor) {
       api.get(`classrooms/${instructor.id}`)
-      .then(response => {
-        const classrooms = R.path(['classrooms'], response);
-        dispatch(setClassrooms(classrooms));
-      });
+        .then(classrooms => dispatch(setClassrooms(classrooms)))
+        .catch(error => console.log(error));
     } else {
       browserHistory.push('login/instructor');
     }
@@ -33,17 +31,16 @@ class InstructorHome extends Component {
     const { dispatch, instructor } = this.props;
     const instructorData = { instructorId: instructor.id, instructorName: instructor.name }
     const classroom = R.merge(classroomData, instructorData);
-      api.post('classroom', { classroom })
-      .then(classroomData => {
-        dispatch(addClassroom(classroomData));
-      });
+    api.post('classroom', classroom)
+      .then(data => dispatch(addClassroom({ classroom: data })))
+      .catch(error => console.log(error));
   }
 
   removeClassroom(id) {
     const { dispatch } = this.props;
     api.del(`classroom/${id}`)
-    .then(response => dispatch(removeClassroom(id)))
-    .catch(error => console.log(error));
+      .then(response => dispatch(removeClassroom(id)))
+      .catch(error => console.log(error));
   }
 
   render() {

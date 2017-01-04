@@ -8,8 +8,7 @@ object Classroom {
 
   def create(classroomData: Classroom): Future[Classroom] = {
     val p = new Promise[Classroom]
-    val ref: DatabaseReference = Firebase.ref("classrooms")
-    val childRef: DatabaseReference = ref.push
+    val childRef: DatabaseReference = Firebase.ref("classrooms").push()
     val classroomId: Some[String] = Some(childRef.getKey)
     val sessionId: Some[String] = Some(Opentok.createSession)
     val classroom = classroomData copy(id = classroomId, sessionId = sessionId)
@@ -79,7 +78,6 @@ object Classroom {
     p
   }
 }
-
 
 case class Classroom(
                       id: Option[String] = None,

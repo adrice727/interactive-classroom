@@ -9,7 +9,6 @@ const createList = classrooms => {
 }
 
 const ClassroomItem = ({ classroom, remove }) => {
-  const boundRemove = remove.bind(this, classroom.id);
   const { title, imageURL, id } = classroom;
   const imageSrc = R.defaultTo(classroomIcon)(imageURL);
   return (
@@ -24,7 +23,7 @@ const ClassroomItem = ({ classroom, remove }) => {
       </div>
       <div className="action-container">
         <a className="link btn blue" href={`classroom/${id}`}>Join</a>
-        <button className="delete btn red" onClick={boundRemove}>Remove</button>
+        <button className="delete btn red" onClick={R.partial(remove, [id])}>Remove</button>
       </div>
     </li>
   )

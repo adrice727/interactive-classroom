@@ -41,7 +41,7 @@ object Api extends App {
     case e: Exception => InternalServerError(e)
   }
 
-  val endpoints: Service[Request, Response] = (
+  val service: Service[Request, Response] = (
     validateUser :+:
       getClassroom :+:
       getAllClassrooms :+:
@@ -53,11 +53,11 @@ object Api extends App {
   //Set up CORS
   val policy: Cors.Policy = Cors.Policy(
     allowsOrigin = _ => Some("*"),
-    allowsMethods = _ => Some(Seq("GET", "POST")),
-    allowsHeaders = _ => Some(Seq("Accept"))
+    allowsMethods = _ => Some(Seq("GET", "POST", "DELETE")),
+    allowsHeaders = _ => Some(Seq("Accept", "Content-Type"))
   )
-  val api: Service[Request, Response] = new Cors.HttpFilter(policy).andThen(endpoints)
+  val api: Service[Request, Response] = new Cors.HttpFilter(policy).andThen(service)
 
   // Listen
-  Await.ready(Http.server.serve(":8080", api))
+  Await.ready(Http.server.serve(":3030", api))
 }

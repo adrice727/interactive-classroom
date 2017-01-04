@@ -38,6 +38,15 @@ object Classroom {
     p
   }
 
+  private def buildMap(classroomList: List[ClassroomBean]): Map[String, Classroom] = {
+    val classrooms: Map[String, Classroom] = (for {
+      c <- classroomList
+      id = c.getId
+      cc = c.toCase
+    } yield (id -> cc)) (breakOut)
+    classrooms
+  }
+
   private def getInstrucorClassrooms(instructorId: String) : Promise[Map[String, Classroom]] = {
     val p = new Promise[Map[String, Classroom]]
     val ref = Firebase.ref("classrooms")
@@ -48,12 +57,7 @@ object Classroom {
         if (classroomList isEmpty) {
           p.setValue(Map[String, Classroom]())
         } else {
-          val classrooms: Map[String, Classroom] = (for {
-            c <- classroomList
-            id = c.getId
-            cc = c.toCase
-          } yield (id -> cc)) (breakOut)
-          p.setValue(classrooms)
+          p.setValue(buildMap(classroomList))
         }
       }
       override def onCancelled(databaseError: DatabaseError) = {
@@ -73,12 +77,7 @@ object Classroom {
         if (classroomList isEmpty) {
           p.setValue(Map[String, Classroom]())
         } else {
-          val classrooms: Map[String, Classroom] = (for {
-            c <- classroomList
-            id = c.getId
-            cc = c.toCase
-          } yield (id -> cc)) (breakOut)
-          p.setValue(classrooms)
+          p.setValue(buildMap(classroomList))
         }
       }
       override def onCancelled(databaseError: DatabaseError) = {

@@ -38,14 +38,13 @@ object Classroom {
     p
   }
 
-  def getAll(): Promise[Map[String, Classroom]] = {
+  private def getInstrucorClassrooms(instructorId: String) : Promise[Map[String, Classroom]] = {
     val p = new Promise[Map[String, Classroom]]
     val ref = Firebase.ref("classrooms")
-    ref.addListenerForSingleValueEvent(new ValueEventListener() {
+    ref.orderByChild("instructorId").equalTo(instructorId).addListenerForSingleValueEvent(new ValueEventListener() {
       override def onDataChange(snapshot: DataSnapshot) = {
         // This will be an empty list if there are no children
         val classroomList: List[ClassroomBean] = snapshot.getChildren().asScala.toList map { c => c.getValue(classOf[ClassroomBean]) }
-
         if (classroomList isEmpty) {
           p.setValue(Map[String, Classroom]())
         } else {
@@ -62,6 +61,35 @@ object Classroom {
       }
     })
     p
+  }
+
+  private def getAllClassrooms() : Promise[Map[String, Classroom]] = {
+    val p = new Promise[Map[String, Classroom]]
+    val ref = Firebase.ref("classrooms")
+    ref.addListenerForSingleValueEvent(new ValueEventListener() {
+      override def onDataChange(snapshot: DataSnapshot) = {
+        // This will be an empty list if there are no children
+        val classroomList: List[ClassroomBean] = snapshot.getChildren().asScala.toList map { c => c.getValue(classOf[ClassroomBean]) }
+        if (classroomList isEmpty) {
+          p.setValue(Map[String, Classroom]())
+        } else {
+          val classrooms: Map[String, Classroom] = (for {
+            c <- classroomList
+            id = c.getId
+            cc = c.toCase
+          } yield (id -> cc)) (breakOut)
+          p.setValue(classrooms)
+        }
+      }
+      override def onCancelled(databaseError: DatabaseError) = {
+        p.setException(new Exception(databaseError.getMessage()))
+      }
+    })
+    p
+  }
+
+  def getAll(instructorId: String = ""): Promise[Map[String, Classroom]] = {
+    if (instructorId.isEmpty) getAllClassrooms() else getInstrucorClassrooms(instructorId)
   }
 
   def remove(id: String): Promise[String] = {
@@ -109,7 +137,7 @@ class ClassroomBean() {
   @BeanProperty var instructorId: String = null
   @BeanProperty var instructorName: String = null
   @BeanProperty var sessionId: String = null
-  @BeanProperty var imageURL: String = null
+  @BeanProperty var imageURL: String = ""
   def toCase: Classroom = {
     val hasImage = !imageURL.isEmpty
     val maybeImageURL: Option[String] = if (hasImage) Some(imageURL) else None

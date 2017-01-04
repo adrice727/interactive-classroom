@@ -24,6 +24,11 @@ object Api extends App {
     Classroom.getAll().map(Ok)
   }
 
+  // TODO: Combine with getAllClassrooms using optional param
+  val getInstructorClassrooms: Endpoint[Map[String, Classroom]] = get("classrooms" / string) { instructorId: String =>
+    Classroom.getAll(instructorId).map(Ok)
+  }
+
   val createClassroom: Endpoint[Classroom] = post("classroom" :: body.as[Classroom]) { classroom: Classroom =>
     Classroom.create(classroom).map(Ok)
   } handle {
@@ -37,7 +42,12 @@ object Api extends App {
   }
 
   val endpoints: Service[Request, Response] = (
-    validateUser :+: getClassroom :+: getAllClassrooms :+: createClassroom :+: removeClassroom
+    validateUser :+:
+      getClassroom :+:
+      getAllClassrooms :+:
+      getInstructorClassrooms :+:
+      createClassroom :+:
+      removeClassroom
     ).toServiceAs[Application.Json]
 
   //Set up CORS

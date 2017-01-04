@@ -12,7 +12,7 @@ object Classroom {
     val childRef: DatabaseReference = ref.push
     val classroomId: Some[String] = Some(childRef.getKey)
     val sessionId: Some[String] = Some(Opentok.createSession)
-    val classroom = classroomData copy (id = classroomId, sessionId = sessionId)
+    val classroom = classroomData copy(id = classroomId, sessionId = sessionId)
     childRef.setValue(classroom.toBean, new DatabaseReference.CompletionListener() {
       override def onComplete(databaseError: DatabaseError, databaseReference: DatabaseReference) {
         if (databaseError != null) {
@@ -60,6 +60,20 @@ object Classroom {
       }
       override def onCancelled(databaseError: DatabaseError) = {
         p.setException(new Exception(databaseError.getMessage()))
+      }
+    })
+    p
+  }
+
+  def remove(id: String): Promise[String] = {
+    val p = new Promise[String]
+    Firebase.ref(s"classrooms/${id}").setValue(null, new DatabaseReference.CompletionListener() {
+      override def onComplete(databaseError: DatabaseError, databaseReference: DatabaseReference) {
+        if (databaseError != null) {
+          p.setException(new FirebaseException(databaseError.getMessage()))
+        } else {
+          p.setValue(s"Classroom ${id} removed")
+        }
       }
     })
     p

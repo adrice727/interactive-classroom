@@ -28,12 +28,14 @@ object Api extends App {
   } handle {
     case e: FirebaseException => InternalServerError(e)
   }
-//  val removeClassroom: Endpoint[String] = delete("classroom") {
-//    ???
-//  }
+  val removeClassroom: Endpoint[String] = delete("classroom" / string) { (classroomId: String) =>
+    Classroom.remove(classroomId).map(Ok)
+  } handle {
+    case e: Exception => InternalServerError(e)
+  }
 
   val api: Service[Request, Response] = (
-    validateUser :+: getClassroom :+: getAllClassrooms :+: createClassroom
+    validateUser :+: getClassroom :+: getAllClassrooms :+: createClassroom :+: removeClassroom
     ).toServiceAs[Application.Json]
 
 

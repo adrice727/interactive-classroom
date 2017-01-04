@@ -12,11 +12,9 @@ class StudentHome extends Component {
   componentDidMount() {
     const { user, dispatch } = this.props;
     if (user) {
-      api.get('classrooms')
-      .then(response => {
-        const classrooms = R.path(['classrooms'], response);
-        dispatch(setAvailableClasses(classrooms));
-      }).catch(error => console.log(error));
+      api.get('classroodms')
+      .then(classrooms => dispatch(setAvailableClasses(classrooms)))
+      .catch(error => console.log(error));
     } else {
       browserHistory.push('/login');
     }

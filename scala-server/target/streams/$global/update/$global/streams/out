@@ -1,0 +1,846 @@
+[0m[[0minfo[0m] [0mUpdating {file:/Users/aaron/adrice727/interactive-classroom/scala-server/}root...[0m
+[0m[[0mdebug[0m] [0m:: resolving dependencies :: interactive-classroom-server#interactive-classroom-server_2.11;1.0[0m
+[0m[[0mdebug[0m] [0m	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool][0m
+[0m[[0mdebug[0m] [0m	validate = true[0m
+[0m[[0mdebug[0m] [0m	refresh = false[0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'compile'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for interactive-classroom-server#interactive-classroom-server_2.11;1.0 [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->org.scala-lang#scala-library;2.11.8 [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.11.8 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@36c9569[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-library;2.11.8[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-library;2.11.8 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[2.11.8] org.scala-lang#scala-library;2.11.8[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->org.scala-lang#scala-library;2.11.8 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->org.scala-lang#scala-library;2.11.8 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->org.scala-lang#scala-library;2.11.8 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->com.github.finagle#finch-core_2.11;0.11.0-M4 [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.github.finagle#finch-core_2.11;0.11.0-M4 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.github.finagle#finch-core_2.11;0.11.0-M4 {compile=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.github.finagle#finch-core_2.11;0.11.0-M4[0m
+[0m[[0mdebug[0m] [0m	found com.github.finagle#finch-core_2.11;0.11.0-M4 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[0.11.0-M4] com.github.finagle#finch-core_2.11;0.11.0-M4[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->com.github.finagle#finch-core_2.11;0.11.0-M4 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->com.github.finagle#finch-core_2.11;0.11.0-M4 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.scala-lang#scala-library;2.11.8 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.scala-lang#scala-library;2.11.8 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->com.chuusai#shapeless_2.11;2.3.2 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.chuusai#shapeless_2.11;2.3.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.chuusai#shapeless_2.11;2.3.2 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.chuusai#shapeless_2.11;2.3.2[0m
+[0m[[0mdebug[0m] [0m	found com.chuusai#shapeless_2.11;2.3.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->com.chuusai#shapeless_2.11;2.3.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.chuusai#shapeless_2.11;2.3.2->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.chuusai#shapeless_2.11;2.3.2->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.chuusai#shapeless_2.11;2.3.2->org.typelevel#macro-compat_2.11;1.1.1 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.typelevel#macro-compat_2.11;1.1.1 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.typelevel#macro-compat_2.11;1.1.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.typelevel#macro-compat_2.11;1.1.1[0m
+[0m[[0mdebug[0m] [0m	found org.typelevel#macro-compat_2.11;1.1.1 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.chuusai#shapeless_2.11;2.3.2->org.typelevel#macro-compat_2.11;1.1.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#macro-compat_2.11;1.1.1->org.scala-lang#scala-library;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#macro-compat_2.11;1.1.1->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#macro-compat_2.11;1.1.1->org.scala-lang#scala-library;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#macro-compat_2.11;1.1.1->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->com.chuusai#shapeless_2.11;2.3.2 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->com.chuusai#shapeless_2.11;2.3.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.chuusai#shapeless_2.11;2.3.2->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.chuusai#shapeless_2.11;2.3.2->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.chuusai#shapeless_2.11;2.3.2->org.typelevel#macro-compat_2.11;1.1.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.chuusai#shapeless_2.11;2.3.2->org.typelevel#macro-compat_2.11;1.1.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#macro-compat_2.11;1.1.1->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#macro-compat_2.11;1.1.1->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#macro-compat_2.11;1.1.1->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.typelevel#cats-core_2.11;0.7.2 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.typelevel#cats-core_2.11;0.7.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.typelevel#cats-core_2.11;0.7.2 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.typelevel#cats-core_2.11;0.7.2[0m
+[0m[[0mdebug[0m] [0m	found org.typelevel#cats-core_2.11;0.7.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[0.7.2] org.typelevel#cats-core_2.11;0.7.2[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.typelevel#cats-core_2.11;0.7.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->org.typelevel#cats-macros_2.11;0.7.2 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.typelevel#cats-macros_2.11;0.7.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.typelevel#cats-macros_2.11;0.7.2 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.typelevel#cats-macros_2.11;0.7.2[0m
+[0m[[0mdebug[0m] [0m	found org.typelevel#cats-macros_2.11;0.7.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[0.7.2] org.typelevel#cats-macros_2.11;0.7.2[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->org.typelevel#cats-macros_2.11;0.7.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-macros_2.11;0.7.2->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-macros_2.11;0.7.2->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-macros_2.11;0.7.2->com.github.mpilquist#simulacrum_2.11;0.8.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.github.mpilquist#simulacrum_2.11;0.8.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.github.mpilquist#simulacrum_2.11;0.8.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.github.mpilquist#simulacrum_2.11;0.8.0[0m
+[0m[[0mdebug[0m] [0m	found com.github.mpilquist#simulacrum_2.11;0.8.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-macros_2.11;0.7.2->com.github.mpilquist#simulacrum_2.11;0.8.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpilquist#simulacrum_2.11;0.8.0->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpilquist#simulacrum_2.11;0.8.0->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpilquist#simulacrum_2.11;0.8.0->org.typelevel#macro-compat_2.11;1.1.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpilquist#simulacrum_2.11;0.8.0->org.typelevel#macro-compat_2.11;1.1.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-macros_2.11;0.7.2->org.typelevel#machinist_2.11;0.4.1 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.typelevel#machinist_2.11;0.4.1 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.typelevel#machinist_2.11;0.4.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.typelevel#machinist_2.11;0.4.1[0m
+[0m[[0mdebug[0m] [0m	found org.typelevel#machinist_2.11;0.4.1 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-macros_2.11;0.7.2->org.typelevel#machinist_2.11;0.4.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#machinist_2.11;0.4.1->org.scala-lang#scala-library;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#machinist_2.11;0.4.1->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#machinist_2.11;0.4.1->org.scala-lang#scala-library;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#machinist_2.11;0.4.1->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#machinist_2.11;0.4.1->org.scala-lang#scala-reflect;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#machinist_2.11;0.4.1->org.scala-lang#scala-reflect;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->org.typelevel#cats-kernel_2.11;0.7.2 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.typelevel#cats-kernel_2.11;0.7.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.typelevel#cats-kernel_2.11;0.7.2 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.typelevel#cats-kernel_2.11;0.7.2[0m
+[0m[[0mdebug[0m] [0m	found org.typelevel#cats-kernel_2.11;0.7.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[0.7.2] org.typelevel#cats-kernel_2.11;0.7.2[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->org.typelevel#cats-kernel_2.11;0.7.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-kernel_2.11;0.7.2->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-kernel_2.11;0.7.2->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->com.github.mpilquist#simulacrum_2.11;0.8.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->com.github.mpilquist#simulacrum_2.11;0.8.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->org.typelevel#machinist_2.11;0.4.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->org.typelevel#machinist_2.11;0.4.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.typelevel#cats-core_2.11;0.7.2 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.typelevel#cats-core_2.11;0.7.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->org.typelevel#cats-macros_2.11;0.7.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->org.typelevel#cats-macros_2.11;0.7.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-macros_2.11;0.7.2->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-macros_2.11;0.7.2->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-macros_2.11;0.7.2->com.github.mpilquist#simulacrum_2.11;0.8.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-macros_2.11;0.7.2->com.github.mpilquist#simulacrum_2.11;0.8.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpilquist#simulacrum_2.11;0.8.0->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpilquist#simulacrum_2.11;0.8.0->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpilquist#simulacrum_2.11;0.8.0->org.typelevel#macro-compat_2.11;1.1.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpilquist#simulacrum_2.11;0.8.0->org.typelevel#macro-compat_2.11;1.1.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-macros_2.11;0.7.2->org.typelevel#machinist_2.11;0.4.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-macros_2.11;0.7.2->org.typelevel#machinist_2.11;0.4.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#machinist_2.11;0.4.1->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#machinist_2.11;0.4.1->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#machinist_2.11;0.4.1->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#machinist_2.11;0.4.1->org.scala-lang#scala-reflect;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->org.typelevel#cats-kernel_2.11;0.7.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->org.typelevel#cats-kernel_2.11;0.7.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-kernel_2.11;0.7.2->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-kernel_2.11;0.7.2->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->com.github.mpilquist#simulacrum_2.11;0.8.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->com.github.mpilquist#simulacrum_2.11;0.8.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->org.typelevel#machinist_2.11;0.4.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.typelevel#cats-core_2.11;0.7.2->org.typelevel#machinist_2.11;0.4.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->com.twitter#finagle-http_2.11;6.35.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.twitter#finagle-http_2.11;6.35.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.twitter#finagle-http_2.11;6.35.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.twitter#finagle-http_2.11;6.35.0[0m
+[0m[[0mdebug[0m] [0m	found com.twitter#finagle-http_2.11;6.35.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[6.35.0] com.twitter#finagle-http_2.11;6.35.0[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->com.twitter#finagle-http_2.11;6.35.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->org.scala-lang#scala-library;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->org.scala-lang#scala-library;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->com.twitter#finagle-core_2.11;6.35.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.twitter#finagle-core_2.11;6.35.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.twitter#finagle-core_2.11;6.35.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.twitter#finagle-core_2.11;6.35.0[0m
+[0m[[0mdebug[0m] [0m	found com.twitter#finagle-core_2.11;6.35.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[6.35.0] com.twitter#finagle-core_2.11;6.35.0[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->com.twitter#finagle-core_2.11;6.35.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->org.scala-lang#scala-library;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->org.scala-lang#scala-library;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-app_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.twitter#util-app_2.11;6.34.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.twitter#util-app_2.11;6.34.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.twitter#util-app_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m	found com.twitter#util-app_2.11;6.34.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[6.34.0] com.twitter#util-app_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-app_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-app_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-app_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-app_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-app_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-app_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.twitter#util-core_2.11;6.34.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.twitter#util-core_2.11;6.34.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.twitter#util-core_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m	found com.twitter#util-core_2.11;6.34.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[6.34.0] com.twitter#util-core_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-app_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->com.twitter#util-function_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.twitter#util-function_2.11;6.34.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.twitter#util-function_2.11;6.34.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.twitter#util-function_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m	found com.twitter#util-function_2.11;6.34.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[6.34.0] com.twitter#util-function_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->com.twitter#util-function_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-function_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-function_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-function_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-function_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->com.twitter#jsr166e;1.0.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.twitter#jsr166e;1.0.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.twitter#jsr166e;1.0.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.twitter#jsr166e;1.0.0[0m
+[0m[[0mdebug[0m] [0m	found com.twitter#jsr166e;1.0.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->com.twitter#jsr166e;1.0.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4->org.scala-lang#scala-library;2.11.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4->org.scala-lang#scala-library;2.11.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-app_2.11;6.34.0->com.twitter#util-registry_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.twitter#util-registry_2.11;6.34.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.twitter#util-registry_2.11;6.34.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.twitter#util-registry_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m	found com.twitter#util-registry_2.11;6.34.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[6.34.0] com.twitter#util-registry_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-app_2.11;6.34.0->com.twitter#util-registry_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-registry_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-registry_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-registry_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-registry_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-registry_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-registry_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-cache_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.twitter#util-cache_2.11;6.34.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.twitter#util-cache_2.11;6.34.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.twitter#util-cache_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m	found com.twitter#util-cache_2.11;6.34.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[6.34.0] com.twitter#util-cache_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-cache_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->com.google.code.findbugs#jsr305;2.0.1 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.google.code.findbugs#jsr305;2.0.1 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.google.code.findbugs#jsr305;2.0.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.google.code.findbugs#jsr305;2.0.1[0m
+[0m[[0mdebug[0m] [0m	found com.google.code.findbugs#jsr305;2.0.1 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->com.google.code.findbugs#jsr305;2.0.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->com.google.guava#guava;16.0.1 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.google.guava#guava;16.0.1 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.google.guava#guava;16.0.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.google.guava#guava;16.0.1[0m
+[0m[[0mdebug[0m] [0m	found com.google.guava#guava;16.0.1 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->com.google.guava#guava;16.0.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-codec_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.twitter#util-codec_2.11;6.34.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.twitter#util-codec_2.11;6.34.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.twitter#util-codec_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m	found com.twitter#util-codec_2.11;6.34.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[6.34.0] com.twitter#util-codec_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-codec_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-codec_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-codec_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-codec_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-codec_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-codec_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-codec_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-codec_2.11;6.34.0->commons-codec#commons-codec;1.9 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving commons-codec#commons-codec;1.9 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: commons-codec#commons-codec;1.9 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: commons-codec#commons-codec;1.9[0m
+[0m[[0mdebug[0m] [0m	found commons-codec#commons-codec;1.9 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-codec_2.11;6.34.0->commons-codec#commons-codec;1.9 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-collection_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.twitter#util-collection_2.11;6.34.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.twitter#util-collection_2.11;6.34.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.twitter#util-collection_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m	found com.twitter#util-collection_2.11;6.34.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[6.34.0] com.twitter#util-collection_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-collection_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->com.google.code.findbugs#jsr305;2.0.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->com.google.code.findbugs#jsr305;2.0.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->javax.inject#javax.inject;1 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving javax.inject#javax.inject;1 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: javax.inject#javax.inject;1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: javax.inject#javax.inject;1[0m
+[0m[[0mdebug[0m] [0m	found javax.inject#javax.inject;1 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->javax.inject#javax.inject;1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->com.google.guava#guava;16.0.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->com.google.guava#guava;16.0.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->commons-collections#commons-collections;3.2.2 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving commons-collections#commons-collections;3.2.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: commons-collections#commons-collections;3.2.2 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: commons-collections#commons-collections;3.2.2[0m
+[0m[[0mdebug[0m] [0m	found commons-collections#commons-collections;3.2.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->commons-collections#commons-collections;3.2.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-core_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-core_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-hashing_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.twitter#util-hashing_2.11;6.34.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.twitter#util-hashing_2.11;6.34.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.twitter#util-hashing_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m	found com.twitter#util-hashing_2.11;6.34.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[6.34.0] com.twitter#util-hashing_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-hashing_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-hashing_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-hashing_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-hashing_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-hashing_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-jvm_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.twitter#util-jvm_2.11;6.34.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.twitter#util-jvm_2.11;6.34.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.twitter#util-jvm_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m	found com.twitter#util-jvm_2.11;6.34.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[6.34.0] com.twitter#util-jvm_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-jvm_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-jvm_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-jvm_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-jvm_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-jvm_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-jvm_2.11;6.34.0->com.twitter#util-app_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-jvm_2.11;6.34.0->com.twitter#util-app_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-jvm_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-jvm_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-lint_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.twitter#util-lint_2.11;6.34.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.twitter#util-lint_2.11;6.34.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.twitter#util-lint_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m	found com.twitter#util-lint_2.11;6.34.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[6.34.0] com.twitter#util-lint_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-lint_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-lint_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-lint_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-lint_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-lint_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-logging_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.twitter#util-logging_2.11;6.34.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.twitter#util-logging_2.11;6.34.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.twitter#util-logging_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m	found com.twitter#util-logging_2.11;6.34.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[6.34.0] com.twitter#util-logging_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-logging_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->com.twitter#util-app_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->com.twitter#util-app_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->com.twitter#util-stats_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.twitter#util-stats_2.11;6.34.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.twitter#util-stats_2.11;6.34.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.twitter#util-stats_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m	found com.twitter#util-stats_2.11;6.34.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[6.34.0] com.twitter#util-stats_2.11;6.34.0[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->com.twitter#util-stats_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-stats_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-stats_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-stats_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-stats_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-stats_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-stats_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-stats_2.11;6.34.0->com.twitter#util-lint_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-stats_2.11;6.34.0->com.twitter#util-lint_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-registry_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-registry_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-stats_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-stats_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->commons-codec#commons-codec;1.9 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->commons-codec#commons-codec;1.9 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.google.guava#guava;16.0.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.google.guava#guava;16.0.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#jsr166e;1.0.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#jsr166e;1.0.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->io.netty#netty;3.10.1.Final [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving io.netty#netty;3.10.1.Final ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: io.netty#netty;3.10.1.Final {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: io.netty#netty;3.10.1.Final[0m
+[0m[[0mdebug[0m] [0m	found io.netty#netty;3.10.1.Final in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->io.netty#netty;3.10.1.Final [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->com.twitter#util-codec_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->com.twitter#util-codec_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->com.twitter#util-logging_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->com.twitter#util-logging_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->commons-lang#commons-lang;2.6 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving commons-lang#commons-lang;2.6 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: commons-lang#commons-lang;2.6 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: commons-lang#commons-lang;2.6[0m
+[0m[[0mdebug[0m] [0m	found commons-lang#commons-lang;2.6 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->commons-lang#commons-lang;2.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->com.google.guava#guava;16.0.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->com.google.guava#guava;16.0.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->com.twitter#finagle-http_2.11;6.35.0 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->com.twitter#finagle-http_2.11;6.35.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->com.twitter#finagle-core_2.11;6.35.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->com.twitter#finagle-core_2.11;6.35.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-app_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-app_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-app_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-app_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-app_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-app_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-app_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->com.twitter#util-function_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->com.twitter#util-function_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-function_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-function_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-function_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->com.twitter#jsr166e;1.0.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->com.twitter#jsr166e;1.0.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-core_2.11;6.34.0->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4->org.scala-lang#scala-library;2.11.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-app_2.11;6.34.0->com.twitter#util-registry_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-app_2.11;6.34.0->com.twitter#util-registry_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-registry_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-registry_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-registry_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-registry_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-registry_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-cache_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-cache_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->com.google.code.findbugs#jsr305;2.0.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->com.google.code.findbugs#jsr305;2.0.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->com.google.guava#guava;16.0.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-cache_2.11;6.34.0->com.google.guava#guava;16.0.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-codec_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-codec_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-codec_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-codec_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-codec_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-codec_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-codec_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-codec_2.11;6.34.0->commons-codec#commons-codec;1.9 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-codec_2.11;6.34.0->commons-codec#commons-codec;1.9 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-collection_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-collection_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->com.google.code.findbugs#jsr305;2.0.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->com.google.code.findbugs#jsr305;2.0.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->javax.inject#javax.inject;1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->javax.inject#javax.inject;1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->com.google.guava#guava;16.0.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->com.google.guava#guava;16.0.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->commons-collections#commons-collections;3.2.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-collection_2.11;6.34.0->commons-collections#commons-collections;3.2.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-core_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-core_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-hashing_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-hashing_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-hashing_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-hashing_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-hashing_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-jvm_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-jvm_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-jvm_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-jvm_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-jvm_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-jvm_2.11;6.34.0->com.twitter#util-app_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-jvm_2.11;6.34.0->com.twitter#util-app_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-jvm_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-jvm_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-lint_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-lint_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-lint_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-lint_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-lint_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-logging_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-logging_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->com.twitter#util-app_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->com.twitter#util-app_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->com.twitter#util-stats_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-logging_2.11;6.34.0->com.twitter#util-stats_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-stats_2.11;6.34.0->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-stats_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-stats_2.11;6.34.0->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-stats_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-stats_2.11;6.34.0->com.twitter#util-core_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-stats_2.11;6.34.0->com.twitter#util-lint_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#util-stats_2.11;6.34.0->com.twitter#util-lint_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-registry_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-registry_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-stats_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#util-stats_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->commons-codec#commons-codec;1.9 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->commons-codec#commons-codec;1.9 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.google.guava#guava;16.0.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.google.guava#guava;16.0.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#jsr166e;1.0.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->com.twitter#jsr166e;1.0.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->io.netty#netty;3.10.1.Final [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-core_2.11;6.35.0->io.netty#netty;3.10.1.Final [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->com.twitter#util-codec_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->com.twitter#util-codec_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->com.twitter#util-logging_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->com.twitter#util-logging_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->commons-lang#commons-lang;2.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->commons-lang#commons-lang;2.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->com.google.guava#guava;16.0.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.twitter#finagle-http_2.11;6.35.0->com.google.guava#guava;16.0.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.scala-lang#scala-reflect;2.11.8 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-reflect;2.11.8 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-reflect;2.11.8 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-reflect;2.11.8[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-reflect;2.11.8 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[2.11.8] org.scala-lang#scala-reflect;2.11.8[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.scala-lang#scala-reflect;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.11.8->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.11.8->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.scala-lang#scala-reflect;2.11.8 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.scala-lang#scala-reflect;2.11.8 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.11.8->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.11.8->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->io.catbird#catbird-util634_2.11;0.7.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving io.catbird#catbird-util634_2.11;0.7.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: io.catbird#catbird-util634_2.11;0.7.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: io.catbird#catbird-util634_2.11;0.7.0[0m
+[0m[[0mdebug[0m] [0m	found io.catbird#catbird-util634_2.11;0.7.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[0.7.0] io.catbird#catbird-util634_2.11;0.7.0[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->io.catbird#catbird-util634_2.11;0.7.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.catbird#catbird-util634_2.11;0.7.0->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.catbird#catbird-util634_2.11;0.7.0->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.catbird#catbird-util634_2.11;0.7.0->org.typelevel#cats-core_2.11;0.7.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.catbird#catbird-util634_2.11;0.7.0->org.typelevel#cats-core_2.11;0.7.2 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.catbird#catbird-util634_2.11;0.7.0->org.typelevel#cats-core_2.11;0.7.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.catbird#catbird-util634_2.11;0.7.0->org.typelevel#cats-core_2.11;0.7.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.catbird#catbird-util634_2.11;0.7.0->com.twitter#util-core_2.11;6.34.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.catbird#catbird-util634_2.11;0.7.0->com.twitter#util-core_2.11;6.34.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->io.catbird#catbird-util634_2.11;0.7.0 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->io.catbird#catbird-util634_2.11;0.7.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.catbird#catbird-util634_2.11;0.7.0->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.catbird#catbird-util634_2.11;0.7.0->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.catbird#catbird-util634_2.11;0.7.0->org.typelevel#cats-core_2.11;0.7.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.catbird#catbird-util634_2.11;0.7.0->org.typelevel#cats-core_2.11;0.7.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.catbird#catbird-util634_2.11;0.7.0->org.typelevel#cats-core_2.11;0.7.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.catbird#catbird-util634_2.11;0.7.0->com.twitter#util-core_2.11;6.34.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.catbird#catbird-util634_2.11;0.7.0->com.twitter#util-core_2.11;6.34.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->com.chuusai#shapeless_2.11;2.3.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->com.chuusai#shapeless_2.11;2.3.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.typelevel#cats-core_2.11;0.7.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.typelevel#cats-core_2.11;0.7.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->com.twitter#finagle-http_2.11;6.35.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->com.twitter#finagle-http_2.11;6.35.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.scala-lang#scala-reflect;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->org.scala-lang#scala-reflect;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->io.catbird#catbird-util634_2.11;0.7.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-core_2.11;0.11.0-M4->io.catbird#catbird-util634_2.11;0.7.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->com.github.finagle#finch-core_2.11;0.11.0-M4 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->com.github.finagle#finch-circe_2.11;0.11.0-M4 [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.github.finagle#finch-circe_2.11;0.11.0-M4 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.github.finagle#finch-circe_2.11;0.11.0-M4 {compile=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.github.finagle#finch-circe_2.11;0.11.0-M4[0m
+[0m[[0mdebug[0m] [0m	found com.github.finagle#finch-circe_2.11;0.11.0-M4 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[0.11.0-M4] com.github.finagle#finch-circe_2.11;0.11.0-M4[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->com.github.finagle#finch-circe_2.11;0.11.0-M4 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->com.github.finagle#finch-circe_2.11;0.11.0-M4 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->com.github.finagle#finch-core_2.11;0.11.0-M4 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->com.github.finagle#finch-core_2.11;0.11.0-M4 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->com.github.finagle#finch-core_2.11;0.11.0-M4 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->com.github.finagle#finch-core_2.11;0.11.0-M4 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->com.chuusai#shapeless_2.11;2.3.2 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->com.chuusai#shapeless_2.11;2.3.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->org.typelevel#cats-core_2.11;0.7.2 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->org.typelevel#cats-core_2.11;0.7.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->com.twitter#finagle-http_2.11;6.35.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->com.twitter#finagle-http_2.11;6.35.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->org.scala-lang#scala-reflect;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->org.scala-lang#scala-reflect;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.catbird#catbird-util634_2.11;0.7.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.catbird#catbird-util634_2.11;0.7.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-core_2.11;0.5.3 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving io.circe#circe-core_2.11;0.5.3 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: io.circe#circe-core_2.11;0.5.3 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: io.circe#circe-core_2.11;0.5.3[0m
+[0m[[0mdebug[0m] [0m	found io.circe#circe-core_2.11;0.5.3 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[0.5.3] io.circe#circe-core_2.11;0.5.3[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-core_2.11;0.5.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-core_2.11;0.5.3->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-core_2.11;0.5.3->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-core_2.11;0.5.3->io.circe#circe-numbers_2.11;0.5.3 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving io.circe#circe-numbers_2.11;0.5.3 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: io.circe#circe-numbers_2.11;0.5.3 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: io.circe#circe-numbers_2.11;0.5.3[0m
+[0m[[0mdebug[0m] [0m	found io.circe#circe-numbers_2.11;0.5.3 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[0.5.3] io.circe#circe-numbers_2.11;0.5.3[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-core_2.11;0.5.3->io.circe#circe-numbers_2.11;0.5.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-numbers_2.11;0.5.3->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-numbers_2.11;0.5.3->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-core_2.11;0.5.3->org.typelevel#cats-core_2.11;0.7.2 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-core_2.11;0.5.3->org.typelevel#cats-core_2.11;0.7.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-core_2.11;0.5.3 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-core_2.11;0.5.3 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-core_2.11;0.5.3->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-core_2.11;0.5.3->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-core_2.11;0.5.3->io.circe#circe-numbers_2.11;0.5.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-core_2.11;0.5.3->io.circe#circe-numbers_2.11;0.5.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-numbers_2.11;0.5.3->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-numbers_2.11;0.5.3->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-core_2.11;0.5.3->org.typelevel#cats-core_2.11;0.7.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-core_2.11;0.5.3->org.typelevel#cats-core_2.11;0.7.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-jawn_2.11;0.5.3 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving io.circe#circe-jawn_2.11;0.5.3 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: io.circe#circe-jawn_2.11;0.5.3 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: io.circe#circe-jawn_2.11;0.5.3[0m
+[0m[[0mdebug[0m] [0m	found io.circe#circe-jawn_2.11;0.5.3 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[0.5.3] io.circe#circe-jawn_2.11;0.5.3[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-jawn_2.11;0.5.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jawn_2.11;0.5.3->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jawn_2.11;0.5.3->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jawn_2.11;0.5.3->io.circe#circe-core_2.11;0.5.3 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jawn_2.11;0.5.3->io.circe#circe-core_2.11;0.5.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jawn_2.11;0.5.3->org.spire-math#jawn-parser_2.11;0.9.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.spire-math#jawn-parser_2.11;0.9.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.spire-math#jawn-parser_2.11;0.9.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.spire-math#jawn-parser_2.11;0.9.0[0m
+[0m[[0mdebug[0m] [0m	found org.spire-math#jawn-parser_2.11;0.9.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jawn_2.11;0.5.3->org.spire-math#jawn-parser_2.11;0.9.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.spire-math#jawn-parser_2.11;0.9.0->org.scala-lang#scala-library;2.11.7 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.spire-math#jawn-parser_2.11;0.9.0->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.spire-math#jawn-parser_2.11;0.9.0->org.scala-lang#scala-library;2.11.7 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.spire-math#jawn-parser_2.11;0.9.0->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-jawn_2.11;0.5.3 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-jawn_2.11;0.5.3 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jawn_2.11;0.5.3->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jawn_2.11;0.5.3->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jawn_2.11;0.5.3->io.circe#circe-core_2.11;0.5.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jawn_2.11;0.5.3->io.circe#circe-core_2.11;0.5.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jawn_2.11;0.5.3->org.spire-math#jawn-parser_2.11;0.9.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jawn_2.11;0.5.3->org.spire-math#jawn-parser_2.11;0.9.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.spire-math#jawn-parser_2.11;0.9.0->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.spire-math#jawn-parser_2.11;0.9.0->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.spire-math#jawn-parser_2.11;0.9.0->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-jackson_2.11;0.5.3 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving io.circe#circe-jackson_2.11;0.5.3 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: io.circe#circe-jackson_2.11;0.5.3 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: io.circe#circe-jackson_2.11;0.5.3[0m
+[0m[[0mdebug[0m] [0m	found io.circe#circe-jackson_2.11;0.5.3 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[0.5.3] io.circe#circe-jackson_2.11;0.5.3[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-jackson_2.11;0.5.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jackson_2.11;0.5.3->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jackson_2.11;0.5.3->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jackson_2.11;0.5.3->io.circe#circe-core_2.11;0.5.3 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jackson_2.11;0.5.3->io.circe#circe-core_2.11;0.5.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jackson_2.11;0.5.3->com.fasterxml.jackson.core#jackson-core;2.5.3 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.fasterxml.jackson.core#jackson-core;2.5.3 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.fasterxml.jackson.core#jackson-core;2.5.3 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.fasterxml.jackson.core#jackson-core;2.5.3[0m
+[0m[[0mdebug[0m] [0m	found com.fasterxml.jackson.core#jackson-core;2.5.3 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jackson_2.11;0.5.3->com.fasterxml.jackson.core#jackson-core;2.5.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jackson_2.11;0.5.3->com.fasterxml.jackson.core#jackson-databind;2.5.3 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.fasterxml.jackson.core#jackson-databind;2.5.3 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.fasterxml.jackson.core#jackson-databind;2.5.3 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.fasterxml.jackson.core#jackson-databind;2.5.3[0m
+[0m[[0mdebug[0m] [0m	found com.fasterxml.jackson.core#jackson-databind;2.5.3 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jackson_2.11;0.5.3->com.fasterxml.jackson.core#jackson-databind;2.5.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.fasterxml.jackson.core#jackson-databind;2.5.3->com.fasterxml.jackson.core#jackson-annotations;2.5.0 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.fasterxml.jackson.core#jackson-annotations;2.5.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.fasterxml.jackson.core#jackson-annotations;2.5.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.fasterxml.jackson.core#jackson-annotations;2.5.0[0m
+[0m[[0mdebug[0m] [0m	found com.fasterxml.jackson.core#jackson-annotations;2.5.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.fasterxml.jackson.core#jackson-databind;2.5.3->com.fasterxml.jackson.core#jackson-annotations;2.5.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.fasterxml.jackson.core#jackson-databind;2.5.3->com.fasterxml.jackson.core#jackson-core;2.5.3 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.fasterxml.jackson.core#jackson-databind;2.5.3->com.fasterxml.jackson.core#jackson-core;2.5.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-jackson_2.11;0.5.3 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-jackson_2.11;0.5.3 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jackson_2.11;0.5.3->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jackson_2.11;0.5.3->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jackson_2.11;0.5.3->io.circe#circe-core_2.11;0.5.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jackson_2.11;0.5.3->io.circe#circe-core_2.11;0.5.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jackson_2.11;0.5.3->com.fasterxml.jackson.core#jackson-core;2.5.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jackson_2.11;0.5.3->com.fasterxml.jackson.core#jackson-core;2.5.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jackson_2.11;0.5.3->com.fasterxml.jackson.core#jackson-databind;2.5.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-jackson_2.11;0.5.3->com.fasterxml.jackson.core#jackson-databind;2.5.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.fasterxml.jackson.core#jackson-databind;2.5.3->com.fasterxml.jackson.core#jackson-annotations;2.5.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.fasterxml.jackson.core#jackson-databind;2.5.3->com.fasterxml.jackson.core#jackson-annotations;2.5.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.fasterxml.jackson.core#jackson-databind;2.5.3->com.fasterxml.jackson.core#jackson-core;2.5.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.fasterxml.jackson.core#jackson-databind;2.5.3->com.fasterxml.jackson.core#jackson-core;2.5.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->com.github.finagle#finch-core_2.11;0.11.0-M4 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->com.github.finagle#finch-core_2.11;0.11.0-M4 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->com.chuusai#shapeless_2.11;2.3.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->com.chuusai#shapeless_2.11;2.3.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->org.typelevel#cats-core_2.11;0.7.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->org.typelevel#cats-core_2.11;0.7.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->com.twitter#finagle-http_2.11;6.35.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->com.twitter#finagle-http_2.11;6.35.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->org.scala-lang#scala-reflect;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->org.scala-lang#scala-reflect;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.catbird#catbird-util634_2.11;0.7.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.catbird#catbird-util634_2.11;0.7.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-core_2.11;0.5.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-core_2.11;0.5.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-jawn_2.11;0.5.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-jawn_2.11;0.5.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-jackson_2.11;0.5.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.finagle#finch-circe_2.11;0.11.0-M4->io.circe#circe-jackson_2.11;0.5.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->com.github.finagle#finch-circe_2.11;0.11.0-M4 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->io.circe#circe-generic_2.11;0.5.1 [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving io.circe#circe-generic_2.11;0.5.1 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: io.circe#circe-generic_2.11;0.5.1 {compile=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: io.circe#circe-generic_2.11;0.5.1[0m
+[0m[[0mdebug[0m] [0m	found io.circe#circe-generic_2.11;0.5.1 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[0.5.1] io.circe#circe-generic_2.11;0.5.1[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->io.circe#circe-generic_2.11;0.5.1 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->io.circe#circe-generic_2.11;0.5.1 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->io.circe#circe-core_2.11;0.5.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->io.circe#circe-core_2.11;0.5.3 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->io.circe#circe-core_2.11;0.5.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->io.circe#circe-core_2.11;0.5.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->org.typelevel#macro-compat_2.11;1.1.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->org.typelevel#macro-compat_2.11;1.1.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->com.chuusai#shapeless_2.11;2.3.2 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->com.chuusai#shapeless_2.11;2.3.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->io.circe#circe-core_2.11;0.5.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->io.circe#circe-core_2.11;0.5.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->io.circe#circe-core_2.11;0.5.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->org.typelevel#macro-compat_2.11;1.1.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->org.typelevel#macro-compat_2.11;1.1.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->com.chuusai#shapeless_2.11;2.3.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-generic_2.11;0.5.1->com.chuusai#shapeless_2.11;2.3.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->io.circe#circe-generic_2.11;0.5.1 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->io.circe#circe-parser_2.11;0.5.1 [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving io.circe#circe-parser_2.11;0.5.1 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: io.circe#circe-parser_2.11;0.5.1 {compile=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: io.circe#circe-parser_2.11;0.5.1[0m
+[0m[[0mdebug[0m] [0m	found io.circe#circe-parser_2.11;0.5.1 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[0.5.1] io.circe#circe-parser_2.11;0.5.1[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->io.circe#circe-parser_2.11;0.5.1 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->io.circe#circe-parser_2.11;0.5.1 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->io.circe#circe-jawn_2.11;0.5.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->io.circe#circe-jawn_2.11;0.5.3 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->io.circe#circe-jawn_2.11;0.5.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->io.circe#circe-jawn_2.11;0.5.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->io.circe#circe-core_2.11;0.5.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->io.circe#circe-core_2.11;0.5.3 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->io.circe#circe-core_2.11;0.5.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->io.circe#circe-core_2.11;0.5.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->io.circe#circe-jawn_2.11;0.5.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->io.circe#circe-jawn_2.11;0.5.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->io.circe#circe-jawn_2.11;0.5.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->io.circe#circe-core_2.11;0.5.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->io.circe#circe-core_2.11;0.5.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-parser_2.11;0.5.1->io.circe#circe-core_2.11;0.5.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->io.circe#circe-parser_2.11;0.5.1 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->io.circe#circe-optics_2.11;0.5.1 [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving io.circe#circe-optics_2.11;0.5.1 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: io.circe#circe-optics_2.11;0.5.1 {compile=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: io.circe#circe-optics_2.11;0.5.1[0m
+[0m[[0mdebug[0m] [0m	found io.circe#circe-optics_2.11;0.5.1 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[0.5.1] io.circe#circe-optics_2.11;0.5.1[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->io.circe#circe-optics_2.11;0.5.1 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->io.circe#circe-optics_2.11;0.5.1 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-optics_2.11;0.5.1->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-optics_2.11;0.5.1->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-optics_2.11;0.5.1->io.circe#circe-core_2.11;0.5.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-optics_2.11;0.5.1->io.circe#circe-core_2.11;0.5.3 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-optics_2.11;0.5.1->io.circe#circe-core_2.11;0.5.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-optics_2.11;0.5.1->io.circe#circe-core_2.11;0.5.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-optics_2.11;0.5.1->com.github.julien-truffaut#monocle-core_2.11;1.2.2 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.github.julien-truffaut#monocle-core_2.11;1.2.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.github.julien-truffaut#monocle-core_2.11;1.2.2 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.github.julien-truffaut#monocle-core_2.11;1.2.2[0m
+[0m[[0mdebug[0m] [0m	found com.github.julien-truffaut#monocle-core_2.11;1.2.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[1.2.2] com.github.julien-truffaut#monocle-core_2.11;1.2.2[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-optics_2.11;0.5.1->com.github.julien-truffaut#monocle-core_2.11;1.2.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.julien-truffaut#monocle-core_2.11;1.2.2->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.julien-truffaut#monocle-core_2.11;1.2.2->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.julien-truffaut#monocle-core_2.11;1.2.2->org.scalaz#scalaz-core_2.11;7.2.2 [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.scalaz#scalaz-core_2.11;7.2.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scalaz#scalaz-core_2.11;7.2.2 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scalaz#scalaz-core_2.11;7.2.2[0m
+[0m[[0mdebug[0m] [0m	found org.scalaz#scalaz-core_2.11;7.2.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.julien-truffaut#monocle-core_2.11;1.2.2->org.scalaz#scalaz-core_2.11;7.2.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.11;7.2.2->org.scala-lang#scala-library;2.11.8 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.11;7.2.2->org.scala-lang#scala-library;2.11.8 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-optics_2.11;0.5.1->com.github.julien-truffaut#monocle-core_2.11;1.2.2 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-optics_2.11;0.5.1->com.github.julien-truffaut#monocle-core_2.11;1.2.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.julien-truffaut#monocle-core_2.11;1.2.2->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.julien-truffaut#monocle-core_2.11;1.2.2->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.julien-truffaut#monocle-core_2.11;1.2.2->org.scalaz#scalaz-core_2.11;7.2.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.julien-truffaut#monocle-core_2.11;1.2.2->org.scalaz#scalaz-core_2.11;7.2.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.11;7.2.2->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.11;7.2.2->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-optics_2.11;0.5.1->org.scala-lang#scala-library;2.11.8 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-optics_2.11;0.5.1->org.scala-lang#scala-library;2.11.8 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-optics_2.11;0.5.1->io.circe#circe-core_2.11;0.5.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-optics_2.11;0.5.1->io.circe#circe-core_2.11;0.5.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-optics_2.11;0.5.1->io.circe#circe-core_2.11;0.5.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-optics_2.11;0.5.1->com.github.julien-truffaut#monocle-core_2.11;1.2.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies io.circe#circe-optics_2.11;0.5.1->com.github.julien-truffaut#monocle-core_2.11;1.2.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->io.circe#circe-optics_2.11;0.5.1 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->com.tokbox#opentok-server-sdk;3.0.0-beta.2 [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.tokbox#opentok-server-sdk;3.0.0-beta.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.tokbox#opentok-server-sdk;3.0.0-beta.2 {compile=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.tokbox#opentok-server-sdk;3.0.0-beta.2[0m
+[0m[[0mdebug[0m] [0m	found com.tokbox#opentok-server-sdk;3.0.0-beta.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->com.tokbox#opentok-server-sdk;3.0.0-beta.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies interactive-classroom-server#interactive-classroom-server_2.11;1.0->com.tokbox#opentok-server-sdk;3.0.0-beta.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.tokbox#opentok-server-sdk;3.0.0-beta.2->com.ning#async-http-client;[1.9,2.0) [compile->master(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.ning#async-http-client;[1.9,2.0) ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.ning#async-http-client;[1.9,2.0) {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0mdefault-cache: cached resolved revision expired for com.ning#async-http-client;[1.9,2.0)[0m
+[0m[[0minfo[0m] [0mResolving com.ning#async-http-client;[1.9,2.0) ...[0m
+[0m[[0mdebug[0m] [0msbt-chain-delegate: Checking cache for: dependency: com.ning#async-http-client;[1.9,2.0) {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0mdefault-cache: cached resolved revision expired for com.ning#async-http-client;[1.9,2.0)[0m
+[0m[[0mdebug[0m] [0mdefault-cache: cached resolved revision expired for com.ning#async-http-client;[1.9,2.0)[0m
+[0m[[0mdebug[0m] [0m		tried /Users/aaron/.ivy2/local/com.ning/async-http-client/[revision]/ivys/ivy.xml[0m
+[0m[[0mdebug[0m] [0m	local: no ivy file found for com.ning#async-http-client;[1.9,2.0)[0m
+[0m[[0mdebug[0m] [0mdefault-cache: cached resolved revision expired for com.ning#async-http-client;[1.9,2.0)[0m
+[0m[[0mdebug[0m] [0m		tried https://repo1.maven.org/maven2/com/ning/async-http-client/[revision]/async-http-client-[revision].pom[0m
+[0m[[0mdebug[0m] [0m	listing revisions from maven-metadata: https://repo1.maven.org/maven2/com/ning/async-http-client/maven-metadata.xml[0m

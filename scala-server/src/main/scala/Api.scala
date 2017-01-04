@@ -32,7 +32,7 @@ object Api extends App {
   val createClassroom: Endpoint[Classroom] = post("classroom" :: body.as[Classroom]) { classroom: Classroom =>
     Classroom.create(classroom).map(Ok)
   } handle {
-    case e: FirebaseException => InternalServerError(e)
+    case e: Exception => InternalServerError(e)
   }
 
   val removeClassroom: Endpoint[String] = delete("classroom" / string) { (classroomId: String) =>

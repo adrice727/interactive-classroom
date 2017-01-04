@@ -70,7 +70,7 @@ class UserBean() {
   @BeanProperty var name: String = null
   @BeanProperty var email: String = null
   @BeanProperty var role: String = null
-  @BeanProperty var imageURL: String = null
+  @BeanProperty var imageURL: String = ""
   def toCase: User = {
     val hasImage = !imageURL.isEmpty
     val maybeRole: Option[String] = if (role != null) Some(role) else None

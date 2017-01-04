@@ -12,7 +12,7 @@ class StudentHome extends Component {
   componentDidMount() {
     const { user, dispatch } = this.props;
     if (user) {
-      api.get('classroodms')
+      api.get('classrooms')
       .then(classrooms => dispatch(setAvailableClasses(classrooms)))
       .catch(error => console.log(error));
     } else {

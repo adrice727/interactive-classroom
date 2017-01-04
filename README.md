@@ -2,3 +2,6 @@
 
 ## OpenTok Interactive Classroom
 
+*Built with `React/Redux`,  `Scala/Finch` , and `Firebase`*
+
+

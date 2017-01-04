@@ -23,29 +23,30 @@ object Api extends App {
   val getAllClassrooms: Endpoint[Map[String, Classroom]] = get("classrooms") {
     Classroom.getAll().map(Ok)
   }
+
   val createClassroom: Endpoint[Classroom] = post("classroom" :: body.as[Classroom]) { classroom: Classroom =>
     Classroom.create(classroom).map(Ok)
   } handle {
     case e: FirebaseException => InternalServerError(e)
   }
+
   val removeClassroom: Endpoint[String] = delete("classroom" / string) { (classroomId: String) =>
     Classroom.remove(classroomId).map(Ok)
   } handle {
     case e: Exception => InternalServerError(e)
   }
 
-  val api: Service[Request, Response] = (
+  val endpoints: Service[Request, Response] = (
     validateUser :+: getClassroom :+: getAllClassrooms :+: createClassroom :+: removeClassroom
     ).toServiceAs[Application.Json]
 
-
-  // Set up CORS
-  //  val policy: Cors.Policy = Cors.Policy(
-  //    allowsOrigin = _ => Some("*"),
-  //    allowsMethods = _ => Some(Seq("GET", "POST")),
-  //    allowsHeaders = _ => Some(Seq("Accept"))
-  //  )
-  //  val corsService: Service[Request, Response] = new Cors.HttpFilter(policy).andThen(api)
+  //Set up CORS
+  val policy: Cors.Policy = Cors.Policy(
+    allowsOrigin = _ => Some("*"),
+    allowsMethods = _ => Some(Seq("GET", "POST")),
+    allowsHeaders = _ => Some(Seq("Accept"))
+  )
+  val api: Service[Request, Response] = new Cors.HttpFilter(policy).andThen(endpoints)
 
   // Listen
   Await.ready(Http.server.serve(":8080", api))

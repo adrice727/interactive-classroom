@@ -16,7 +16,7 @@ object Api extends App {
   }
 
 
-  val getClassroom: Endpoint[ClassroomCredentials] = get("classroom" :: string :: param("userId")) { (classroomId: String, userId: String) =>
+  val getClassroom: Endpoint[ClassroomCredentials] = get("classroom" :: string :: param("userId") :: param("role")) { (classroomId: String, userId: String, role: String) =>
 
     val getClassroom: Future[Classroom] = Classroom.get(classroomId)
     val getUser: Future[User] = User.get(userId)
@@ -24,15 +24,12 @@ object Api extends App {
     val credentials = for {
       classroom <- getClassroom
       user <- getUser
-      sessionCredentials = Opentok.getCredentials(classroom.sessionId.get, user)
+      sessionCredentials = Opentok.getCredentials(classroom.sessionId.get, user copy (role = Some(role)))
     } yield ClassroomCredentials(classroom, sessionCredentials)
 
     credentials.map(Ok)
   } handle {
-    case e: Exception => {
-      println(e)
-      InternalServerError(e)
-    }
+    case e: Exception => InternalServerError(e)
   }
 
   val getAllClassrooms: Endpoint[Map[String, Classroom]] = get("classrooms") {

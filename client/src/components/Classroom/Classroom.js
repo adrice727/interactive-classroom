@@ -110,7 +110,7 @@ class Classroom extends Component {
 
   componentDidMount() {
     const { user, dispatch } = this.props;
-    api.get(`classroom/${this.props.params.id}?userId=${user.id}`)
+    api.get(`classroom/${this.props.params.id}?userId=${user.id}&role=${user.role}`)
       .then(response => {
         const { classroom, credentials } = response;
         console.log(response);

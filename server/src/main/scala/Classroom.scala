@@ -106,7 +106,7 @@ object Classroom {
   }
 }
 
-case class ClassroomCredentials(classroom: Classroom, credentials: Option[SessionCredentials] = None)
+case class ClassroomCredentials(classroom: Classroom, credentials: SessionCredentials)
 
 case class Classroom(
                       id: Option[String] = None,

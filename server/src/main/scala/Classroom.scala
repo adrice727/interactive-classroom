@@ -106,6 +106,8 @@ object Classroom {
   }
 }
 
+case class ClassroomCredentials(classroom: Classroom, credentials: Option[SessionCredentials] = None)
+
 case class Classroom(
                       id: Option[String] = None,
                       title: String,
@@ -142,7 +144,7 @@ class ClassroomBean() {
     val maybeImageURL: Option[String] = if (hasImage) Some(imageURL) else None
     Classroom(Some(id), title, description, instructorId, instructorName, Some(sessionId), maybeImageURL)
   }
-  override def toString = s"${title} with ${instructorName}"
+  override def toString = s"$title with $instructorName"
 }
 
 

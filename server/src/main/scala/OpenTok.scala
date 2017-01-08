@@ -1,5 +1,4 @@
 import java.io.InputStream
-import scala.io.Source
 import com.opentok.OpenTok
 import com.opentok.Session
 import com.opentok.SessionProperties
@@ -7,11 +6,9 @@ import com.opentok.MediaMode
 import com.opentok.TokenOptions;
 import com.opentok.Role;
 import io.circe._, io.circe.parser._, io.circe.generic.semiauto._, io.circe.syntax._
-import cats._
-import cats.implicits._
-
 
 case class OpentokCredentials(apiKey: Int, apiSecret: String)
+case class SessionCredentials(apiKey: String, sessionId: String, token: String)
 
 object Opentok {
   /** Initialize */
@@ -27,11 +24,15 @@ object Opentok {
   def createSession: String = {
     val session: Session = opentok.createSession(new SessionProperties.Builder()
       .mediaMode(MediaMode.ROUTED)
-      .build());
+      .build())
     session.getSessionId
   }
 
-  def createToken(sessionId: String, user: User): String = {
+  def getCredentials(sessionId: String, user: User): SessionCredentials = {
+    SessionCredentials(credentials.apiKey.toString, sessionId, createToken(sessionId, user))
+  }
+
+  private def createToken(sessionId: String, user: User): String = {
 
     val role = user.role.get match {
       case "instructor" => Role.MODERATOR
@@ -48,7 +49,7 @@ object Opentok {
     val token = opentok.generateToken(sessionId, new TokenOptions.Builder()
       .role(role)
       .data(tokenData)
-      .build());
+      .build())
 
     token
   }

@@ -113,6 +113,7 @@ class Classroom extends Component {
     api.get(`classroom/${this.props.params.id}?userId=${user.id}`)
       .then(response => {
         const { classroom, credentials } = response;
+        console.log(response);
         dispatch(setClassroom(classroom));
         const dispatchMethod = user.role === 'instructor' ? instructorJoined : studentJoined;
         dispatch(dispatchMethod(user));

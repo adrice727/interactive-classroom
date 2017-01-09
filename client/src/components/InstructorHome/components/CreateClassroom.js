@@ -12,21 +12,21 @@ class CreateClassroom extends Component {
     this.createClassroom = this.createClassroom.bind(this);
   }
 
-  clear () {
+  clear() {
     this.refs.title.value = '';
     this.refs.description.value = '';
-    this.refs.image.value = '';
+    this.refs.imageURL.value = '';
   }
 
   createClassroom() {
 
     const { onCreate } = this.props;
+    const { title, description, imageURL } = this.refs;
+    const value = ref => !R.isEmpty(ref.value) ? ref.value : null;
 
-    const classroom = {
-      title: this.refs.title.value,
-      description: this.refs.description.value,
-      imageURL: this.refs.image.value
-    }
+    const base = { title: value(title), description: value(description) };
+    const maybeImage = value(imageURL) ? { imageURL: value(imageURL) } : {};
+    const classroom = R.merge(base, maybeImage);
 
     const validateAndCreate = () => {
       if (R.or(this.state.errors.title, this.state.errors.description)) { return; }
@@ -54,7 +54,7 @@ class CreateClassroom extends Component {
         <label className="label">Classroom Description</label>
         <textarea className={descriptionClass} ref="description" placeholder="Give your classroom a description"/>
         <label className="label">Classroom Icon</label>
-        <input className="icon" ref="image" placeholder="Paste an image url" type="text"/>
+        <input className="icon" ref="imageURL" placeholder="Paste an image url" type="text"/>
         <div className="errorsContainer">
           <div>{errors.title ?  'A classroom name is required' : ''}</div>
           <div>{errors.description ?  'A classroom description is required' : ''}</div>
@@ -65,5 +65,3 @@ class CreateClassroom extends Component {
 }
 
 export default CreateClassroom;
-
-

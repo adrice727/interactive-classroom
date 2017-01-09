@@ -87,6 +87,10 @@ object Classroom {
     p
   }
 
+  def getAll(instructorId: String = ""): Promise[Map[String, Classroom]] = {
+    if (instructorId.isEmpty) getAllClassrooms() else getInstructorClassrooms(instructorId)
+  }
+
   def getCredentials(classroomId: String, userId: String, role: String): Future[ClassroomCredentials] = {
     val getClassroom: Future[Classroom] = get(classroomId)
     val getUser: Future[User] = User.get(userId)
@@ -98,10 +102,6 @@ object Classroom {
     } yield ClassroomCredentials(classroom, sessionCredentials)
 
     credentials
-  }
-
-  def getAll(instructorId: String = ""): Promise[Map[String, Classroom]] = {
-    if (instructorId.isEmpty) getAllClassrooms() else getInstructorClassrooms(instructorId)
   }
 
   def remove(id: String): Promise[String] = {

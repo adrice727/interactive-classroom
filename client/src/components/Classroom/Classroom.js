@@ -14,7 +14,8 @@ import {
   instructorLeft,
   studentJoined,
   studentLeft,
-  resetClassroom } from '../../actions/classroomActions';
+  resetClassroom
+} from '../../actions/classroomActions';
 import R from 'ramda';
 import Podium from './components/Podium';
 import Students from './components/Students';
@@ -47,10 +48,10 @@ class Classroom extends Component {
   publish() {
     const { dispatch, user, classroom } = this.props;
     const session = R.prop('session', classroom);
-    const name = { name: user.name };
     // Students won't publish audio until called upon
+    const name = user.name;
     const publishAudio = user.role === 'instructor';
-    const publisher = OT.initPublisher(`video-${user.id}`, R.merge(cameraProperties, {name, publishAudio}));
+    const publisher = OT.initPublisher(`video-${user.id}`, R.merge(cameraProperties, { name, publishAudio }));
     session.publish(publisher, error => {
       error ? this.onError(error) : dispatch(setLocalPublisher(publisher));
     });
@@ -58,8 +59,8 @@ class Classroom extends Component {
 
   subscribe(user) {
     const { session } = this.props.classroom;
-    const name = { name: user.name };
-    session.subscribe(user.stream, `video-${user.id}`, R.merge(cameraProperties, name));
+    const name = user.name;
+    session.subscribe(user.stream, `video-${user.id}`, R.merge(cameraProperties, { name }));
   }
 
   onConnect() {

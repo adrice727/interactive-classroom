@@ -10,7 +10,7 @@ object Firebase {
   private val options = new FirebaseOptions.Builder()
     .setDatabaseUrl("https://opentok-classroom.firebaseio.com")
     .setServiceAccount(credentials)
-    .build();
+    .build()
   FirebaseApp.initializeApp(options)
   private val database = FirebaseDatabase.getInstance()
   def ref(path: String): DatabaseReference = database.getReference(path)

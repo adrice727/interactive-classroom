@@ -106,12 +106,12 @@ object Classroom {
 
   def remove(id: String): Promise[String] = {
     val p = new Promise[String]
-    Firebase.ref(s"classrooms/${id}").setValue(null, new DatabaseReference.CompletionListener() {
+    Firebase.ref(s"classrooms/$id").setValue(null, new DatabaseReference.CompletionListener() {
       override def onComplete(databaseError: DatabaseError, databaseReference: DatabaseReference) {
         if (databaseError != null) {
           p.setException(new FirebaseException(databaseError.getMessage()))
         } else {
-          p.setValue(s"Classroom ${id} removed")
+          p.setValue(s"Classroom $id removed")
         }
       }
     })
@@ -151,7 +151,7 @@ class ClassroomBean() {
   @BeanProperty var instructorId: String = null
   @BeanProperty var instructorName: String = null
   @BeanProperty var sessionId: String = null
-  @BeanProperty var imageURL: String = ""
+  @BeanProperty var imageURL: String = null
   def toCase: Classroom = {
     val hasImage = !imageURL.isEmpty
     val maybeImageURL: Option[String] = if (hasImage) Some(imageURL) else None

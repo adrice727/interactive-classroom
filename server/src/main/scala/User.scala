@@ -22,7 +22,7 @@ object User {
   }
 
   def get(id: String): Future[User] = {
-    val ref = Firebase.ref(s"users/${id}")
+    val ref = Firebase.ref(s"users/$id")
     val p = new Promise[User]
     ref.addListenerForSingleValueEvent(new ValueEventListener() {
       override def onDataChange(snapshot: DataSnapshot) = {
@@ -30,7 +30,7 @@ object User {
         if (userRecord != null) {
           p.setValue(userRecord.toCase)
         } else {
-          p.setException(new UserNotFoundException(s"User ${id} not found."))
+          p.setException(new UserNotFoundException(s"User $id not found."))
         }
       }
       override def onCancelled(databaseError: DatabaseError) = {
@@ -72,10 +72,9 @@ class UserBean() {
   @BeanProperty var role: String = null
   @BeanProperty var imageURL: String = ""
   def toCase: User = {
-    val hasImage = !imageURL.isEmpty
-    val maybeRole: Option[String] = if (role != null) Some(role) else None
-    val maybeImageURL: Option[String] = if (imageURL != null) Some(imageURL) else None
+    val maybeRole: Option[String] = Option(role)
+    val maybeImageURL: Option[String] = Option(imageURL)
     User(id, name, email, maybeRole, maybeImageURL)
   }
-  override def toString = s"${id}: ${name}, ${email}, ${imageURL}"
+  override def toString = s"$id: $name, $email, $imageURL"
 }

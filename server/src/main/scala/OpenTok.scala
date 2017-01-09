@@ -17,7 +17,7 @@ object Opentok {
     scala.io.Source.fromInputStream(stream).mkString
   }
   implicit val credentialsDecoder: Decoder[OpentokCredentials] = deriveDecoder[OpentokCredentials]
-  private val credentials = decode[OpentokCredentials](credentialsJSON).getOrElse(null);
+  private val credentials = decode[OpentokCredentials](credentialsJSON).getOrElse(null)
 
   private val opentok: OpenTok = new OpenTok(credentials.apiKey, credentials.apiSecret)
 

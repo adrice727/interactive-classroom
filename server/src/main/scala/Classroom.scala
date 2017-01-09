@@ -47,7 +47,7 @@ object Classroom {
     classrooms
   }
 
-  private def getInstrucorClassrooms(instructorId: String): Promise[Map[String, Classroom]] = {
+  private def getInstructorClassrooms(instructorId: String): Promise[Map[String, Classroom]] = {
     val p = new Promise[Map[String, Classroom]]
     val ref = Firebase.ref("classrooms")
     ref.orderByChild("instructorId").equalTo(instructorId).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -101,7 +101,7 @@ object Classroom {
   }
 
   def getAll(instructorId: String = ""): Promise[Map[String, Classroom]] = {
-    if (instructorId.isEmpty) getAllClassrooms() else getInstrucorClassrooms(instructorId)
+    if (instructorId.isEmpty) getAllClassrooms() else getInstructorClassrooms(instructorId)
   }
 
   def remove(id: String): Promise[String] = {

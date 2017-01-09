@@ -44,7 +44,7 @@ class Login extends Component {
       browserHistory.push(`/${role}-home`);
     };
 
-    api.post('user', { user })
+    api.post('user', R.omit('role', user))
       .then(response => login(user))
       .catch(error => console.log(error));
 

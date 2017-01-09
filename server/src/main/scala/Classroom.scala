@@ -151,11 +151,11 @@ class ClassroomBean() {
   @BeanProperty var instructorId: String = null
   @BeanProperty var instructorName: String = null
   @BeanProperty var sessionId: String = null
-  @BeanProperty var imageURL: String = null
+  @BeanProperty var imageURL: String = ""
   def toCase: Classroom = {
     val hasImage = !imageURL.isEmpty
-    val maybeImageURL: Option[String] = if (hasImage) Some(imageURL) else None
-    Classroom(Some(id), title, description, instructorId, instructorName, Some(sessionId), maybeImageURL)
+    val maybeImageURL: Option[String] = if (imageURL.isEmpty) None else Some(imageURL)
+     Classroom(Some(id), title, description, instructorId, instructorName, Some(sessionId), maybeImageURL)
   }
   override def toString = s"$title with $instructorName"
 }

@@ -8,10 +8,11 @@ import io.circe.generic.auto._
 
 object Api extends App {
 
+
   val validateUser: Endpoint[User] = post("user" :: body.as[User]) { user: User =>
     User.existsOrCreate(user).map(Ok)
   } handle {
-    case e: Exception => NotFound(e)
+    case e: Exception => InternalServerError(e)
   }
 
   val getClassroom: Endpoint[ClassroomCredentials] = get("classroom" :: string :: param("userId") :: param("role")) { (classroomId: String, userId: String, role: String) =>

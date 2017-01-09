@@ -45,7 +45,6 @@ object User {
     get(user.id).map(userRecord => p.setValue(userRecord)).rescue {
       case e: UserNotFoundException => {
         create(user).map(userRecord => p.setValue(userRecord))
-        // TODO handle user creation failure
       }
     }
     p
@@ -69,11 +68,11 @@ class UserBean() {
   @BeanProperty var id: String = null
   @BeanProperty var name: String = null
   @BeanProperty var email: String = null
-  @BeanProperty var role: String = null
+  @BeanProperty var role: String = ""
   @BeanProperty var imageURL: String = ""
   def toCase: User = {
-    val maybeRole: Option[String] = Option(role)
-    val maybeImageURL: Option[String] = Option(imageURL)
+    val maybeRole = if (role.isEmpty) None else Some(role)
+    val maybeImageURL = if (imageURL.isEmpty) None else Some(imageURL)
     User(id, name, email, maybeRole, maybeImageURL)
   }
   override def toString = s"$id: $name, $email, $imageURL"

@@ -6,7 +6,6 @@ import com.twitter.util.{Await, Future, Promise}
 import io.finch.circe._
 import io.circe.generic.auto._
 
-
 object Api extends App {
 
   val validateUser: Endpoint[User] = post("user" :: body.as[User]) { user: User =>
@@ -15,19 +14,8 @@ object Api extends App {
     case e: Exception => NotFound(e)
   }
 
-
   val getClassroom: Endpoint[ClassroomCredentials] = get("classroom" :: string :: param("userId") :: param("role")) { (classroomId: String, userId: String, role: String) =>
-
-    val getClassroom: Future[Classroom] = Classroom.get(classroomId)
-    val getUser: Future[User] = User.get(userId)
-
-    val credentials = for {
-      classroom <- getClassroom
-      user <- getUser
-      sessionCredentials = Opentok.getCredentials(classroom.sessionId.get, user copy (role = Some(role)))
-    } yield ClassroomCredentials(classroom, sessionCredentials)
-
-    credentials.map(Ok)
+    Classroom.getCredentials(classroomId, userId, role).map(Ok)
   } handle {
     case e: Exception => InternalServerError(e)
   }

@@ -47,7 +47,7 @@ object Classroom {
     classrooms
   }
 
-  private def getInstrucorClassrooms(instructorId: String) : Promise[Map[String, Classroom]] = {
+  private def getInstrucorClassrooms(instructorId: String): Promise[Map[String, Classroom]] = {
     val p = new Promise[Map[String, Classroom]]
     val ref = Firebase.ref("classrooms")
     ref.orderByChild("instructorId").equalTo(instructorId).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -67,7 +67,7 @@ object Classroom {
     p
   }
 
-  private def getAllClassrooms() : Promise[Map[String, Classroom]] = {
+  private def getAllClassrooms(): Promise[Map[String, Classroom]] = {
     val p = new Promise[Map[String, Classroom]]
     val ref = Firebase.ref("classrooms")
     ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -85,6 +85,19 @@ object Classroom {
       }
     })
     p
+  }
+
+  def getCredentials(classroomId: String, userId: String, role: String): Future[ClassroomCredentials] = {
+    val getClassroom: Future[Classroom] = get(classroomId)
+    val getUser: Future[User] = User.get(userId)
+
+    val credentials = for {
+      classroom <- getClassroom
+      user <- getUser
+      sessionCredentials = Opentok.getCredentials(classroom.sessionId.get, user copy (role = Some(role)))
+    } yield ClassroomCredentials(classroom, sessionCredentials)
+
+    credentials
   }
 
   def getAll(instructorId: String = ""): Promise[Map[String, Classroom]] = {

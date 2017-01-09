@@ -30,9 +30,8 @@ class InstructorHome extends Component {
   createClassroom(classroomData) {
     const { dispatch, instructor } = this.props;
     const instructorData = { instructorId: instructor.id, instructorName: instructor.name }
-    const classroom = R.merge(classroomData, instructorData);
-    api.post('classroom', classroom)
-      .then(data => dispatch(addClassroom({ classroom: data })))
+    api.post('classroom', R.merge(classroomData, instructorData))
+      .then(classroom => dispatch(addClassroom(classroom)))
       .catch(error => console.log(error));
   }
 

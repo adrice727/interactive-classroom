@@ -10,7 +10,7 @@ const routes = (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
     <IndexRedirect to="/login" />
-      <Route path="/login(/:role)" component={Login} />
+      <Route path="/login" component={Login} />
       <Route path="/instructor-home" component={InstructorHome} />
       <Route path="/student-home" component={StudentHome} />
       <Route path="/classroom/:id" component={Classroom} />

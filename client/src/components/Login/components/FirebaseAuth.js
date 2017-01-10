@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import R from 'ramda'
 import firebase from 'firebase/app';
 import firebaseConfig from '../../../config/firebase';
 import 'firebase/auth';
@@ -17,18 +18,21 @@ class FirebaseAuth extends Component {
     this.authWithFirebase = this.authWithFirebase.bind(this);
   }
 
-  authWithFirebase() {
+  authWithFirebase(role) {
     firebase.auth().signInWithPopup(provider).then(result => {
-      this.props.onAuth(result);
+      this.props.onAuth(role, result);
     }).catch(error => {
       this.props.onError(error);
     });
   }
 
   render() {
+    const studentAuth = R.partial(this.authWithFirebase, ['student']);
+    const instructorAuth = R.partial(this.authWithFirebase, ['instructor']);
     return (
       <div className='FirebaseAuth'>
-        <button className='FirebaseAuth-btn' onClick={this.authWithFirebase}></button>
+        <button className='FirebaseAuth-btn student' onClick={studentAuth}>Student</button>
+        <button className='FirebaseAuth-btn instructor' onClick={instructorAuth}>Instructor</button>
       </div>
     )
   }

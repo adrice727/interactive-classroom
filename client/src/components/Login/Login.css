@@ -20,9 +20,9 @@
     justify-content: space-around;
     align-items: center;
     border: 1px solid lightgrey;
-    width: 25%;
+    width: 65%;
     min-width: 225px;
-    padding: 85px 0;
+    padding: 50px 0;
 }
 
 .Login-google-logo {

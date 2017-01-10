@@ -24,9 +24,9 @@ class Login extends Component {
     }
   }
 
-  onAuth(data) {
+  onAuth(role, data) {
 
-    const { dispatch, role } = this.props;
+    const { dispatch } = this.props;
 
     const user = {
       id: R.path(['user', 'uid'], data),
@@ -77,7 +77,6 @@ class Login extends Component {
 
 const mapStateToProps = (state, { params }) => ({
   user: state.user,
-  role: R.path(['role'], params) || 'student'
 });
 
 export default withRouter(connect(

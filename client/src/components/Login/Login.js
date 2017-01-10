@@ -18,9 +18,9 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    const { user, role } = this.props;
+    const { user } = this.props;
     if (user) {
-      browserHistory.push(`${role}-home`);
+      browserHistory.push(`${user.role}-home`);
     }
   }
 

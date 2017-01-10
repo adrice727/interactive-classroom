@@ -45,11 +45,13 @@ class Header extends Component {
   render() {
     const { user, classroom } = this.props;
     const classroomLogo =  R.pathOr(smallLogo, ['imageURL'], classroom);
+    const currentClassroom = classroom && !R.isEmpty(classroom)
+
     return (
       <div className="Header">
         <span className="Header-text opentok">
             <img src={classroomLogo} alt="Classroom Logo" />
-            {!R.isEmpty(classroom) ? `${classroom.title} with ${classroom.instructorName}` : 'OpenTok Classroom' }
+            {currentClassroom ? `${classroom.title} with ${classroom.instructorName}` : 'OpenTok Classroom' }
         </span>
         { user ?
           <HeaderNav user={user} logout={this.onLogout} goHome={this.goHome} /> :

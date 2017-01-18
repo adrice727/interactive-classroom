@@ -66,29 +66,12 @@ class Classroom extends Component {
     this.setState({ error })
   }
 
-  publish() {
-    const { dispatch, user, classroom } = this.props;
-    const session = R.prop('session', classroom);
-    // Students won't publish audio until called upon
-    const name = user.name;
-    const publishAudio = user.role === 'instructor';
-    const publisher = OT.initPublisher(`video-${user.id}`, R.merge(cameraProperties, { name, publishAudio }));
-    session.publish(publisher, error => {
-      error ? this.onError(error) : dispatch(setLocalPublisher(publisher));
-    });
-  }
-
-  subscribe(user) {
-    otCore.subscribe(user.stream)
-  }
-
   onConnect() {
     const { dispatch } = this.props;
     dispatch(isConnected(true));
     otCore.on('streamCreated', e => this.onStreamCreated(e.stream));
     otCore.on('streamDestroyed', e => this.onStreamDestroyed(e.stream));
-    otCore.startCall().catch(e => console.log(e));
-
+    otCore.startCall().catch(this.onError);
   }
 
   connectToSession(credentials) {
@@ -114,11 +97,9 @@ class Classroom extends Component {
       const { connection } = stream;
       if (question || answer) {
         signal('studentStatus', { studentId: user.id, status: { question, answer } }, connection)
-          .then(() => console.log('signal ok'))
-          .catch(e => console.log('signal error', e));
       }
     }
-    this.subscribe(joined);
+    otCore.subscribe(joined.stream);
   }
 
   onStreamDestroyed(stream) {

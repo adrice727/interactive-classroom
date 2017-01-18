@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Spinner from 'react-spinner';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import R from 'ramda';
 import api from '../../services/api';
 import { otCore, signal, streamData } from '../../services/opentok';
 import {
@@ -14,7 +15,6 @@ import {
   studentLeft,
   resetClassroom
 } from '../../actions/classroomActions';
-import R from 'ramda';
 import Podium from './components/Podium';
 import Students from './components/Students';
 import './Classroom.css';
@@ -59,7 +59,6 @@ class Classroom extends Component {
     super(props);
     this.connectToSession = this.connectToSession.bind(this);
     this.onConnect = this.onConnect.bind(this);
-    this.publish = this.publish.bind(this);
   }
 
   onError(error) {
@@ -83,8 +82,7 @@ class Classroom extends Component {
   onStreamCreated(stream) {
     const { user, dispatch } = this.props;
     const joined = R.merge(streamData(stream), { stream });
-    const role = joined.role;
-    const action = role === 'instructor' ? instructorJoined : studentJoined;
+    const action = joined.role === 'instructor' ? instructorJoined : studentJoined;
     dispatch(action(joined));
 
     /**

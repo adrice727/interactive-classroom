@@ -20,7 +20,6 @@ import Students from './components/Students';
 import './Classroom.css';
 
 const coreOptions = (user) => {
-    const { user } = this.props;
     const streamContainers = (pubSub, type, data) => {
       const id = pubSub === 'publisher' ? user.id : data.id;
       if (type === 'camera') {

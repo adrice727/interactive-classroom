@@ -1,4 +1,3 @@
-
 .Podium {
     width: 90vw;
     max-width: calc(400px*1.6);
@@ -11,5 +10,37 @@
 }
 
 .Podium-video {
-  width: 100%;
+    width: 100%;
+}
+
+.Podium-waiting {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: background-transition 30s infinite;
+}
+
+.Podium-waiting>* {
+    margin: 10px 0;
+}
+
+.Podium-waiting-text {
+    font-size: 22px;
+}
+
+.Podium-waiting-image {
+    height: 50px;
+    width: auto;
+}
+
+@keyframes background-transition {
+    0% {
+        background: rgba(144, 131, 251, .2);
+    }
+    100% {
+        background: rgba(8, 124, 243, .2);
+    }
 }

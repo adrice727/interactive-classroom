@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import R from 'ramda';
 import './Podium.css';
+import instructorIcon from '../../../images/instructor.png'
+
+const Instructor = ({ id }) => <div id={`video-${id}`} className="Podium-video"></div>;
+
+const Waiting = () =>
+  <div className="Podium-waiting">
+    <img className="Podium-waiting-image" src={instructorIcon}></img>
+    <div className="Podium-waiting-text">Waiting for Instructor to Arrive</div>
+   </div>
+
+
+
 
 
 class Podium extends Component {
@@ -11,7 +23,7 @@ class Podium extends Component {
     const { user, instructor } = classroom;
     return (
       <div className="Podium">
-        { instructor ? <div id={`video-${instructor.id}`} className="Podium-video"></div> : '' }
+        { instructor ? <Instructor id={instructor.id} />  : <Waiting /> }
       </div>
     )
   }

@@ -10,11 +10,6 @@ const classroom = (state = {}, action) => {
   switch (action.type) {
     case 'SET_ACTIVE_CLASSROOM':
       return R.merge(state, action.classroom);
-    case 'SET_CLASSROOM_SESSION':
-      setSession(action.session);
-      return R.assoc('session', action.session, state);
-    case 'SET_LOCAL_PUBLISHER':
-      return R.assoc('publisher', action.publisher, state);
     case 'SET_CLASSROOM_CONNECTED':
       return R.assoc('connected', action.connected, state);
     case 'INSTRUCTOR_JOINED_CLASSROOM':
@@ -40,9 +35,6 @@ const classroom = (state = {}, action) => {
         signal('studentStatus', { studentId: action.studentId, status });
       }
       return R.assocPath(['students', action.studentId, 'status'], R.merge(currentStatus, status), state);
-    case 'RESET_CLASSROOM':
-      setSession(null);
-      return null;
     default:
       return state;
   }

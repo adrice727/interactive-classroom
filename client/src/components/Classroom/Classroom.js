@@ -8,8 +8,6 @@ import { otCore, signal, streamData } from '../../services/opentok';
 import {
   setClassroom,
   isConnected,
-  setSession,
-  setLocalPublisher,
   instructorJoined,
   instructorLeft,
   studentJoined,

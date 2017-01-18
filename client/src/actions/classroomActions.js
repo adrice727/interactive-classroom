@@ -3,20 +3,10 @@ export const setClassroom = classroom => ({
   classroom
 });
 
-export const setSession = session => ({
-  type: 'SET_CLASSROOM_SESSION',
-  session
-});
-
 export const isConnected = connected => ({
   type: 'SET_CLASSROOM_CONNECTED',
   connected
 });
-
-export const setLocalPublisher = publisher => ({
-  type: 'SET_LOCAL_PUBLISHER',
-  publisher
-})
 
 export const instructorJoined = instructor => ({
   type: 'INSTRUCTOR_JOINED_CLASSROOM',

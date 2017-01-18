@@ -23,7 +23,7 @@ class Podium extends Component {
     const { user, instructor } = classroom;
     return (
       <div className="Podium">
-        { instructor ? <Instructor id={instructor.id} />  : <Waiting /> }
+        { instructor ? <Instructor id={instructor.id}/> : <Waiting /> }
       </div>
     )
   }

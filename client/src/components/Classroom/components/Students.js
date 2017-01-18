@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import R from 'ramda';
 import classNames from 'classnames';
 import { updateStudentStatus, takeQuestion, takeAnswer } from '../../../actions/classroomActions.js'
+import { otCore } from '../../../services/opentok';
 import './Students.css';
 
 const getStudentList = (classroom) => {
@@ -43,38 +44,26 @@ class Students extends Component {
     this.handleAnswer = this.handleAnswer.bind(this);
   }
 
-  componentWillReceiveProps({ classroom }) {
-    const { dispatch } = this.props;
-    const { session, publisher } = classroom;
+  componentDidMount() {
+    const { dispatch }  = this.props;
 
-    /**
-     * We need a session and local publisher object before we can
-     * set our event listeners.
-     */
-    if (this.state.signalListenersSet || !session || !publisher) {
-      return;
-    }
+    const isMe = ({ connectionId }) => otCore.getSession().connection.connectionId === connectionId;
 
-    const isMe = ({ connectionId }) => session.connection.connectionId === connectionId;
-
-    session.on('signal', ({ type, data, from }) => {
+    otCore.on('signal', ({ type, data, from }) => {
       if (isMe(from)) { return; }
       const signalType = R.last(R.split(':', type));
       const { studentId, status } = JSON.parse(data);
 
-      console.log(data);
       if (signalType === 'studentStatus') {
         dispatch(updateStudentStatus(studentId, status));
       } else if (signalType === 'takeQuestion') {
         dispatch(updateStudentStatus(studentId, { asking: true }, true));
-        publisher.publishAudio(true);
+        otCore.toggleLocalAudio(true);
       } else if (signalType === 'takeAnswer') {
         dispatch(updateStudentStatus(studentId, { answering: true }, true));
-        publisher.publishAudio(true);
+        otCore.toggleLocalAudio(true);
       }
     });
-
-    this.setState({ signalListenersSet: true });
   }
 
   handleQuestion(studentId, hasQuestion) {
@@ -84,7 +73,7 @@ class Students extends Component {
     if (user.id === studentId) {
       const status = hasQuestion ? { hasQuestion } : { hasQuestion, asking: false };
       dispatch(updateStudentStatus(studentId, status, true));
-      !hasQuestion && publisher.publishAudio(false);
+      !hasQuestion && otCore.toggleLocalAudio(false);
     } else if (isInstructor) {
       dispatch(takeQuestion(studentId));
     }
@@ -98,7 +87,7 @@ class Students extends Component {
     if (user.id === studentId) {
       const status = hasAnswer ? { hasAnswer } : { hasAnswer, answering: false };
       dispatch(updateStudentStatus(studentId, status, true));
-      !hasAnswer && publisher.publishAudio(false);
+      !hasAnswer && otCore.toggleLocalAudio(false);
     } else if (isInstructor) {
       dispatch(takeAnswer(studentId));
     }

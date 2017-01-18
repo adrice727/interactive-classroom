@@ -1,25 +1,5 @@
 import R from 'ramda';
-
-// The current session
-let _session = null;
-
-// Set the current session
-const setSession = session => {
-  _session = session;
-};
-
-/**
- * Send a signal using the OpenTok signaling API
- */
-const signal = (type, signalData, to) =>
-  new Promise((resolve, reject) => {
-    if (!_session) {
-      reject('No current OpenTok session');
-    }
-    const data = JSON.stringify(signalData);
-    const props = to ? { to, type, data } : { type, data };
-    _session.signal(props, e => e ? reject(e) : resolve());
-  });
+import otCore from 'opentok-accelerator-core';
 
 const cameraProperties = {
   insertMode: 'append',
@@ -33,8 +13,29 @@ const cameraProperties = {
   },
 };
 
+/**
+ * Send a signal using the OpenTok signaling API
+ * @param {String} type
+ * @param {*} data
+ * @param {Object} to - An OpenTok connection object
+ * @returns {Promise} <resolve: empty, reject: {Error}>
+ */
+const signal = (type, data, to) =>
+  new Promise((resolve, reject) => {
+    otCore.signal(type, data)
+    .then(resolve)
+    .catch(reject);
+  });
+
+/**
+ * Parse connection data from a stream
+ * @param {Object} stream - An OpenTok stream
+ * @returns {*}
+ */
+const streamData = stream => JSON.parse(R.pathOr(null, ['connection', 'data'], stream));
+
 module.exports = {
-  cameraProperties,
-  setSession,
+  otCore,
   signal,
+  streamData,
 }

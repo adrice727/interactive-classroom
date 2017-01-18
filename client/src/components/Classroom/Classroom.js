@@ -1,11 +1,10 @@
 /* global OT */
 import React, { Component } from 'react';
 import Spinner from 'react-spinner';
-import otCore from 'opentok-accelerator-core';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import api from '../../services/api';
-import { cameraProperties, signal } from '../../services/opentok';
+import { otCore, signal, streamData } from '../../services/opentok';
 import {
   setClassroom,
   isConnected,
@@ -22,32 +21,7 @@ import Podium from './components/Podium';
 import Students from './components/Students';
 import './Classroom.css';
 
-
-const connectingMask = () =>
-  <div className="Classroom-mask">
-    <Spinner />
-    <div className="message">Connecting to Classroom</div>
-  </div>
-
-const errorMask = () =>
-  <div className="Classroom-mask error">
-    <Spinner />
-    <div className="message">Something has gone horribly wrong. Please refresh the page.</div>
-  </div>
-
-class Classroom extends Component {
-  constructor(props) {
-    super(props);
-    this.connectToSession = this.connectToSession.bind(this);
-    this.onConnect = this.onConnect.bind(this);
-    this.publish = this.publish.bind(this);
-  }
-
-  onError(error) {
-    this.setState({ error })
-  }
-
-  coreOptions() {
+const coreOptions = (user) => {
     const { user } = this.props;
     const streamContainers = (pubSub, type, data) => {
       const id = pubSub === 'publisher' ? user.id : data.id;
@@ -64,7 +38,36 @@ class Classroom extends Component {
     };
   };
 
+const ConnectingMask = () =>
+  <div className="Classroom-mask">
+    <Spinner />
+    <div className="message">Connecting to Classroom</div>
+  </div>
 
+const ErrorMask = () =>
+  <div className="Classroom-mask error">
+    <Spinner />
+    <div className="message">Something has gone horribly wrong. Please refresh the page.</div>
+  </div>
+
+const Main = () =>
+  <div>
+    <Podium />
+    <div id="videoControls" />
+    <Students/>
+  </div>
+
+class Classroom extends Component {
+  constructor(props) {
+    super(props);
+    this.connectToSession = this.connectToSession.bind(this);
+    this.onConnect = this.onConnect.bind(this);
+    this.publish = this.publish.bind(this);
+  }
+
+  onError(error) {
+    this.setState({ error })
+  }
 
   publish() {
     const { dispatch, user, classroom } = this.props;
@@ -79,40 +82,28 @@ class Classroom extends Component {
   }
 
   subscribe(user) {
-    const { session } = this.props.classroom;
-    const name = user.name;
     otCore.subscribe(user.stream)
-    // session.subscribe(user.stream, `video-${user.id}`, R.merge(cameraProperties, { name }));
   }
 
   onConnect() {
     const { dispatch } = this.props;
     dispatch(isConnected(true));
-    // const session = R.path(['classroom', 'session'], this.props);
     otCore.on('streamCreated', e => this.onStreamCreated(e.stream));
     otCore.on('streamDestroyed', e => this.onStreamDestroyed(e.stream));
-    otCore.startCall()
-    .then(state => console.log(state))
-    .catch(error => console.log('error here', error))
+    otCore.startCall().catch(e => console.log(e));
 
   }
 
   connectToSession(credentials) {
-    const { dispatch } = this.props;
+    const { dispatch, user } = this.props;
     const { apiKey, sessionId, token } = credentials;
-    otCore.init(R.assoc('credentials', credentials, this.coreOptions()));
+    otCore.init(R.assoc('credentials', credentials, coreOptions(user)));
     otCore.connect().then(this.onConnect);
-
-    // const session = OT.initSession(apiKey, sessionId);
-
-    // dispatch(setSession(session));
-    // session.connect(token, this.onConnect);
   }
 
   onStreamCreated(stream) {
-    console.log(stream);
     const { user, dispatch } = this.props;
-    const joined = R.merge(JSON.parse(R.path(['connection', 'data'], stream)), { stream });
+    const joined = R.merge(streamData(stream), { stream });
     const role = joined.role;
     const action = role === 'instructor' ? instructorJoined : studentJoined;
     dispatch(action(joined));
@@ -126,6 +117,8 @@ class Classroom extends Component {
       const { connection } = stream;
       if (question || answer) {
         signal('studentStatus', { studentId: user.id, status: { question, answer } }, connection)
+          .then(() => console.log('signal ok'))
+          .catch(e => console.log('signal error', e));
       }
     }
     this.subscribe(joined);
@@ -133,13 +126,10 @@ class Classroom extends Component {
 
   onStreamDestroyed(stream) {
     const { dispatch } = this.props;
-    const { id, role } = JSON.parse(stream.connection.data);
+    const { id, role } = streamData(stream);
     const action = role === 'instructor' ? instructorLeft : studentLeft;
     dispatch(action(id));
   }
-
-
-
 
   componentDidMount() {
     const { user, dispatch } = this.props;
@@ -155,7 +145,7 @@ class Classroom extends Component {
 
   componentWillUnmount() {
     const { dispatch, classroom } = this.props;
-    classroom.session.disconnect();
+    otCore.disconnect();
     dispatch(resetClassroom());
   }
 
@@ -163,13 +153,8 @@ class Classroom extends Component {
     const { connected, error } = this.props.classroom;
     return (
       <div className="Classroom">
-        { !connected && connectingMask() }
-        <div>
-          <Podium />
-          <div id="videoControls" />
-          <Students/>
-        </div>
-        { error && errorMask() }
+        { connected ? <Main /> : <ConnectingMask /> }
+        { error && <ErrorMask /> }
       </div>
     )
   }

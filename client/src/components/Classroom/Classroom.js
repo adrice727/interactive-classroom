@@ -75,8 +75,7 @@ class Classroom extends Component {
   }
 
   connectToSession(credentials) {
-    const { dispatch, user } = this.props;
-    const { apiKey, sessionId, token } = credentials;
+    const { user } = this.props;
     otCore.init(R.assoc('credentials', credentials, coreOptions(user)));
     otCore.connect().then(this.onConnect);
   }
@@ -122,7 +121,7 @@ class Classroom extends Component {
   }
 
   componentWillUnmount() {
-    const { dispatch, classroom } = this.props;
+    const { dispatch } = this.props;
     otCore.disconnect();
     dispatch(resetClassroom());
   }

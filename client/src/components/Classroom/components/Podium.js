@@ -8,19 +8,15 @@ const Instructor = ({ id }) => <div id={`video-${id}`} className="Podium-video">
 
 const Waiting = () =>
   <div className="Podium-waiting">
-    <img className="Podium-waiting-image" src={instructorIcon}></img>
+    <img className="Podium-waiting-image" role="presentation" src={instructorIcon}></img>
     <div className="Podium-waiting-text">Waiting for Instructor to Arrive</div>
    </div>
-
-
-
-
 
 class Podium extends Component {
 
   render() {
     const { classroom } = this.props
-    const { user, instructor } = classroom;
+    const { instructor } = classroom;
     return (
       <div className="Podium">
         { instructor ? <Instructor id={instructor.id}/> : <Waiting /> }

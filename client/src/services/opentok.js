@@ -1,17 +1,17 @@
 import R from 'ramda';
 import otCore from 'opentok-accelerator-core';
 
-const cameraProperties = {
-  insertMode: 'append',
-  width: '100%',
-  height: '100%',
-  showControls: false,
-  fitMode: 'cover',
-  style: {
-    buttonDisplayMode: 'on',
-    nameDisplayMode: 'on',
-  },
-};
+// const cameraProperties = {
+//   insertMode: 'append',
+//   width: '100%',
+//   height: '100%',
+//   showControls: false,
+//   fitMode: 'cover',
+//   style: {
+//     buttonDisplayMode: 'on',
+//     nameDisplayMode: 'on',
+//   },
+// };
 
 /**
  * Send a signal using the OpenTok signaling API

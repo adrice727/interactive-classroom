@@ -68,12 +68,11 @@ class Students extends Component {
 
   handleQuestion(studentId, hasQuestion) {
     const { dispatch, user, classroom } = this.props;
-    const { publisher } = classroom;
     const isInstructor = R.path(['instructor', 'id'], classroom) === user.id;
     if (user.id === studentId) {
       const status = hasQuestion ? { hasQuestion } : { hasQuestion, asking: false };
       dispatch(updateStudentStatus(studentId, status, true));
-      !hasQuestion && otCore.toggleLocalAudio(false);
+      !hasQuestion && otCore.toggleLocalAudio(false); // eslint-disable-line no-unused-expressions
     } else if (isInstructor) {
       dispatch(takeQuestion(studentId));
     }
@@ -81,13 +80,12 @@ class Students extends Component {
 
   handleAnswer(studentId, hasAnswer) {
     const { dispatch, user, classroom } = this.props;
-    const { publisher } = classroom;
     const isInstructor = R.path(['instructor', 'id'], classroom) === user.id;
 
     if (user.id === studentId) {
       const status = hasAnswer ? { hasAnswer } : { hasAnswer, answering: false };
       dispatch(updateStudentStatus(studentId, status, true));
-      !hasAnswer && otCore.toggleLocalAudio(false);
+      !hasAnswer && otCore.toggleLocalAudio(false); // eslint-disable-line no-unused-expressions
     } else if (isInstructor) {
       dispatch(takeAnswer(studentId));
     }

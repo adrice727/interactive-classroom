@@ -1,5 +1,5 @@
 import R from 'ramda';
-import { setSession, signal } from '../services/opentok';
+import { signal } from '../services/opentok';
 
 const getConnection = (role, id) => {
   const type = role === 'student' ? 'students' : 'instructor';

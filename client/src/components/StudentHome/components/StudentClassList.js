@@ -3,11 +3,6 @@ import R from 'ramda';
 import './StudentClassList.css';
 import classroomIcon from '../../../images/classroom-icon.png';
 
-const createList = classrooms => {
-  const getClass = id => R.prop(id, classrooms);
-  return R.map(getClass, R.keys(classrooms));
-}
-
 const ClassroomItem = ({ classroom, remove }) => {
   const { title, instructorName, description, imageURL, id } = classroom;
   const imageSrc = R.defaultTo(classroomIcon)(imageURL);
@@ -30,16 +25,19 @@ const ClassroomItem = ({ classroom, remove }) => {
   )
 }
 
+const NoClasses = () => <div className="emptyList">No existing classes</div>;
+
 const StudentClassList = ({ classrooms, removeClassroom }) => {
-  const list = createList(classrooms);
+  const list = Object.values(classrooms);
+  const List = () =>
+    <ul>
+      { R.map(classroom => <ClassroomItem key={classroom.id} classroom={classroom} remove={removeClassroom} />)(list) }
+    </ul>
+
   return (
     <div className="StudentClassList">
-        { R.isEmpty(list) ? <div className="emptyList">No existing classes</div> :
-        <ul>
-          { list.map(classroom => <ClassroomItem key={classroom.id} classroom={classroom} remove={removeClassroom} />) }
-        </ul>
-        }
-      </div>
+      { R.isEmpty(list) ? <NoClasses /> : <List /> }
+    </div>
   )
 };
 

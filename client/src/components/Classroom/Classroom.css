@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 25px;
 }
 
 .Classroom-info {
@@ -45,7 +44,7 @@
     width: 23.5%;
     height: 500px;
     position: absolute;
-    top: 65px;
+    top: 40px;
     left: 5px;
     transition: left 2s;
 }
@@ -58,9 +57,9 @@
     left: -23.5%;
 }
 
-.Classroom-chat .Classroom-chat-minimize {
+.Classroom-chat .minimize-chat {
     position: absolute;
-    top: -15px;
+    bottom: 20px;
     right: 0;
     left: 0;
     width: 105px;
@@ -70,18 +69,20 @@
     transition: right 2s ease;
 }
 
-.Classroom-chat .Classroom-chat-minimize>div {
+.Classroom-chat .minimize-chat>div {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.Classroom-chat .Classroom-chat-minimize.minimized {
+.Classroom-chat .minimize-chat.minimized {
     right: -30.5%;
+    bottom: initial;
+    top: 10px;
     left: initial;
 }
 
-.Classroom-chat .Classroom-chat-minimize i {
+.Classroom-chat .minimize-chat i {
     font-size: 26px;
     margin-right: 5px;
 }

@@ -66,7 +66,7 @@ const VideoControls = () => <div id="videoControls" className="Classroom-video-c
 
 const Chat = ({ toggle, display, minimized }) =>
   <div id="chat" className={classNames('Classroom-chat', { minimized, hidden: !display })}>
-    <div className={classNames('Classroom-chat-minimize', { minimized })} onClick={toggle}>
+    <div className={classNames('minimize-chat', { minimized })} onClick={toggle}>
       { minimized ?
         <div><i>→</i><span>Show Chat</span></div> :
         <div><i>←</i><span>Hide Chat</span></div>

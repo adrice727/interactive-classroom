@@ -46,6 +46,20 @@ h1, h2, h3, h4 {
     background-color: #bc0606;
 }
 
+.btn.white {
+    color: black;
+    border: 1px solid lightgrey;
+    background-color: white;
+}
+
+.btn.white:hover {
+    background-color: rgba(40,186,238,.4);
+}
+
+.btn.white.delete:hover {
+    background-color: rgba(238,32,32,.4);
+}
+
 .btn.transparent {
     color: #fff;
     background: none;

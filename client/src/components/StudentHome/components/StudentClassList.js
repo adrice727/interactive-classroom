@@ -19,7 +19,7 @@ const ClassroomItem = ({ classroom, remove }) => {
         <div className="description">{description}</div>
       </div>
       <div className="action-container">
-        <a className="link btn blue" href={`classroom/${id}`}>Join</a>
+        <a className="link btn white" href={`classroom/${id}`}>Join</a>
       </div>
     </li>
   )

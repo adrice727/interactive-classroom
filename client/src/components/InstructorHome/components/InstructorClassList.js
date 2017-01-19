@@ -17,8 +17,8 @@ const ClassroomItem = ({ classroom, remove }) => {
         </div>
       </div>
       <div className="action-container">
-        <a className="link btn blue" href={`classroom/${id}`}>Join</a>
-        <button className="delete btn red" onClick={R.partial(remove, [id])}>Remove</button>
+        <a className="link btn white" href={`classroom/${id}`}>Join</a>
+        <button className="delete btn white" onClick={R.partial(remove, [id])}>Remove</button>
       </div>
     </li>
   )

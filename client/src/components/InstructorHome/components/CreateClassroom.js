@@ -59,7 +59,7 @@ class CreateClassroom extends Component {
           <div>{errors.title ?  'A classroom name is required' : ''}</div>
           <div>{errors.description ?  'A classroom description is required' : ''}</div>
         </div>
-        <button className="btn blue" onClick={this.createClassroom}>Create Classroom</button>
+        <button className="btn white" onClick={this.createClassroom}>Create Classroom</button>
     </div>)
   }
 }

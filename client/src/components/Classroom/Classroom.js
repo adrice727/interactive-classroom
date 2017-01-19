@@ -62,7 +62,7 @@ const Main = () =>
     <Students/>
   </div>
 
-const VideoControls = () => <div id="videoControls" className="Classroom-video-controls"/>;
+const VideoControls = () => <div id="videoControls" className="Classroom-video-controls hidden"/>;
 
 const Chat = ({ toggle, display, minimized }) =>
   <div id="chat" className={classNames('Classroom-chat', { minimized, hidden: !display })}>

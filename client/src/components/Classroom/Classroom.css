@@ -37,6 +37,10 @@
     height: 100px;
 }
 
+.Classroom-video-controls.hidden {
+    display: none;
+}
+
 .Classroom-chat {
     width: 23.5%;
     height: 500px;

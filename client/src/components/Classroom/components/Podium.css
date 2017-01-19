@@ -1,8 +1,8 @@
 .Podium {
     width: 90vw;
-    max-width: calc(400px*1.6);
+    max-width: calc(450px*1.6);
     height: calc(90vw*.60);
-    max-height: 400px;
+    max-height: 450px;
     margin: 20px 0;
     display: flex;
     justify-content: center;
@@ -20,7 +20,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    animation: background-transition 30s infinite;
+    border: 1px solid rgba(37, 157, 232, .2);
 }
 
 .Podium-waiting>* {
@@ -34,13 +34,4 @@
 .Podium-waiting-image {
     height: 50px;
     width: auto;
-}
-
-@keyframes background-transition {
-    0% {
-        background: rgba(144, 131, 251, .2);
-    }
-    100% {
-        background: rgba(8, 124, 243, .2);
-    }
 }

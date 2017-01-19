@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Spinner from 'react-spinner';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import classNames from 'classnames';
 import R from 'ramda';
 import api from '../../services/api';
 import { otCore, signal, streamData } from '../../services/opentok';
@@ -17,23 +18,31 @@ import {
 } from '../../actions/classroomActions';
 import Podium from './components/Podium';
 import Students from './components/Students';
+import 'opentok-solutions-css';
 import './Classroom.css';
 
 const coreOptions = (user) => {
-    const streamContainers = (pubSub, type, data) => {
-      const id = pubSub === 'publisher' ? user.id : data.id;
-      if (type === 'camera') {
-        return `#video-${id}`
-      }
+  const streamContainers = (pubSub, type, data) => {
+    const id = pubSub === 'publisher' ? user.id : data.id;
+    if (type === 'camera') {
+      return `#video-${id}`
     }
-    return {
-      controlsContainer: '#videoControls',
-      streamContainers,
-      communication: {
-        autoSubscribe: false
-      }
-    };
+  }
+  return {
+    controlsContainer: '#videoControls',
+    streamContainers,
+    communication: {
+      autoSubscribe: false
+    },
+    packages: ['textChat'],
+    textChat: {
+      name: user.name,
+      waitingMessage: 'Waiting for others to join the classroom',
+      container: '#chat',
+      alwaysOpen: true,
+    }
   };
+};
 
 const ConnectingMask = () =>
   <div className="Classroom-mask">
@@ -48,10 +57,21 @@ const ErrorMask = () =>
   </div>
 
 const Main = () =>
-  <div>
+  <div className="Classroom-main">
     <Podium />
-    <div id="videoControls" />
     <Students/>
+  </div>
+
+const VideoControls = () => <div id="videoControls" className="Classroom-video-controls"/>;
+
+const Chat = ({ toggle, display, minimized }) =>
+  <div id="chat" className={classNames('Classroom-chat', { minimized, hidden: !display })}>
+    <div className={classNames('Classroom-chat-minimize', { minimized })} onClick={toggle}>
+      { minimized ?
+        <div><i>→</i><span>Show Chat</span></div> :
+        <div><i>←</i><span>Hide Chat</span></div>
+      }
+    </div>
   </div>
 
 class Classroom extends Component {
@@ -59,10 +79,17 @@ class Classroom extends Component {
     super(props);
     this.connectToSession = this.connectToSession.bind(this);
     this.onConnect = this.onConnect.bind(this);
+    this.toggleChat = this.toggleChat.bind(this);
+    this.state = { minimizeChat: true }
   }
 
   onError(error) {
     this.setState({ error })
+  }
+
+  toggleChat() {
+    const minimized = this.state.minimizeChat;
+    this.setState({ minimizeChat: !minimized });
   }
 
   onConnect() {
@@ -126,10 +153,14 @@ class Classroom extends Component {
 
   render() {
     const { connected, error } = this.props.classroom;
+    const { minimizeChat } = this.state;
+
     return (
       <div className="Classroom">
         { connected ? <Main /> : <ConnectingMask /> }
+        <VideoControls />
         { error && <ErrorMask /> }
+        <Chat toggle={this.toggleChat} display={connected} minimized={minimizeChat}/>
       </div>
     )
   }

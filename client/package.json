@@ -12,6 +12,8 @@
     "firebase": "^3.3.0",
     "lodash.throttle": "^4.1.1",
     "opentok-accelerator-core": "0.0.9",
+    "opentok-solutions-css": "0.0.39",
+    "opentok-text-chat": "^1.0.21",
     "ramda": "^0.22.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",

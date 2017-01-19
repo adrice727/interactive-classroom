@@ -10,6 +10,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 200px;
     margin: 0px 10px;
 }
@@ -29,9 +30,9 @@
 }
 
 .Student-indicators {
-    position: relative;
-    left: -7.5%;
-    width: 115%;
+    position: absolute;
+    top: 10px;
+    width: 112.5%;
     display: flex;
     justify-content: space-between;
     align-content: center;

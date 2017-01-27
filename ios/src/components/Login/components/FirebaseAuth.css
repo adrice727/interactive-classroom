@@ -1,0 +1,30 @@
+.FirebaseAuth {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.FirebaseAuth-btn {
+    height: 50px;
+    width: 100px;
+    background-repeat: no-repeat;
+    background-size: 35% auto;
+    background-position: center;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    padding-top: 65px;
+    font-size: 20px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+
+}
+
+.FirebaseAuth-btn.instructor {
+    background-image: url(../../../images/instructor.png);
+    background-size: 50% auto;
+}
+
+.FirebaseAuth-btn.student {
+    background-image: url(../../../images/student.png);
+}

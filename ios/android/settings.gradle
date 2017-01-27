@@ -1,3 +1,7 @@
 rootProject.name = 'interactiveClassroom'
+include ':react-native-oauth'
+project(':react-native-oauth').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-oauth/android')
+include ':react-native-firestack'
+project(':react-native-firestack').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-firestack/android')
 
 include ':app'

@@ -1,0 +1,14 @@
+export const loginUser = user => ({
+  type: 'LOGIN_USER',
+  user
+});
+
+export const addCredentials = credentials => ({
+  type: 'ADD_CREDENTIALS',
+  credentials
+});
+
+export const logoutUser = () => ({
+  type: 'LOGOUT_USER',
+  user: null
+});

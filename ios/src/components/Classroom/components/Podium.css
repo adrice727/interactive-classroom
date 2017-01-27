@@ -1,0 +1,37 @@
+.Podium {
+    width: 90vw;
+    max-width: calc(450px*1.6);
+    height: calc(90vw*.60);
+    max-height: 450px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.Podium-video {
+    width: 100%;
+}
+
+.Podium-waiting {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgba(37, 157, 232, .2);
+}
+
+.Podium-waiting>* {
+    margin: 10px 0;
+}
+
+.Podium-waiting-text {
+    font-size: 22px;
+}
+
+.Podium-waiting-image {
+    height: 50px;
+    width: auto;
+}

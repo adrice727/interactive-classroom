@@ -1,0 +1,83 @@
+.Students {
+    margin-top: 50px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.Student {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    margin: 0px 10px;
+}
+
+.Student.asking .Student-video {
+    box-shadow: 0 0 1em rgba(255, 0, 0, .6);
+}
+
+.Student.answering .Student-video {
+    box-shadow: 0 0 1em rgba(0, 151, 204, .6);
+}
+
+.Student-video {
+    height: 108px;
+    width: 180px;
+    margin: 0px 10px;
+}
+
+.Student-indicators {
+    position: absolute;
+    top: 10px;
+    width: 112.5%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.Student-indicators .indicator {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 50%;
+    background-size: 55%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: 2;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.Student-indicators .indicator.clickable {
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.Student-indicators.show .indicator {
+    visibility: visible;
+    cursor: pointer;
+}
+
+.Student-indicators .indicator.active {
+    visibility: visible;
+    cursor: pointer;
+}
+
+.Student-indicators .indicator.question {
+    background-image: url("../../../images/question.png")
+}
+
+.Student-indicators .indicator.question.active {
+    background-color: rgba(255, 0, 0, .6);
+}
+
+.Student-indicators .indicator.answer {
+    background-image: url("../../../images/answer.png")
+}
+
+.Student-indicators .indicator.answer.active {
+    background-color: rgba(0, 151, 204, .6);
+}

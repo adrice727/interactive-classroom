@@ -5,12 +5,11 @@ import {
   View,
   Image
 } from 'react-native';
-//import { withRouter, browserHistory } from 'react-router';
-//import { connect } from 'react-redux';
-//import R from 'ramda';
-//import api from '../../services/api';
-//import { loginUser } from '../../actions/userActions';
-//import { setInstructor } from '../../actions/instructorActions';
+
+import { connect } from 'react-redux';
+import R from 'ramda';
+import api from '../../services/api';
+import { loginUser } from '../../actions/userActions';
 import FirebaseAuth from './components/FirebaseAuth';
 
 export default class Login extends Component {
@@ -35,7 +34,6 @@ export default class Login extends Component {
 
   onAuth(role, data) {
     console.log(role, data);
-    return;
 
     const { dispatch } = this.props;
 
@@ -52,7 +50,6 @@ export default class Login extends Component {
       if (role === 'instructor') {
         dispatch(setInstructor(user));
       }
-      // browserHistory.push(`/${role}-home`);
     };
 
     api.post('user', R.omit('role', user))
@@ -62,45 +59,26 @@ export default class Login extends Component {
   }
 
   onError(error) {
-    console.log(error);
-    return;
     this.setState({ error });
   }
 
   render() {
+    const providers = {
+      google: true,
+      facebook: true,
+    };
     return (
       <View style={styles.login}>
         <Text style={styles.loginHeader}>
-          Login with Facebook
+          Login
         </Text>
         <View style={styles.loginComponentContainer}>
-          <FirebaseAuth onAuth={this.onAuth} onError={this.onError} />
+          <FirebaseAuth providers={providers} onAuth={this.onAuth} onError={this.onError} />
         </View>
       </View>
     );
   }
 };
-
-// export default class Login extends Component {
-// return (
-//     <div className='Login'>
-//       <div>
-//           <div className='Login-main'>
-//           <div className='Login-content'>
-//             <div className='Login-component-container'>
-//               <h2 className='Login-subheader grey'> Sign In</h2>
-//               <div className='Login-error red'>
-//                 { this.state.error ? this.state.error : ''}
-//               </div>
-//               <FirebaseAuth onAuth={this.onAuth} onError={this.onError} />
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   )
-
-// }
 
 const styles = StyleSheet.create({
   login: {
@@ -123,10 +101,10 @@ const styles = StyleSheet.create({
   },
 });
 
-// const mapStateToProps = (state, { params }) => ({
-//   user: state.user,
-// });
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
 
-// export default withRouter(connect(
-//   mapStateToProps
-// )(Login));
+export default connect(
+  mapStateToProps
+)(Login);

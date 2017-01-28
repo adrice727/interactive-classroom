@@ -2,10 +2,7 @@
 import R from 'ramda';
 
 /** Constants */
-const parentWindow = window.parent;
-const origin = parentWindow.location.hostname;
-const backendUrl = 'https://opentok-classroom-server.herokuapp.com';
-const url = origin === 'localhost' ? 'http://localhost:3030' : backendUrl;
+const url = 'https://opentok-classroom-server.herokuapp.com';
 
 /** Helper methods */
 

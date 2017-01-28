@@ -14,6 +14,7 @@ import R from 'ramda'
 import Firestack from 'react-native-firestack';
 import OAuthManager from 'react-native-oauth';
 import googleLogo from '../images/google.png';
+import facebookLogo from '../images/facebook.png';
 
 // firebase.initializeApp(firebaseConfig);
 
@@ -34,6 +35,10 @@ manager.configure({
   google: {
     callback_url: `com.googleusercontent.apps.433984099756-ouln8ij4tt9tgfv2pvc3csacdoq3eibu:/google`,
     client_id: '433984099756-ouln8ij4tt9tgfv2pvc3csacdoq3eibu.apps.googleusercontent.com',
+  },
+  facebook: {
+    client_id: '1325352990865157',
+    client_secret: '1e788777811a2e429283751415b28965'
   }
 });
 
@@ -63,12 +68,12 @@ class FirebaseAuth extends Component {
   }
 
   authWithFirebase(role) {
-    manager.authorize('google', { scopes: 'email' })
+    manager.authorize('facebook')
       .then(({ response }) => {
         console.log(response);
         const token = R.path(['credentials', 'accessToken'], response);
         console.log(token);
-        firestack.auth.signInWithProvider('google', token, '')
+        firestack.auth.signInWithProvider('facebook', token, '')
           .then((user) => {
             console.log('UUUUUU', user);
           })
@@ -89,7 +94,7 @@ class FirebaseAuth extends Component {
       <View style={styles.firebaseAuth}>
         <TouchableOpacity onPress={studentAuth}>
           <View>
-            <Image style={styles.firebaseAuthBtn} source={googleLogo} />
+            <Image style={styles.firebaseAuthBtn} source={facebookLogo} />
           </View>
       </TouchableOpacity>
       </View>

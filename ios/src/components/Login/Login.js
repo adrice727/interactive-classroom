@@ -71,7 +71,7 @@ export default class Login extends Component {
     return (
       <View style={styles.login}>
         <Text style={styles.loginHeader}>
-          Login with Google
+          Login with Facebook
         </Text>
         <View style={styles.loginComponentContainer}>
           <FirebaseAuth onAuth={this.onAuth} onError={this.onError} />

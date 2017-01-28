@@ -38,22 +38,22 @@ manager.configure({
 });
 
 
-const firestack = new Firestack({ debug: true });
+const firestack = new Firestack();
 firestack.on('debug', msg => console.log('Received debug message', msg))
-firestack.auth.listenForAuth(function(evt) {
-  // evt is the authentication event
-  // it contains an `error` key for carrying the
-  // error message in case of an error
-  // and a `user` key upon successful authentication
-  if (!evt.authenticated) {
-    // There was an error or there is no user
-    console.error(evt.error)
-  } else {
-    // evt.user contains the user details
-    console.log('User details', evt.user);
-  }
-})
-.then(() => console.log('Listening for authentication changes'))
+  // firestack.auth.listenForAuth(function(evt) {
+  //   // evt is the authentication event
+  //   // it contains an `error` key for carrying the
+  //   // error message in case of an error
+  //   // and a `user` key upon successful authentication
+  //   if (!evt.authenticated) {
+  //     // There was an error or there is no user
+  //     console.error(evt.error)
+  //   } else {
+  //     // evt.user contains the user details
+  //     console.log('User details', evt.user);
+  //   }
+  // })
+  // .then(() => console.log('Listening for authentication changes'))
 
 class FirebaseAuth extends Component {
 
@@ -64,9 +64,11 @@ class FirebaseAuth extends Component {
 
   authWithFirebase(role) {
     manager.authorize('google', { scopes: 'email' })
-      .then(resp => {
-        console.log(111111111, resp);
-        firestack.auth.signInWithProvider('google', resp.response.credentials.accessToken, '')
+      .then(({ response }) => {
+        console.log(response);
+        const token = R.path(['credentials', 'accessToken'], response);
+        console.log(token);
+        firestack.auth.signInWithProvider('google', token, '')
           .then((user) => {
             console.log('UUUUUU', user);
           })
@@ -97,15 +99,12 @@ class FirebaseAuth extends Component {
 
 const styles = StyleSheet.create({
   firebaseAuth: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   firebaseAuthBtn: {
     height: 65,
     width: 65,
-    padding: 10,
-    margin: 10,
   },
 });
 

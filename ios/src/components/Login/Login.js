@@ -69,11 +69,11 @@ export default class Login extends Component {
 
   render() {
     return (
-      <View style={styles.Login}>
-        <Text style={styles.LoginHeader}>
+      <View style={styles.login}>
+        <Text style={styles.loginHeader}>
           Login with Google
         </Text>
-        <View style={styles.LoginComponentContainer}>
+        <View style={styles.loginComponentContainer}>
           <FirebaseAuth onAuth={this.onAuth} onError={this.onError} />
         </View>
       </View>
@@ -103,17 +103,18 @@ export default class Login extends Component {
 // }
 
 const styles = StyleSheet.create({
-  Login: {
+  login: {
     flex: 1,
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
   },
-  LoginHeader: {
-    fontSize: 20,
-    fontFamily: 'Menlo',
+  loginHeader: {
+    fontSize: 24,
+    marginBottom: 40,
+    fontFamily: 'AppleSDGothicNeo-Light',
     textAlign: 'center',
-    marginTop: 60,
   },
   instructions: {
     textAlign: 'center',

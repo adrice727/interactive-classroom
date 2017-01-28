@@ -81,10 +81,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   firebaseAuthBtn: {
-    height: 65,
-    width: 65,
-    marginRight: 10,
-    marginLeft: 10,
+    height: 55,
+    width: 55,
+    marginRight: 25,
+    marginLeft: 25,
   },
 });
 

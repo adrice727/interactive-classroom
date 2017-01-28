@@ -1,7 +1,6 @@
 import React from 'react';
 import R from 'ramda';
-import './StudentClassList.css';
-import classroomIcon from '../../../images/classroom-icon.png';
+// import classroomIcon from '../../../images/classroom-icon.png';
 
 const ClassroomItem = ({ classroom, remove }) => {
   const { title, instructorName, description, imageURL, id } = classroom;

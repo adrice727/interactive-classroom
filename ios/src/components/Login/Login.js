@@ -12,7 +12,7 @@ import api from '../../services/api';
 import { loginUser } from '../../actions/userActions';
 import FirebaseAuth from './components/FirebaseAuth';
 
-export default class Login extends Component {
+class Login extends Component {
 
   constructor(props) {
     super(props);
@@ -33,9 +33,7 @@ export default class Login extends Component {
   }
 
   onAuth(role, data) {
-    console.log(role, data);
-
-    const { dispatch } = this.props;
+    const { dispatch, navigation } = this.props;
 
     const user = {
       id: R.path(['user', 'uid'], data),
@@ -46,6 +44,8 @@ export default class Login extends Component {
     };
 
     const login = user => {
+      navigation.navigate('StudentHome');
+      return;
       dispatch(loginUser(user));
       if (role === 'instructor') {
         dispatch(setInstructor(user));
@@ -55,7 +55,6 @@ export default class Login extends Component {
     api.post('user', R.omit('role', user))
       .then(response => login(user))
       .catch(error => console.log(error));
-
   }
 
   onError(error) {
@@ -94,17 +93,14 @@ const styles = StyleSheet.create({
     fontFamily: 'AppleSDGothicNeo-Light',
     textAlign: 'center',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
 });
 
 const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(
-  mapStateToProps
-)(Login);
+// export default connect(
+//   mapStateToProps
+// )(Login);
+
+export default Login;

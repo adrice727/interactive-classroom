@@ -29,7 +29,7 @@ import googleLogo from '../images/google.png';
 
 
 
-const manager = new OAuthManager('firestackexample')
+const manager = new OAuthManager('interactiveClassroom')
 manager.configure({
   google: {
     callback_url: `com.googleusercontent.apps.433984099756-ouln8ij4tt9tgfv2pvc3csacdoq3eibu:/google`,
@@ -39,6 +39,21 @@ manager.configure({
 
 
 const firestack = new Firestack({ debug: true });
+firestack.on('debug', msg => console.log('Received debug message', msg))
+firestack.auth.listenForAuth(function(evt) {
+  // evt is the authentication event
+  // it contains an `error` key for carrying the
+  // error message in case of an error
+  // and a `user` key upon successful authentication
+  if (!evt.authenticated) {
+    // There was an error or there is no user
+    console.error(evt.error)
+  } else {
+    // evt.user contains the user details
+    console.log('User details', evt.user);
+  }
+})
+.then(() => console.log('Listening for authentication changes'))
 
 class FirebaseAuth extends Component {
 
@@ -48,12 +63,12 @@ class FirebaseAuth extends Component {
   }
 
   authWithFirebase(role) {
-    manager.authorize('google', { scopes: 'profile email' })
+    manager.authorize('google', { scopes: 'email' })
       .then(resp => {
-        console.log('GOOGLE authorize response: ', resp)
-        firestack.signInWithProvider('google', resp.response.credentials.idToken, '')
+        console.log(111111111, resp);
+        firestack.auth.signInWithProvider('google', resp.response.credentials.accessToken, '')
           .then((user) => {
-            console.log('(FIRESTACK) GOOGLE AUTH response:', user)
+            console.log('UUUUUU', user);
           })
           .catch(err => console.log(err));
       })

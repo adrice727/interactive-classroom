@@ -26,6 +26,7 @@
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		733B2D61B68FC59602B7FCAD /* Pods_interactiveClassroomTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBC968316EFB47A88988F287 /* Pods_interactiveClassroomTests.framework */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		93166AE01E3C137E0081B4A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93166ADF1E3C137E0081B4A2 /* GoogleService-Info.plist */; };
 		9354F2341E3BF05900C5EECD /* libOAuthManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9363BFEC1E3BE999007294EE /* libOAuthManager.a */; };
 		EC2B54EF2BC6BA2876913207 /* Pods_interactiveClassroom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B12F54F79802FF7B0226F1E /* Pods_interactiveClassroom.framework */; };
 /* End PBXBuildFile section */
@@ -257,6 +258,8 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		87541F3AFFADF1998F386F14 /* Pods-interactiveClassroomTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-interactiveClassroomTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-interactiveClassroomTests/Pods-interactiveClassroomTests.release.xcconfig"; sourceTree = "<group>"; };
+		93166ADF1E3C137E0081B4A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9354F26A1E3C092600C5EECD /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Images-2.xcassets"; path = "interactiveClassroom/Images-2.xcassets"; sourceTree = "<group>"; };
 		B556F46B48605D7FE4D2788B /* Pods-interactiveClassroom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-interactiveClassroom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-interactiveClassroom/Pods-interactiveClassroom.debug.xcconfig"; sourceTree = "<group>"; };
 		BDBA1C9B3E464D2EB6ECC507 /* Firestack.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = Firestack.xcodeproj; path = "../node_modules/react-native-firestack/ios/Firestack.xcodeproj"; sourceTree = "<group>"; };
 		DBC968316EFB47A88988F287 /* Pods_interactiveClassroomTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_interactiveClassroomTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -384,6 +387,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				9354F26A1E3C092600C5EECD /* Images-2.xcassets */,
 			);
 			name = interactiveClassroom;
 			sourceTree = "<group>";
@@ -462,6 +466,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				93166ADF1E3C137E0081B4A2 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* interactiveClassroom */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* interactiveClassroomTests */,
@@ -851,6 +856,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				93166AE01E3C137E0081B4A2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

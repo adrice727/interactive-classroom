@@ -1,5 +1,5 @@
 import R from 'ramda';
-import otCore from 'opentok-accelerator-core';
+// import otCore from 'opentok-accelerator-core';
 
 // const cameraProperties = {
 //   insertMode: 'append',
@@ -13,19 +13,19 @@ import otCore from 'opentok-accelerator-core';
 //   },
 // };
 
-/**
- * Send a signal using the OpenTok signaling API
- * @param {String} type
- * @param {*} data
- * @param {Object} to - An OpenTok connection object
- * @returns {Promise} <resolve: empty, reject: {Error}>
- */
-const signal = (type, data, to) =>
-  new Promise((resolve, reject) => {
-    otCore.signal(type, data)
-    .then(resolve)
-    .catch(reject);
-  });
+// /**
+//  * Send a signal using the OpenTok signaling API
+//  * @param {String} type
+//  * @param {*} data
+//  * @param {Object} to - An OpenTok connection object
+//  * @returns {Promise} <resolve: empty, reject: {Error}>
+//  */
+// const signal = (type, data, to) =>
+//   new Promise((resolve, reject) => {
+//     otCore.signal(type, data)
+//     .then(resolve)
+//     .catch(reject);
+//   });
 
 /**
  * Parse connection data from a stream
@@ -35,7 +35,5 @@ const signal = (type, data, to) =>
 const streamData = stream => JSON.parse(R.pathOr(null, ['connection', 'data'], stream));
 
 module.exports = {
-  otCore,
-  signal,
   streamData,
 }

@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'skyblue',
   },
   studentHomeHeader: {
+    color: 'white',
     fontFamily: 'AppleSDGothicNeo-Light',
   }
 });

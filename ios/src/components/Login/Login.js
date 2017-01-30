@@ -34,6 +34,7 @@ class Login extends Component {
 
   onAuth(role, data) {
     const { dispatch, navigation } = this.props;
+    console.log(dispatch);
 
     const user = {
       id: R.path(['user', 'uid'], data),
@@ -99,8 +100,6 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-// export default connect(
-//   mapStateToProps
-// )(Login);
-
-export default Login;
+export default connect(
+  mapStateToProps
+)(Login);

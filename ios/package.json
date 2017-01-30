@@ -8,6 +8,11 @@
   },
   "dependencies": {
     "firebase": "^3.6.7",
+    "opentok-accelerator-core": "0.0.14",
+    "opentok-annotation": "^2.0.41",
+    "opentok-archiving": "^1.0.9",
+    "opentok-screen-sharing": "^1.0.23",
+    "opentok-text-chat": "^1.0.21",
     "ramda": "^0.23.0",
     "react": "15.4.2",
     "react-native": "0.40.0",

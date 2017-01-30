@@ -26,9 +26,9 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    const { user } = this.props;
+    const { user, navigation } = this.props;
     if (user) {
-      browserHistory.push(`${user.role}-home`);
+      navigation.navigate('StudentHome');
     }
   }
 
@@ -44,12 +44,11 @@ class Login extends Component {
     };
 
     const login = user => {
-      navigation.navigate('StudentHome');
-      return;
       dispatch(loginUser(user));
       if (role === 'instructor') {
         dispatch(setInstructor(user));
       }
+      navigation.navigate('StudentHome');
     };
 
     api.post('user', R.omit('role', user))

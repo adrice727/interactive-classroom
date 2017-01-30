@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
+  ScrollView,
   Text,
   View,
   Image
@@ -11,9 +12,15 @@ import api from '../../services/api';
 import { setAvailableClasses } from '../../actions/availableClassesActions';
 import StudentClassList from './components/StudentClassList';
 
+const NoClassesAvailable = () =>
+  <View style={styles.noClasses}>
+    <Text style={styles.noClassesText}>No classes available</Text>
+  </View>
+
 class StudentHome extends Component {
+
   static navigationOptions = {
-    title: 'Home',
+    title: 'Available Classes',
   }
 
   componentDidMount() {
@@ -29,10 +36,11 @@ class StudentHome extends Component {
 
   render() {
     const { availableClasses } = this.props;
-    console.log(availableClasses);
+    // const classes = Object.values(availableClasses);
+    const classes = [];
     return (
       <View style={styles.studentHome}>
-        <Text style={styles.studentHomeHeader}>You are home</Text>
+          { classes.length ? <StudentClassList classes={classes} /> : <NoClassesAvailable /> }
       </View>
     )
   }
@@ -44,12 +52,19 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'skyblue',
+    backgroundColor: 'white',
   },
-  studentHomeHeader: {
-    color: 'white',
+  noClasses: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noClassesText: {
+    textAlignVertical: 'center',
+    color: 'darkgrey',
     fontFamily: 'AppleSDGothicNeo-Light',
+    fontSize: 22,
+    marginBottom: 35
   }
 });
 

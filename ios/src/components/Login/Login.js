@@ -22,7 +22,7 @@ class Login extends Component {
   }
 
   static navigationOptions = {
-    title: 'OpenTok Classroom - Login'
+    title: 'OpenTok Classroom',
   }
 
   componentDidMount() {
@@ -34,7 +34,6 @@ class Login extends Component {
 
   onAuth(role, data) {
     const { dispatch, navigation } = this.props;
-    console.log(dispatch);
 
     const user = {
       id: R.path(['user', 'uid'], data),

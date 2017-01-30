@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { createStore, combineReducers } from 'redux';
-import { connect, Provider } from 'react-redux';
+import { Provider, connect } from 'react-redux';
 import { StackNavigator, addNavigationHelpers } from 'react-navigation';
 
 /** Reducers */
@@ -15,7 +15,7 @@ import StudentHome from '../StudentHome/StudentHome';
 
 /** Routes + Nav Reducer */
 const AppNavigator = StackNavigator({
-  Login: { screen: Login },
+  Login: { screen: Login, headerMode: 'none' },
   StudentHome: { screen: StudentHome },
 });
 const navReducer = (state, action) => AppNavigator.router.getStateForAction(action, state);

@@ -1,42 +1,69 @@
-import React from 'react';
-import {View, ScrollView} from 'react-native';
+import React, { Component } from 'react';
+import { View, ScrollView, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import R from 'ramda';
 import classroomIcon from '../../../images/classroom-icon.png';
 
-const ClassroomItem = ({ classroom, remove }) => {
+const ClassroomItem = ({ classroom }) => {
   const { title, instructorName, description, imageURL, id } = classroom;
-  const imageSrc = R.defaultTo(classroomIcon)(imageURL);
+  const imageSrc = imageURL ? {uri: imageURL} : classroomIcon;
   return (
-
-    // <li>
-    //   <div className="image-container">
-    //     <img className="classroomImage" src={imageSrc} alt="classroom-icon" />
-    //   </div>
-    //   <div className="info-container">
-    //     <div>
-    //       <span className="title">{title}</span>
-    //       <span className="seperator">{`•`}</span>
-    //       <span className="instructor">{instructorName}</span></div>
-    //     <div className="description">{description}</div>
-    //   </div>
-    //   <div className="action-container">
-    //     <a className="link btn white" href={`classroom/${id}`}>Join</a>
-    //   </div>
-    // </li>
-
-    <View>
-
-    </View>
+    <TouchableOpacity style={styles.classItem}>
+      <View>
+        <Image style={styles.classImage} source={imageSrc} />
+      </View>
+      <View style={styles.classInfo}>
+        <Text style={styles.classTitle}> {title} </Text>
+        <Text style={styles.classInstructor}> with {instructorName} </Text>
+      </View>
+    </TouchableOpacity>
   )
 }
 
-
-const StudentClassList = ({ classrooms, removeClassroom }) => {
+const StudentClassList = ({ classrooms }) => {
   return (
-    <ScrollView>
-      { R.map(classroom => <ClassroomItem key={classroom.id} classroom={classroom} remove={removeClassroom} />)(classrooms) }
+    <ScrollView style={styles.classList}>
+      { classrooms.map(classroom => <ClassroomItem key={classroom.id} classroom={classroom} />) }
     </ScrollView>
   )
 };
+
+
+const styles = StyleSheet.create({
+  classList: {
+    backgroundColor: 'white',
+    padding: 5,
+  },
+  classItem: {
+    height: 100,
+    justifyContent: 'space-between',
+    paddingLeft: 20,
+    paddingRight: 20,
+    alignItems: 'center',
+    flexDirection: 'row',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: 'darkgrey',
+    borderRadius: 3,
+    marginBottom: 3,
+  },
+  classImage: {
+    height: 35,
+    width: 35,
+  },
+  classInfo: {
+    flex: 1,
+    paddingLeft: 30,
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+  },
+  classTitle: {
+    fontSize: 18,
+    textAlign: 'left',
+  },
+  classInstructor: {
+    fontSize: 14,
+    color: 'darkgrey',
+  }
+});
 
 export default StudentClassList;

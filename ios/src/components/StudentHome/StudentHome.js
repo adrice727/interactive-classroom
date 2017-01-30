@@ -36,16 +36,14 @@ class StudentHome extends Component {
 
   render() {
     const { availableClasses } = this.props;
-    // const classes = Object.values(availableClasses);
-    const classes = [];
+    const classrooms = Object.values(availableClasses);
     return (
       <View style={styles.studentHome}>
-          { classes.length ? <StudentClassList classes={classes} /> : <NoClassesAvailable /> }
+          { classrooms.length ? <StudentClassList classrooms={classrooms} /> : <NoClassesAvailable /> }
       </View>
     )
   }
 }
-
 
 const styles = StyleSheet.create({
   studentHome: {
@@ -61,7 +59,7 @@ const styles = StyleSheet.create({
   },
   noClassesText: {
     textAlignVertical: 'center',
-    color: 'darkgrey',
+    color: 'orange',
     fontFamily: 'AppleSDGothicNeo-Light',
     fontSize: 22,
     marginBottom: 35

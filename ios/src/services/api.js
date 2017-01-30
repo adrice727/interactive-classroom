@@ -2,13 +2,12 @@
 import R from 'ramda';
 
 /** Constants */
-const url = 'https://opentok-classroom-server.herokuapp.com';
+const url = 'https://ot-classroom-server.herokuapp.com';
 
 /** Helper methods */
 
 // Parse response based on type
 const parseResponse = response => {
-  console.log(response);
   const contentType = response.headers.get('content-type').split(';')[0];
   if (contentType === 'application/json') {
     return response.json();

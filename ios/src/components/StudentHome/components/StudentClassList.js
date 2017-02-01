@@ -3,11 +3,12 @@ import { View, ScrollView, StyleSheet, Text, Image, TouchableOpacity } from 'rea
 import R from 'ramda';
 import classroomIcon from '../../../images/classroom-icon.png';
 
-const ClassroomItem = ({ classroom }) => {
+const ClassroomItem = ({ classroom, join }) => {
+  const joinClassroom = () => join(classroom.id);
   const { title, instructorName, description, imageURL, id } = classroom;
   const imageSrc = imageURL ? {uri: imageURL} : classroomIcon;
   return (
-    <TouchableOpacity style={styles.classItem}>
+    <TouchableOpacity style={styles.classItem} onPress={joinClassroom}>
       <View>
         <Image style={styles.classImage} source={imageSrc} />
       </View>
@@ -19,10 +20,10 @@ const ClassroomItem = ({ classroom }) => {
   )
 }
 
-const StudentClassList = ({ classrooms }) => {
+const StudentClassList = ({ classrooms, join }) => {
   return (
     <ScrollView style={styles.classList}>
-      { classrooms.map(classroom => <ClassroomItem key={classroom.id} classroom={classroom} />) }
+      { classrooms.map(classroom => <ClassroomItem key={classroom.id} classroom={classroom} join={join} />) }
     </ScrollView>
   )
 };

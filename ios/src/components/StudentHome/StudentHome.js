@@ -19,6 +19,11 @@ const NoClassesAvailable = () =>
 
 class StudentHome extends Component {
 
+  constructor(props){
+    super(props);
+    this.joinClassroom = this.joinClassroom.bind(this);
+  }
+
   static navigationOptions = {
     title: 'Available Classes',
   }
@@ -34,12 +39,17 @@ class StudentHome extends Component {
     }
   }
 
+  joinClassroom(id) {
+    const { navigation } = this.props;
+    navigation.navigate('Classroom', {id});
+  }
+
   render() {
     const { availableClasses } = this.props;
     const classrooms = Object.values(availableClasses);
     return (
       <View style={styles.studentHome}>
-          { classrooms.length ? <StudentClassList classrooms={classrooms} /> : <NoClassesAvailable /> }
+          { classrooms.length ? <StudentClassList classrooms={classrooms} join={this.joinClassroom} /> : <NoClassesAvailable /> }
       </View>
     )
   }

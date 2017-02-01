@@ -12,11 +12,13 @@ import classroom from '../../reducers/classroomReducer';
 /** Components */
 import Login from '../Login/Login';
 import StudentHome from '../StudentHome/StudentHome';
+import Classroom from '../Classroom/Classroom';
 
 /** Routes + Nav Reducer */
 const AppNavigator = StackNavigator({
   Login: { screen: Login, headerMode: 'none' },
   StudentHome: { screen: StudentHome },
+  Classroom: {screen: Classroom },
 });
 const navReducer = (state, action) => AppNavigator.router.getStateForAction(action, state);
 

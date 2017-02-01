@@ -68,6 +68,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.8)
+  - OpenTok (2.9.2)
 
 DEPENDENCIES:
   - DCTAuth (from `https://github.com/danielctull/DCTAuth.git`)
@@ -78,6 +79,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/RemoteConfig
   - Firebase/Storage
+  - OpenTok (~> 2.9.0)
 
 EXTERNAL SOURCES:
   DCTAuth:
@@ -103,7 +105,8 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
+  OpenTok: aa00296d8c48972cbbd18e2e3954955ea6fb9501
 
-PODFILE CHECKSUM: 54ba91973c89c84269bb76ee80e55d502857db07
+PODFILE CHECKSUM: 5a08f49e30e1d166fe9f5681efbefa75edbc334a
 
 COCOAPODS: 1.1.1

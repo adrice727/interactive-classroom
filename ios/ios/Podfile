@@ -7,6 +7,7 @@ target 'interactiveClassroom' do
 
   # Pods for interactiveClassroom
   pod 'DCTAuth', :git => 'https://github.com/danielctull/DCTAuth.git'
+  pod 'OpenTok', '~> 2.9.0'
 
   target 'interactiveClassroomTests' do
     inherit! :search_paths

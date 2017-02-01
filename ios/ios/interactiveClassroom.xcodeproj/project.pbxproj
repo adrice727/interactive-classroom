@@ -259,7 +259,6 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		87541F3AFFADF1998F386F14 /* Pods-interactiveClassroomTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-interactiveClassroomTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-interactiveClassroomTests/Pods-interactiveClassroomTests.release.xcconfig"; sourceTree = "<group>"; };
 		93166ADF1E3C137E0081B4A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9354F26A1E3C092600C5EECD /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Images-2.xcassets"; path = "interactiveClassroom/Images-2.xcassets"; sourceTree = "<group>"; };
 		B556F46B48605D7FE4D2788B /* Pods-interactiveClassroom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-interactiveClassroom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-interactiveClassroom/Pods-interactiveClassroom.debug.xcconfig"; sourceTree = "<group>"; };
 		BDBA1C9B3E464D2EB6ECC507 /* Firestack.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = Firestack.xcodeproj; path = "../node_modules/react-native-firestack/ios/Firestack.xcodeproj"; sourceTree = "<group>"; };
 		DBC968316EFB47A88988F287 /* Pods_interactiveClassroomTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_interactiveClassroomTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -387,7 +386,6 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				9354F26A1E3C092600C5EECD /* Images-2.xcassets */,
 			);
 			name = interactiveClassroom;
 			sourceTree = "<group>";
@@ -1080,6 +1078,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 				);
 				INFOPLIST_FILE = interactiveClassroom/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1121,6 +1120,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 				);
 				INFOPLIST_FILE = interactiveClassroom/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",

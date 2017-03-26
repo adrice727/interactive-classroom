@@ -16,7 +16,7 @@ declare type LocalStorageState = {
 }
 
 // Redux Actions
-declare type Action;
+declare type Action = UserAction;
 
 // Redux dispatch, action creators, etc.
 declare type ActionCreator = (*) => Action;

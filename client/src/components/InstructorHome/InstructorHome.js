@@ -23,7 +23,7 @@ class InstructorHome extends Component {
         .then(classrooms => dispatch(setClassrooms(classrooms)))
         .catch(error => console.log(error));
     } else {
-      browserHistory.push('login/instructor');
+      browserHistory.push('login');
     }
   }
 
@@ -61,7 +61,7 @@ class InstructorHome extends Component {
 }
 
 const mapStateToProps = (state, { params }) => ({
-  instructor: state.instructor,
+  instructor: state.user,
 });
 
 export default withRouter(connect(

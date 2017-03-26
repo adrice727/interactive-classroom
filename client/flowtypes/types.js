@@ -12,7 +12,7 @@ declare type State = {
 
 // What persists in local storage
 declare type LocalStorageState = {
-  currentUser?: CurrentUserState
+  user?: UserState
 }
 
 // Redux Actions

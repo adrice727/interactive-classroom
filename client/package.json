@@ -13,6 +13,8 @@
     "firebase": "^3.3.0",
     "lodash.throttle": "^4.1.1",
     "opentok-accelerator-core": "*",
+    "opentok-annotation": "^2.0.53",
+    "opentok-screen-sharing": "^1.0.25",
     "opentok-solutions-css": "*",
     "opentok-text-chat": "*",
     "ramda": "^0.22.1",

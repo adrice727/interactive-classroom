@@ -3,7 +3,7 @@ import R from 'ramda';
 const user = (state: UserState = null, action): UserState => {
   switch (action.type) {
     case 'AUTHENTICATION_ERROR':
-      return action.error;
+      return R.assoc('authenticationError', action.error, state);
     case 'LOGIN_USER':
       return action.user;
     case 'LOGOUT_USER':

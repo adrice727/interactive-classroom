@@ -66,8 +66,11 @@ const del = (route, body) =>
       .catch(reject)
   });
 
+const validateUser = (user: User): Promise => post('user', user);
+
 module.exports = {
   get,
   post,
-  del
+  del,
+  validateUser,
 }

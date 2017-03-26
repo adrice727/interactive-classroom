@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import R from 'ramda'
-import firebase from 'firebase/app';
-import firebaseConfig from '../../../config/firebase';
-import 'firebase/auth';
-import 'firebase/database';
+import firebase from '../../../services/firebase';
 import './FirebaseAuth.css';
-
-firebase.initializeApp(firebaseConfig);
-
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.addScope('https://www.googleapis.com/auth/userinfo.email');
 
 class FirebaseAuth extends Component {
 

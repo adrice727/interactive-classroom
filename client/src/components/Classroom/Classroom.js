@@ -15,7 +15,7 @@ import {
   studentJoined,
   studentLeft,
   resetClassroom
-} from '../../actions/classroomActions';
+} from '../../actions/classroom';
 import Podium from './components/Podium';
 import Students from './components/Students';
 import 'opentok-solutions-css';

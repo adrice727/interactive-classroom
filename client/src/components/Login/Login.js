@@ -3,8 +3,8 @@ import { withRouter, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import R from 'ramda';
 import api from '../../services/api';
-import { loginUser } from '../../actions/userActions';
-import { setInstructor } from '../../actions/instructorActions';
+import { loginUser } from '../../actions/user';
+import { setInstructor } from '../../actions/instructor';
 import './Login.css'
 import FirebaseAuth from './components/FirebaseAuth';
 

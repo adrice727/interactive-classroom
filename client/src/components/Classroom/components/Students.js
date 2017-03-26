@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import R from 'ramda';
 import classNames from 'classnames';
-import { updateStudentStatus, takeQuestion, takeAnswer } from '../../../actions/classroomActions.js'
+import { updateStudentStatus, takeQuestion, takeAnswer } from '../../../actions/classroom.js'
 import { otCore } from '../../../services/opentok';
 import './Students.css';
 

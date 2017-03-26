@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter, browserHistory } from 'react-router';
 import R from 'ramda';
 import api from '../../services/api';
-import { addClassroom, setClassrooms, removeClassroom } from '../../actions/instructorActions';
+import { addClassroom, setClassrooms, removeClassroom } from '../../actions/instructor';
 import CreateClassroom from './components/CreateClassroom';
 import InstructorClassList from './components/InstructorClassList';
 import './InstructorHome.css';

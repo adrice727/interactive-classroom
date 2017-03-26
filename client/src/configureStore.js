@@ -1,11 +1,12 @@
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
 import throttle from 'lodash.throttle';
-import classroomApp from './reducers/rootReducer'
+import classroomApp from './reducers/root'
 import { loadState, saveState } from './localStorage';
 
 const configureStore = () => {
   const persistedState = loadState();
-  const store = createStore(classroomApp, persistedState)
+  const store = createStore(classroomApp, persistedState, applyMiddleware(thunk))
 
   store.subscribe(throttle(() => {
     saveState({

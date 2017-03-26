@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import R from 'ramda'
 import firebase from '../../../services/firebase';
+import googleLogo from '../../../images/google.jpg';
 import './FirebaseAuth.css';
 
 class FirebaseAuth extends Component {
@@ -23,8 +24,7 @@ class FirebaseAuth extends Component {
     const instructorAuth = R.partial(this.authWithFirebase, ['instructor']);
     return (
       <div className='FirebaseAuth'>
-        <button className='FirebaseAuth-btn student' onClick={studentAuth}>Student</button>
-        <button className='FirebaseAuth-btn instructor' onClick={instructorAuth}>Instructor</button>
+        <button className='FirebaseAuth-btn student' onClick={studentAuth}><img src={googleLogo} /></button>
       </div>
     )
   }

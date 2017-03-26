@@ -13,6 +13,29 @@ import otCore from 'opentok-accelerator-core';
 //   },
 // };
 
+const coreOptions = (user) => {
+  const streamContainers = (pubSub, type, data) => {
+    const id = pubSub === 'publisher' ? user.id : data.id;
+    if (type === 'camera') {
+      return `#video-${id}`
+    }
+  }
+  return {
+    controlsContainer: '#videoControls',
+    streamContainers,
+    communication: {
+      autoSubscribe: false
+    },
+    packages: ['textChat'],
+    textChat: {
+      name: user.name,
+      waitingMessage: 'Waiting for others to join the classroom',
+      container: '#chat',
+      alwaysOpen: true,
+    }
+  };
+};
+
 /**
  * Send a signal using the OpenTok signaling API
  * @param {String} type
@@ -35,6 +58,7 @@ const signal = (type, data, to) =>
 const streamData = stream => JSON.parse(R.pathOr(null, ['connection', 'data'], stream));
 
 module.exports = {
+  coreOptions,
   otCore,
   signal,
   streamData,

@@ -1,17 +1,61 @@
 .Login {
-  padding: 45px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 30px auto;
+    width: 300px;
+    height: 450px;
+    padding: 15px 0;
+    border: 1px solid lightslategray;
 }
 
-.Login-main {
-  padding: 0 10%;
+.Login-button {
+    height: 85px;
+    width: 85px;
+    padding: 0;
+    border: none;
+    margin: 0;
+    cursor: pointer;
 }
 
-.Login-content {
-  padding: 0 40px;
-  margin: 10px 0;
+
+.Login-button img {
+    height: 100%;
+    width: 100%;
+}
+
+.Login-instructor {
   display: flex;
-  justify-content: space-around;
-  align-content: center;
+  align-items: center;
+}
+
+.Login-instructor .label {
+  font-size: 18px;
+}
+
+.Login-instructor input {
+  margin: 3px 10px 0 0;
+  font-size: 22px;
+}
+/*
+.Login-content {
+    padding: 0 40px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.Login-component-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid lightgrey;
+    width: 65%;
+    min-width: 225px;
+    padding: 50px 0;
 }
 
 .Login-component-container {
@@ -26,8 +70,8 @@
 }
 
 .Login-google-logo {
-  width: 80px;
-  height: 80px;
+    width: 80px;
+    height: 80px;
 }
 
 .Login-error {
@@ -40,4 +84,4 @@
 .Login-subheader {
     font-weight: 100;
     text-align: center;
-}
+}*/

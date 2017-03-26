@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 import classNames from 'classnames';
 import R from 'ramda';
 import api from '../../services/api';
-import { otCore, signal, streamData } from '../../services/opentok';
+import { otCore, coreOptions, signal, streamData } from '../../services/opentok';
 import {
   setClassroom,
   isConnected,
@@ -20,29 +20,6 @@ import Podium from './components/Podium';
 import Students from './components/Students';
 import 'opentok-solutions-css';
 import './Classroom.css';
-
-const coreOptions = (user) => {
-  const streamContainers = (pubSub, type, data) => {
-    const id = pubSub === 'publisher' ? user.id : data.id;
-    if (type === 'camera') {
-      return `#video-${id}`
-    }
-  }
-  return {
-    controlsContainer: '#videoControls',
-    streamContainers,
-    communication: {
-      autoSubscribe: false
-    },
-    packages: ['textChat'],
-    textChat: {
-      name: user.name,
-      waitingMessage: 'Waiting for others to join the classroom',
-      container: '#chat',
-      alwaysOpen: true,
-    }
-  };
-};
 
 const ConnectingMask = () =>
   <div className="Classroom-mask">

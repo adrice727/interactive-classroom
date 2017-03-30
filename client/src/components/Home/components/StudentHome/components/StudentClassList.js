@@ -1,7 +1,7 @@
 import React from 'react';
 import R from 'ramda';
 import './StudentClassList.css';
-import classroomIcon from '../../../images/classroom-icon.png';
+import classroomIcon from '../../../../../images/classroom-icon.png';
 
 const ClassroomItem = ({ classroom, remove }) => {
   const { title, instructorName, description, imageURL, id } = classroom;
@@ -25,11 +25,11 @@ const ClassroomItem = ({ classroom, remove }) => {
   )
 }
 
-const NoClasses = () => <div className="emptyList">No existing classes</div>;
+const NoClasses = (): ReactComponent => <div className="emptyList">No existing classes</div>;
 
 const StudentClassList = ({ classrooms, removeClassroom }) => {
   const list = Object.values(classrooms);
-  const List = () =>
+  const List = (): ReactComponent =>
     <ul>
       { R.map(classroom => <ClassroomItem key={classroom.id} classroom={classroom} remove={removeClassroom} />)(list) }
     </ul>
@@ -38,7 +38,7 @@ const StudentClassList = ({ classrooms, removeClassroom }) => {
     <div className="StudentClassList">
       { R.isEmpty(list) ? <NoClasses /> : <List /> }
     </div>
-  )
+  );
 };
 
 export default StudentClassList;

@@ -5,9 +5,8 @@ import React from 'react';
 
 // Redux state(s)
 declare type State = {
-  currentUser: CurrentUserState,
-  users: UserMap,
-  events: BroadcastEventMap
+  user: UserState,
+  auth: AuthState
 };
 
 // What persists in local storage
@@ -15,8 +14,18 @@ declare type LocalStorageState = {
   user?: UserState
 }
 
+// React Router
+declare type Location = {
+  pathname: string,
+  search: string,
+  hash: string,
+  state?: any, // eslint-disable-line flowtype/no-weak-types
+  key?: string
+}
+
+
 // Redux Actions
-declare type Action = UserAction;
+declare type Action = AuthAction | UserAction;
 
 // Redux dispatch, action creators, etc.
 declare type ActionCreator = (*) => Action;
@@ -75,6 +84,7 @@ declare type Store<S, Action> = {
 // https://github.com/flowtype/flow-typed/blob/master/definitions/npm/react-redux_v5.x.x/flow_v0.30.x-/react-redux_v5.x.x.js
 // It's probably easier to use in-line type definitions for these:
 // eslint-disable-next-line flowtype/no-weak-types
-declare type MapStateToProps<S, OP: Object, SP: Object> = (state: S, ownProps: OP) => SP | MapStateToProps<S, OP, SP>;
+// declare type MapStateToProps<S, OP: Object, SP: Object> = (state: S, ownProps: OP) => SP | MapStateToProps<S, OP, SP>;
+declare type MapStateToProps<SP> = (state: State, ownProps?: *) => SP; // Modified to use single type
 // eslint-disable-next-line flowtype/no-weak-types
 declare type MapDispatchToProps<DP: Object> = ((dispatch: Dispatch) => DP) | DP;  // Modified to use single type

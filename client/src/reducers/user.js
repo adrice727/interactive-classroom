@@ -1,9 +1,7 @@
 import R from 'ramda';
 
-const user = (state: UserState = null, action): UserState => {
+const user = (state: UserState = null, action: UserAction): UserState => {
   switch (action.type) {
-    case 'AUTHENTICATION_ERROR':
-      return R.assoc('authenticationError', action.error, state);
     case 'LOGIN_USER':
       return action.user;
     case 'LOGOUT_USER':
@@ -13,6 +11,6 @@ const user = (state: UserState = null, action): UserState => {
     default:
       return state;
   }
-}
+};
 
 export default user;

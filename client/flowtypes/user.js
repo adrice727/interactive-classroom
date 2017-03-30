@@ -6,25 +6,13 @@ declare type User = {
   email: string,
   name: string,
   role: UserRole,
-  imageURL?: string,
+  photoURL?: string,
   credentials?: OpentokCredentials,
   authenticationError: boolean
 };
 
 declare type UserState = null | User;
 
-declare type FirebaseAuthResponse = {
-  user: {
-    uid: string,
-    email: string,
-    displayName: string,
-    photoURL: string
-  }
-};
-
 declare type UserAction =
   { type: 'LOGIN_USER', user: User } |
-  { type: 'LOGOUT_USER' } |
-  { type: 'ADD_CREDENTIALS', credentials: OpentokCredentials } |
-  { type: 'AUTHENTICATE_USER', role: UserRole } |
-  { type: 'AUTHENTICATION_ERROR', error: boolean } ;
+  { type: 'LOGOUT_USER' };

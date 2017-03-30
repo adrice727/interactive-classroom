@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
-import Header from '../Header/Header'
+import Header from '../Header/Header';
 
-const App = ({children}) => {
+const App = ({ location, children }: { location: Location, children: ReactComponent[] }): ReactComponent => {
   return (
     <div className="App">
-      <Header />
+      <Header location={location} />
       { children }
     </div>
-  )
-}
+  );
+};
 
 export default App;
